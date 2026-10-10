@@ -1,0 +1,1100 @@
+{
+  "sourceRestriction": "Datos validados contra el archivo completo Acuerdo_209_de_1999.pdf (Acuerdo 209 de 1999). Los 30 procedimientos quirúrgicos conservan sus referencias y UVR, contrastados contra la nomenclatura del manual. Los 10 ejercicios de tarifa directa ahora incluyen códigos, referencias y tarifas verificadas en la tabla de laboratorio. No se inventaron códigos.",
+  "document": {
+    "title": "MANUAL DE TARIFAS",
+    "agreement": "Acuerdo Número 209 de 1999",
+    "date": "28 de Abril",
+    "basis": "Intervenciones y procedimientos médico-quirúrgicos, nomenclatura y clasificación en U.V.R."
+  },
+  "cases": [
+    {
+      "id": "CASE-ISS-001",
+      "name": "Corrección escafocefalia",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 2,
+        "specialty": "Neurocirugía"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01100",
+        "description": "Corrección escafocefalia",
+        "uvr": 325
+      },
+      "issSolution": {
+        "reference": "01100",
+        "description": "Corrección escafocefalia",
+        "uvr": 325
+      }
+    },
+    {
+      "id": "CASE-ISS-002",
+      "name": "Drenaje de hematoma epidural o subdural agudo",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 2,
+        "specialty": "Neurocirugía"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01114",
+        "description": "Drenaje de hematoma epidural o subdural agudo",
+        "uvr": 555
+      },
+      "issSolution": {
+        "reference": "01114",
+        "description": "Drenaje de hematoma epidural o subdural agudo",
+        "uvr": 555
+      }
+    },
+    {
+      "id": "CASE-ISS-003",
+      "name": "Oclusión de aneurisma con gancho en circulación anterior",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 2,
+        "specialty": "Neurocirugía"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01123",
+        "description": "Oclusión de aneurisma con gancho en circulación anterior",
+        "uvr": 685
+      },
+      "issSolution": {
+        "reference": "01123",
+        "description": "Oclusión de aneurisma con gancho en circulación anterior",
+        "uvr": 685
+      }
+    },
+    {
+      "id": "CASE-ISS-004",
+      "name": "Resección de tumores corticales o subcorticales de fosa anterior o fosa media; incluye tumores de los ventrículos laterales.",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 3,
+        "specialty": "Neurocirugía"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01133",
+        "description": "Resección de tumores corticales o subcorticales de fosa anterior o fosa media; incluye tumores de los ventrículos laterales.",
+        "uvr": 700
+      },
+      "issSolution": {
+        "reference": "01133",
+        "description": "Resección de tumores corticales o subcorticales de fosa anterior o fosa media; incluye tumores de los ventrículos laterales.",
+        "uvr": 700
+      }
+    },
+    {
+      "id": "CASE-ISS-005",
+      "name": "Lobectomía temporal o extratemporal de foco convulsivógeno",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 3,
+        "specialty": "Neurocirugía"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01143",
+        "description": "Lobectomía temporal o extratemporal de foco convulsivógeno",
+        "uvr": 375
+      },
+      "issSolution": {
+        "reference": "01143",
+        "description": "Lobectomía temporal o extratemporal de foco convulsivógeno",
+        "uvr": 375
+      }
+    },
+    {
+      "id": "CASE-ISS-006",
+      "name": "Reducción y fijación de fractura dorsal, dorsolumbar (T10-L2), o lumbo-sacra, incluye: toma de injerto.",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 5,
+        "specialty": "Columna y médula espinal"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01216",
+        "description": "Reducción y fijación de fractura dorsal, dorsolumbar (T10-L2), o lumbo-sacra, incluye: toma de injerto.",
+        "uvr": 510
+      },
+      "issSolution": {
+        "reference": "01216",
+        "description": "Reducción y fijación de fractura dorsal, dorsolumbar (T10-L2), o lumbo-sacra, incluye: toma de injerto.",
+        "uvr": 510
+      }
+    },
+    {
+      "id": "CASE-ISS-007",
+      "name": "Discectomía cervical anterior e injerto",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 6,
+        "specialty": "Columna y médula espinal"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01243",
+        "description": "Discectomía cervical anterior e injerto",
+        "uvr": 420
+      },
+      "issSolution": {
+        "reference": "01243",
+        "description": "Discectomía cervical anterior e injerto",
+        "uvr": 420
+      }
+    },
+    {
+      "id": "CASE-ISS-008",
+      "name": "Punción lumbar",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 7,
+        "specialty": "Columna y médula espinal"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01280",
+        "description": "Punción lumbar",
+        "uvr": 40
+      },
+      "issSolution": {
+        "reference": "01280",
+        "description": "Punción lumbar",
+        "uvr": 40
+      }
+    },
+    {
+      "id": "CASE-ISS-009",
+      "name": "Reconstrucción del plejo con neurorrafias",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 8,
+        "specialty": "Nervios craneanos, raquídeos y simpático"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "01321",
+        "description": "Reconstrucción del plejo con neurorrafias",
+        "uvr": 320
+      },
+      "issSolution": {
+        "reference": "01321",
+        "description": "Reconstrucción del plejo con neurorrafias",
+        "uvr": 320
+      }
+    },
+    {
+      "id": "CASE-ISS-010",
+      "name": "Lavado, sondeo e intubación de vías lagrimales",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 8,
+        "specialty": "Oftalmología"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "02102",
+        "description": "Lavado, sondeo e intubación de vías lagrimales",
+        "uvr": 60
+      },
+      "issSolution": {
+        "reference": "02102",
+        "description": "Lavado, sondeo e intubación de vías lagrimales",
+        "uvr": 60
+      }
+    },
+    {
+      "id": "CASE-ISS-011",
+      "name": "Resección total por tumor benigno o maligno de párpado (incluye reconstrucción)",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 8,
+        "specialty": "Oftalmología"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "02216",
+        "description": "Resección total por tumor benigno o maligno de párpado (incluye reconstrucción)",
+        "uvr": 200
+      },
+      "issSolution": {
+        "reference": "02216",
+        "description": "Resección total por tumor benigno o maligno de párpado (incluye reconstrucción)",
+        "uvr": 200
+      }
+    },
+    {
+      "id": "CASE-ISS-012",
+      "name": "Resección de pterigios nasal y/o temporal, con plastia",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 9,
+        "specialty": "Oftalmología"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "02302",
+        "description": "Resección de pterigios nasal y/o temporal, con plastia",
+        "uvr": 70
+      },
+      "issSolution": {
+        "reference": "02302",
+        "description": "Resección de pterigios nasal y/o temporal, con plastia",
+        "uvr": 70
+      }
+    },
+    {
+      "id": "CASE-ISS-013",
+      "name": "Extracción de cuerpo extraño de órbita",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 9,
+        "specialty": "Oftalmología"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "02404",
+        "description": "Extracción de cuerpo extraño de órbita",
+        "uvr": 125
+      },
+      "issSolution": {
+        "reference": "02404",
+        "description": "Extracción de cuerpo extraño de órbita",
+        "uvr": 125
+      }
+    },
+    {
+      "id": "CASE-ISS-014",
+      "name": "Cirugía de estrabismo tres músculos",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 10,
+        "specialty": "Oftalmología"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "02522",
+        "description": "Cirugía de estrabismo tres músculos",
+        "uvr": 150
+      },
+      "issSolution": {
+        "reference": "02522",
+        "description": "Cirugía de estrabismo tres músculos",
+        "uvr": 150
+      }
+    },
+    {
+      "id": "CASE-ISS-015",
+      "name": "Queratectomía con excímer láser (fotorrefractiva o fototerapéutica )",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 10,
+        "specialty": "Oftalmología"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "02605",
+        "description": "Queratectomía con excímer láser (fotorrefractiva o fototerapéutica )",
+        "uvr": 120
+      },
+      "issSolution": {
+        "reference": "02605",
+        "description": "Queratectomía con excímer láser (fotorrefractiva o fototerapéutica )",
+        "uvr": 120
+      }
+    },
+    {
+      "id": "CASE-ISS-016",
+      "name": "Descompresión de nervio en mano",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 81,
+        "specialty": "Cirugía de mano y nervios"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "14400",
+        "description": "Descompresión de nervio en mano",
+        "uvr": 80
+      },
+      "issSolution": {
+        "reference": "14400",
+        "description": "Descompresión de nervio en mano",
+        "uvr": 80
+      }
+    },
+    {
+      "id": "CASE-ISS-017",
+      "name": "Neurorrafia de un nervio en mano, con injerto",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 81,
+        "specialty": "Cirugía de mano y nervios"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "14425",
+        "description": "Neurorrafia de un nervio en mano, con injerto",
+        "uvr": 100
+      },
+      "issSolution": {
+        "reference": "14425",
+        "description": "Neurorrafia de un nervio en mano, con injerto",
+        "uvr": 100
+      }
+    },
+    {
+      "id": "CASE-ISS-018",
+      "name": "Corrección de sindactilia simple (un espacio)",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 82,
+        "specialty": "Cirugía de mano y piel"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "14510",
+        "description": "Corrección de sindactilia simple (un espacio)",
+        "uvr": 85
+      },
+      "issSolution": {
+        "reference": "14510",
+        "description": "Corrección de sindactilia simple (un espacio)",
+        "uvr": 85
+      }
+    },
+    {
+      "id": "CASE-ISS-019",
+      "name": "Operación cesárea, segmentaria transversal o corporal",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 53,
+        "specialty": "Obstetricia"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "12110",
+        "description": "Operación cesárea, segmentaria transversal o corporal",
+        "uvr": 70
+      },
+      "issSolution": {
+        "reference": "12110",
+        "description": "Operación cesárea, segmentaria transversal o corporal",
+        "uvr": 70
+      }
+    },
+    {
+      "id": "CASE-ISS-020",
+      "name": "Plastia en z (una a dos) en cara, genitales, zonas de flexión de axila, cuello, codo, muñeca, dorso de pie, hueco poplíteo, región inguinal.",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 91,
+        "specialty": "Cirugía reconstructiva"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "15317",
+        "description": "Plastia en z (una a dos) en cara, genitales, zonas de flexión de axila, cuello, codo, muñeca, dorso de pie, hueco poplíteo, región inguinal.",
+        "uvr": 100
+      },
+      "issSolution": {
+        "reference": "15317",
+        "description": "Plastia en z (una a dos) en cara, genitales, zonas de flexión de axila, cuello, codo, muñeca, dorso de pie, hueco poplíteo, región inguinal.",
+        "uvr": 100
+      }
+    },
+    {
+      "id": "CASE-ISS-021",
+      "name": "Corrección secuelas de parálisis facial (técnica microquirúrgica)",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 91,
+        "specialty": "Cirugía reconstructiva"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "15331",
+        "description": "Corrección secuelas de parálisis facial (técnica microquirúrgica)",
+        "uvr": 200
+      },
+      "issSolution": {
+        "reference": "15331",
+        "description": "Corrección secuelas de parálisis facial (técnica microquirúrgica)",
+        "uvr": 200
+      }
+    },
+    {
+      "id": "CASE-ISS-022",
+      "name": "Cateterización y sialometría",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 91,
+        "specialty": "Cirugía oral, maxilofacial y dental"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "16100",
+        "description": "Cateterización y sialometría",
+        "uvr": 25
+      },
+      "issSolution": {
+        "reference": "16100",
+        "description": "Cateterización y sialometría",
+        "uvr": 25
+      }
+    },
+    {
+      "id": "CASE-ISS-023",
+      "name": "Endomiocárdica",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 101,
+        "specialty": "Biopsias de corazón"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "17410",
+        "description": "Endomiocárdica",
+        "uvr": 105
+      },
+      "issSolution": {
+        "reference": "17410",
+        "description": "Endomiocárdica",
+        "uvr": 105
+      }
+    },
+    {
+      "id": "CASE-ISS-024",
+      "name": "Colon por laparotomía, biopsias múltiples",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 101,
+        "specialty": "Biopsias de órganos intraabdominales"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "17504",
+        "description": "Colon por laparotomía, biopsias múltiples",
+        "uvr": 110
+      },
+      "issSolution": {
+        "reference": "17504",
+        "description": "Colon por laparotomía, biopsias múltiples",
+        "uvr": 110
+      }
+    },
+    {
+      "id": "CASE-ISS-025",
+      "name": "Riñón por lumbotomía",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 101,
+        "specialty": "Biopsias de glándula suprarrenal y riñón"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "17600",
+        "description": "Riñón por lumbotomía",
+        "uvr": 60
+      },
+      "issSolution": {
+        "reference": "17600",
+        "description": "Riñón por lumbotomía",
+        "uvr": 60
+      }
+    },
+    {
+      "id": "CASE-ISS-026",
+      "name": "Uretrolitotomía",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 111,
+        "specialty": "Aparato urinario"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "18813",
+        "description": "Uretrolitotomía",
+        "uvr": 95
+      },
+      "issSolution": {
+        "reference": "18813",
+        "description": "Uretrolitotomía",
+        "uvr": 95
+      }
+    },
+    {
+      "id": "CASE-ISS-027",
+      "name": "Uretrotomía interna endoscópica",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 111,
+        "specialty": "Aparato urinario"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "18817",
+        "description": "Uretrotomía interna endoscópica",
+        "uvr": 120
+      },
+      "issSolution": {
+        "reference": "18817",
+        "description": "Uretrotomía interna endoscópica",
+        "uvr": 120
+      }
+    },
+    {
+      "id": "CASE-ISS-028",
+      "name": "Histeroscopia",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 111,
+        "specialty": "Aparato genital femenino"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "18901",
+        "description": "Histeroscopia",
+        "uvr": 50
+      },
+      "issSolution": {
+        "reference": "18901",
+        "description": "Histeroscopia",
+        "uvr": 50
+      }
+    },
+    {
+      "id": "CASE-ISS-029",
+      "name": "Cirugía laparoscópica del embarazo ectópico (Salpingostomía)",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 111,
+        "specialty": "Aparato genital femenino"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "18912",
+        "description": "Cirugía laparoscópica del embarazo ectópico (Salpingostomía)",
+        "uvr": 90
+      },
+      "issSolution": {
+        "reference": "18912",
+        "description": "Cirugía laparoscópica del embarazo ectópico (Salpingostomía)",
+        "uvr": 90
+      }
+    },
+    {
+      "id": "CASE-ISS-030",
+      "name": "Salpingectomía,ooforectomía o salpingo-ooforectomía ,unilateral o bilateral",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 111,
+        "specialty": "Aparato genital femenino"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "18914",
+        "description": "Salpingectomía,ooforectomía o salpingo-ooforectomía ,unilateral o bilateral",
+        "uvr": 120
+      },
+      "issSolution": {
+        "reference": "18914",
+        "description": "Salpingectomía,ooforectomía o salpingo-ooforectomía ,unilateral o bilateral",
+        "uvr": 120
+      }
+    },
+    {
+      "id": "CASE-ISS-DIR-001",
+      "name": "Ácido ascórbico (vitamina C)",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 75,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1932030",
+        "description": "Ácido ascórbico (vitamina C)",
+        "tariffType": "direct",
+        "value": 3960,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1932030",
+        "description": "Ácido ascórbico (vitamina C)",
+        "tariffType": "direct",
+        "tariff": 3960,
+        "liquidation": {
+          "procedure": {
+            "reference": "1932030",
+            "code": "1932030",
+            "description": "Ácido ascórbico (vitamina C)",
+            "quantity": 1,
+            "unitValue": 3960,
+            "value": 3960,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1932030 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 75. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-002",
+      "name": "Ácido úrico",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 76,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1912090",
+        "description": "Ácido úrico",
+        "tariffType": "direct",
+        "value": 3045,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1912090",
+        "description": "Ácido úrico",
+        "tariffType": "direct",
+        "tariff": 3045,
+        "liquidation": {
+          "procedure": {
+            "reference": "1912090",
+            "code": "1912090",
+            "description": "Ácido úrico",
+            "quantity": 1,
+            "unitValue": 3045,
+            "value": 3045,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1912090 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 76. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-003",
+      "name": "Ácido úrico en orina de 24 horas",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 76,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1914630",
+        "description": "Ácido úrico en orina de 24 horas",
+        "tariffType": "direct",
+        "value": 3075,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1914630",
+        "description": "Ácido úrico en orina de 24 horas",
+        "tariffType": "direct",
+        "tariff": 3075,
+        "liquidation": {
+          "procedure": {
+            "reference": "1914630",
+            "code": "1914630",
+            "description": "Ácido úrico en orina de 24 horas",
+            "quantity": 1,
+            "unitValue": 3075,
+            "value": 3075,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1914630 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 76. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-004",
+      "name": "Albúmina",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 76,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1922110",
+        "description": "Albúmina",
+        "tariffType": "direct",
+        "value": 2740,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1922110",
+        "description": "Albúmina",
+        "tariffType": "direct",
+        "tariff": 2740,
+        "liquidation": {
+          "procedure": {
+            "reference": "1922110",
+            "code": "1922110",
+            "description": "Albúmina",
+            "quantity": 1,
+            "unitValue": 2740,
+            "value": 2740,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1922110 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 76. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-005",
+      "name": "Amilasa",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 77,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1922210",
+        "description": "Amilasa",
+        "tariffType": "direct",
+        "value": 5695,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1922210",
+        "description": "Amilasa",
+        "tariffType": "direct",
+        "tariff": 5695,
+        "liquidation": {
+          "procedure": {
+            "reference": "1922210",
+            "code": "1922210",
+            "description": "Amilasa",
+            "quantity": 1,
+            "unitValue": 5695,
+            "value": 5695,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1922210 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 77. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-006",
+      "name": "Alanino aminotransferasas ALT, TGP",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 76,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1922100",
+        "description": "Alanino aminotransferasas ALT, TGP",
+        "tariffType": "direct",
+        "value": 4165,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1922100",
+        "description": "Alanino aminotransferasas ALT, TGP",
+        "tariffType": "direct",
+        "tariff": 4165,
+        "liquidation": {
+          "procedure": {
+            "reference": "1922100",
+            "code": "1922100",
+            "description": "Alanino aminotransferasas ALT, TGP",
+            "quantity": 1,
+            "unitValue": 4165,
+            "value": 4165,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1922100 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 76. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-007",
+      "name": "Bilirrubina total y directa",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 78,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1912280",
+        "description": "Bilirrubina total y directa",
+        "tariffType": "direct",
+        "value": 4620,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1912280",
+        "description": "Bilirrubina total y directa",
+        "tariffType": "direct",
+        "tariff": 4620,
+        "liquidation": {
+          "procedure": {
+            "reference": "1912280",
+            "code": "1912280",
+            "description": "Bilirrubina total y directa",
+            "quantity": 1,
+            "unitValue": 4620,
+            "value": 4620,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1912280 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 78. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-008",
+      "name": "Colesterol total",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 79,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1912430",
+        "description": "Colesterol total",
+        "tariffType": "direct",
+        "value": 4060,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1912430",
+        "description": "Colesterol total",
+        "tariffType": "direct",
+        "tariff": 4060,
+        "liquidation": {
+          "procedure": {
+            "reference": "1912430",
+            "code": "1912430",
+            "description": "Colesterol total",
+            "quantity": 1,
+            "unitValue": 4060,
+            "value": 4060,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1912430 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 79. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-009",
+      "name": "Creatinina",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 80,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1912500",
+        "description": "Creatinina",
+        "tariffType": "direct",
+        "value": 2845,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1912500",
+        "description": "Creatinina",
+        "tariffType": "direct",
+        "tariff": 2845,
+        "liquidation": {
+          "procedure": {
+            "reference": "1912500",
+            "code": "1912500",
+            "description": "Creatinina",
+            "quantity": 1,
+            "unitValue": 2845,
+            "value": 2845,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1912500 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 80. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    },
+    {
+      "id": "CASE-ISS-DIR-010",
+      "name": "Coprológico",
+      "trainingMode": "manual",
+      "source": {
+        "document": "Acuerdo_209_de_1999.pdf",
+        "agreement": "Acuerdo Número 209 de 1999 (28 de Abril)",
+        "pdfPage": 80,
+        "chapter": "CAPITULO II",
+        "article": "Artículo 19",
+        "specialty": "Laboratorio clínico"
+      },
+      "procedure": {
+        "system": "ISS",
+        "reference": "1917330",
+        "description": "Coprológico",
+        "tariffType": "direct",
+        "value": 2740,
+        "code": ""
+      },
+      "issSolution": {
+        "reference": "1917330",
+        "description": "Coprológico",
+        "tariffType": "direct",
+        "tariff": 2740,
+        "liquidation": {
+          "procedure": {
+            "reference": "1917330",
+            "code": "1917330",
+            "description": "Coprológico",
+            "quantity": 1,
+            "unitValue": 2740,
+            "value": 2740,
+            "applicable": true
+          }
+        },
+        "sourceNote": "Código 1917330 y tarifa directa verificados en el Acuerdo 209 de 1999, tabla de exámenes de laboratorio, página impresa 80. No se calcula por UVR.",
+        "code": ""
+      },
+      "trainingNote": "Identifica el examen en el Manual y registra su tarifa directa en pesos. No se liquida por UVR."
+    }
+  ],
+  "caseCount": 40,
+  "tariffTypes": {
+    "uvr": "Procedimientos del Capítulo I clasificados en UVR.",
+    "direct": "Exámenes del Capítulo II, Artículo 19, con tarifa directa en pesos."
+  },
+  "validation": {
+    "source": "Acuerdo_209_de_1999.pdf",
+    "checked": "Se contrastaron los 30 códigos y valores UVR de procedimientos y los 10 códigos/tarifas directas de laboratorio contra el PDF completo.",
+    "directTariffPrintedPages": [
+      75,
+      76,
+      77,
+      78,
+      79,
+      80
+    ],
+    "verifiedDirectCases": 10,
+    "verifiedUVRCases": 30
+  }
+}
