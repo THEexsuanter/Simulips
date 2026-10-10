@@ -1,0 +1,5370 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="SimuIPS - Simulador educativo de facturación y administración de servicios de salud."
+    >
+
+    <meta name="author" content="SimuIPS">
+
+    <title>SimuIPS | Simulador de Facturación en Salud</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css?v=20261010-4">
+
+    <style>
+    /* Módulos integrados en index.html: niveles de práctica + Test del ISS */
+    .iss-level-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;width:100%}
+    .iss-level-card{min-width:0;display:flex!important;flex-direction:column;padding:25px;border:1px solid rgba(255,255,255,.09);border-radius:20px;background:linear-gradient(145deg,rgba(16,24,35,.98),rgba(9,15,23,.98));box-shadow:0 14px 38px rgba(0,0,0,.12)}
+    .iss-level-topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}
+    .iss-level-badge{padding:6px 9px;border:1px solid rgba(53,214,167,.18);border-radius:8px;background:rgba(53,214,167,.08);color:#59ddb4;font-size:9px;font-weight:850;letter-spacing:.08em}
+    .iss-level-badge-advanced{border-color:rgba(155,130,255,.2);background:rgba(155,130,255,.08);color:#b9a8ff}
+    .iss-level-card h2{margin:8px 0 10px;color:var(--text,#eaf0f6);font-size:24px}
+    .iss-level-card p{color:var(--muted,#9aa8b7);font-size:13px;line-height:1.75}
+    .iss-level-features{display:grid;gap:10px;list-style:none;margin:10px 0 24px;padding:0;color:#bdcbd4;font-size:12px}
+    .iss-level-features li::first-letter{color:#51ddb0}
+    .iss-level-card .primary-button{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:auto}
+    .iss-level-advanced{border-color:rgba(155,130,255,.2);background:radial-gradient(circle at 100% 0%,rgba(155,130,255,.08),transparent 35%),linear-gradient(145deg,rgba(16,24,35,.98),rgba(9,15,23,.98))}
+    .iss-level-footnote{margin-top:15px;color:var(--muted,#8998a7);font-size:11px;line-height:1.7}
+    .iss-test-page{max-width:1180px;margin:0 auto;padding:clamp(16px,3vw,34px);color:var(--text,#eaf0f6)}
+    .iss-test-hero{position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;overflow:hidden;padding:clamp(24px,4vw,42px);border:1px solid rgba(53,214,167,.18);border-radius:24px;background:radial-gradient(circle at 85% 20%,rgba(53,214,167,.16),transparent 32%),linear-gradient(135deg,#101e27,#0c121b 68%);box-shadow:0 18px 55px rgba(0,0,0,.16)}
+    .iss-test-hero-copy{position:relative;z-index:2;max-width:700px}.iss-test-eyebrow{display:inline-flex;align-items:center;gap:9px;color:#5ce2b5;font-size:11px;font-weight:800;letter-spacing:.15em}.iss-test-dot{width:7px;height:7px;border-radius:50%;background:#35d6a7;box-shadow:0 0 14px #35d6a7}
+    .iss-test-hero h1{margin:13px 0 8px;font-size:clamp(32px,4vw,46px);line-height:1.05;letter-spacing:-.04em}.iss-test-hero p{margin:0;color:#aab8c6;font-size:15px;line-height:1.7}.iss-test-promise{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:10px 13px;border:1px solid rgba(53,214,167,.2);border-radius:12px;background:rgba(53,214,167,.07);color:#c4d9d7;font-size:12px;line-height:1.5}
+    .iss-test-hero-art{position:relative;flex:0 0 210px;height:180px;display:grid;place-items:center}.iss-test-orbit{position:absolute;border:1px solid rgba(53,214,167,.16);border-radius:50%;transform:rotate(-25deg)}.iss-test-orbit-one{width:180px;height:100px}.iss-test-orbit-two{width:155px;height:155px}.iss-test-book{z-index:1;width:92px;height:112px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border:1px solid rgba(255,255,255,.2);border-radius:13px 17px 17px 13px;background:linear-gradient(145deg,#35d6a7,#168d78);box-shadow:0 18px 45px rgba(20,190,145,.25);color:#06231e;font-size:24px;font-weight:900;transform:rotate(7deg)}.iss-test-book span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(4,35,29,.18);font-size:19px}.iss-test-float{position:absolute;z-index:2;display:grid;place-items:center;width:31px;height:31px;border:1px solid rgba(255,255,255,.13);border-radius:10px;background:#16232e;color:#d7e8e7;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.25)}.iss-test-float-a{top:12px;left:34px}.iss-test-float-b{top:26px;right:17px}.iss-test-float-c{bottom:10px;left:29px}.iss-test-float-d{bottom:16px;right:32px}
+    .iss-test-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:17px 0 23px}.iss-test-stat{display:flex;align-items:center;gap:13px;padding:17px;border:1px solid var(--border,rgba(255,255,255,.08));border-radius:16px;background:var(--surface,rgba(15,23,34,.75))}.iss-test-stat-icon{display:grid;place-items:center;flex:0 0 42px;height:42px;border-radius:13px;background:rgba(53,214,167,.1);color:#51ddb0;font-size:21px}.iss-test-stat strong,.iss-test-stat small{display:block}.iss-test-stat strong{font-size:21px;line-height:1.2}.iss-test-stat small{margin-top:4px;color:var(--muted,#8e9aaa);font-size:11px}
+    .iss-test-panel{padding:clamp(20px,3vw,34px);border:1px solid var(--border,rgba(255,255,255,.08));border-radius:22px;background:var(--surface,rgba(15,23,34,.78));box-shadow:0 14px 42px rgba(0,0,0,.12)}.iss-test-start{text-align:center}.iss-test-start-icon{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 16px;border-radius:18px;background:rgba(53,214,167,.12);color:#52dfb2;font-size:27px}.iss-test-kicker{color:#51ddb0;font-size:10px;font-weight:850;letter-spacing:.16em}.iss-test-panel h2{margin:9px 0 10px;font-size:clamp(22px,3vw,30px);letter-spacing:-.025em}.iss-test-start>p,.iss-test-results>p{max-width:610px;margin:0 auto;color:var(--muted,#9aa8b7);font-size:14px;line-height:1.75}.iss-test-start-details{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin:22px 0 25px;color:#b8c8d2;font-size:12px}
+    .iss-test-state{margin:18px 0;padding:18px;border:1px solid rgba(53,214,167,.18);border-radius:14px;background:rgba(53,214,167,.06);color:#b8d6d0;font-size:13px}.iss-test-state-error{border-color:rgba(255,105,105,.25);background:rgba(255,105,105,.07);color:#ffc3c3}
+    .iss-test-quiz-top{display:flex;justify-content:space-between;gap:12px;color:#aab8c6;font-size:12px;font-weight:700}.iss-test-progress,.iss-test-score-track{height:6px;margin:13px 0 24px;overflow:hidden;border-radius:99px;background:rgba(255,255,255,.07)}.iss-test-progress span,.iss-test-score-track span{display:block;width:10%;height:100%;border-radius:99px;background:linear-gradient(90deg,#35d6a7,#7ae7c7);transition:width .25s ease}.iss-test-topic{display:inline-block;margin-bottom:12px;padding:6px 10px;border-radius:8px;background:rgba(53,214,167,.09);color:#65e1bb;font-size:10px;font-weight:800;letter-spacing:.05em}.iss-test-question{margin:0 0 22px!important;font-size:clamp(19px,2.6vw,25px)!important;line-height:1.5!important}
+    .iss-test-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.iss-test-option{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:66px;padding:15px;text-align:left;border:1px solid var(--border,rgba(255,255,255,.1));border-radius:14px;background:rgba(255,255,255,.018);color:var(--text,#eaf0f6);cursor:pointer;transition:border-color .18s,background .18s,transform .18s}.iss-test-option:hover{border-color:rgba(53,214,167,.42);transform:translateY(-1px)}.iss-test-option.is-selected{border-color:#35d6a7;background:rgba(53,214,167,.09);box-shadow:inset 0 0 0 1px rgba(53,214,167,.12)}.iss-test-option-letter{display:grid;place-items:center;flex:0 0 29px;height:29px;border:1px solid rgba(255,255,255,.13);border-radius:9px;color:#a8bac7;font-size:12px;font-weight:900}.iss-test-option.is-selected .iss-test-option-letter{border-color:#35d6a7;background:#35d6a7;color:#06231d}.iss-test-option-text{padding-top:3px;font-size:13px;line-height:1.55}.iss-test-quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:25px;padding-top:18px;border-top:1px solid var(--border,rgba(255,255,255,.08))}.iss-test-quiz-footer>span{color:var(--muted,#8e9aaa);font-size:11px}
+    .iss-test-results{text-align:center}.iss-test-result-symbol{display:grid;place-items:center;width:62px;height:62px;margin:0 auto 15px;border-radius:50%;background:rgba(53,214,167,.12);color:#52dfb2;font-size:29px}.iss-test-score{display:flex;align-items:baseline;justify-content:center;gap:14px;margin:23px 0 0}.iss-test-score strong{font-size:42px;letter-spacing:-.04em}.iss-test-score span{color:#55dfb5;font-size:18px;font-weight:800}.iss-test-score-track{max-width:450px;margin:14px auto 25px}.iss-test-review{display:grid;gap:10px;margin-top:28px;text-align:left}.iss-test-review-item{padding:15px;border:1px solid var(--border,rgba(255,255,255,.08));border-radius:13px;background:rgba(255,255,255,.018)}.iss-test-review-item.is-correct{border-left:3px solid #35d6a7}.iss-test-review-item.is-wrong{border-left:3px solid #f1a05b}.iss-test-review-head{display:flex;gap:10px;align-items:flex-start;font-size:13px;font-weight:750;line-height:1.5}.iss-test-review-badge{flex:0 0 auto;font-size:11px}.iss-test-review-answer,.iss-test-review-explanation{margin:8px 0 0;color:var(--muted,#9aa8b7);font-size:12px;line-height:1.65}.iss-test-review-answer strong{color:#dfe8ee}.iss-test-result-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:24px}.iss-test-disclaimer{margin:18px 4px 0;color:var(--muted,#81909f);font-size:10px;line-height:1.65}
+    #page-test-iss[hidden],#page-test-iss [hidden]{display:none!important}
+    @media(max-width:720px){.iss-level-grid{grid-template-columns:1fr}.iss-test-hero-art{flex-basis:125px;transform:scale(.82);transform-origin:center right;margin-left:-28px}.iss-test-hero{gap:0}.iss-test-stats{gap:8px}.iss-test-stat{padding:12px;gap:9px}.iss-test-stat-icon{flex-basis:32px;height:32px;font-size:16px}.iss-test-stat strong{font-size:17px}.iss-test-stat small{font-size:10px}.iss-test-options{grid-template-columns:1fr}.iss-test-quiz-footer{align-items:flex-start;flex-direction:column}.iss-test-hero h1{font-size:34px}}
+    @media(max-width:480px){.iss-test-hero-art{display:none}.iss-test-hero{padding:23px}.iss-test-stats{grid-template-columns:1fr}.iss-test-stat{padding:12px 15px}.iss-test-start-details{align-items:flex-start;flex-direction:column;width:max-content;max-width:100%;margin:20px auto}.iss-test-quiz-top{font-size:10px}}
+    /* FIX FORZADO: mostrar ambos niveles incluso si style.css tiene reglas antiguas */
+    #page-manual-mode .practice-mode-grid.iss-level-grid{
+        display:grid!important;
+        grid-template-columns:repeat(2,minmax(0,1fr))!important;
+        width:100%!important;
+        max-width:none!important;
+        align-items:stretch!important;
+        gap:20px!important;
+    }
+    #page-manual-mode .practice-mode-grid.iss-level-grid > article.iss-level-card{
+        display:flex!important;
+        flex-direction:column!important;
+        visibility:visible!important;
+        opacity:1!important;
+        position:relative!important;
+        width:auto!important;
+        min-width:0!important;
+        max-width:none!important;
+        height:auto!important;
+        grid-column:auto!important;
+    }
+    #page-manual-mode .practice-mode-grid.iss-level-grid > article.iss-level-advanced{
+        display:flex!important;
+        visibility:visible!important;
+        opacity:1!important;
+    }
+    @media(max-width:720px){
+        #page-manual-mode .practice-mode-grid.iss-level-grid{
+            grid-template-columns:minmax(0,1fr)!important;
+        }
+    }
+    </style>
+
+<style>
+    /* SimuIPS solo invitado: ocultar entradas de cuenta y código de actividad */
+    #entry-login-button,
+    #entry-register-button,
+    #entry-activity-button,
+    #entry-login-link,
+    .entry-divider,
+    .entry-footer,
+    .sidebar-bottom [data-page="settings"],
+    #sidebar-login-button,
+    #logout-button {
+        display: none !important;
+    }
+</style>\n</head>
+
+
+<body>
+
+<!-- =========================================================
+     LOADING SCREEN
+========================================================= -->
+
+<div
+    id="loading-screen"
+    class="loading-screen"
+>
+
+    <div class="loading-content">
+
+        <div class="loading-logo">
+
+            <div class="logo-symbol">
+                +
+            </div>
+
+            <div class="logo-text">
+                <span>Simu</span>IPS
+            </div>
+
+        </div>
+
+        <div class="loading-spinner"></div>
+
+        <p>
+            Preparando simulador...
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ENTRY / WELCOME SCREEN
+     
+     Esta pantalla NO exige autenticación.
+     
+     Opciones:
+     - Iniciar sesión
+     - Crear cuenta
+     - Entrar como invitado
+     - Entrar con código de actividad
+========================================================= -->
+
+<div
+    id="entry-screen"
+    class="entry-screen"
+>
+
+    <div class="entry-background"></div>
+
+    <div class="entry-container">
+
+        <div class="entry-brand">
+
+            <div class="entry-logo">
+                +
+            </div>
+
+            <div class="entry-brand-name">
+                <span>Simu</span>IPS
+            </div>
+
+        </div>
+
+
+        <div class="entry-card">
+
+            <div class="entry-card-header">
+
+                <span class="page-label">
+                    SIMULADOR EDUCATIVO
+                </span>
+
+                <h1>
+                    Aprende a liquidar
+                    servicios de salud.
+                </h1>
+
+                <p>
+                    Practica liquidación de servicios de salud y aprende a aplicar el Manual ISS.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 LOGIN
+            ================================================== -->
+
+            <button
+                id="entry-login-button"
+                class="entry-primary-button"
+                type="button"
+            >
+                <span class="entry-button-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Iniciar sesión
+                </span>
+
+                <span class="entry-button-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <!-- =================================================
+                 REGISTER
+            ================================================== -->
+
+            <button
+                id="entry-register-button"
+                class="entry-secondary-button"
+                type="button"
+            >
+                <span class="entry-button-icon">
+                    +
+                </span>
+
+                <span>
+                    Crear cuenta
+                </span>
+
+                <span class="entry-button-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <div class="entry-divider">
+
+                <span>
+                    o continúa sin cuenta
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 GUEST PRACTICE
+            ================================================== -->
+
+            <button
+                id="entry-guest-button"
+                class="entry-guest-button"
+                type="button"
+            >
+
+                <span class="entry-button-icon">
+                    ◇
+                </span>
+
+                <span>
+
+                    <strong>
+                        Entrar como invitado
+                    </strong>
+
+                    <small>
+                        Practica sin cuenta ni conexión a bases de datos.
+                    </small>
+
+                </span>
+
+                <span class="entry-button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <!-- =================================================
+                 ACTIVITY CODE
+            ================================================== -->
+
+            <button
+                id="entry-activity-button"
+                class="entry-activity-button"
+                type="button"
+            >
+
+                <span class="entry-button-icon">
+                    #
+                </span>
+
+                <span>
+
+                    <strong>
+                        Tengo un código de actividad
+                    </strong>
+
+                    <small>
+                        Entra a una actividad de tu profesor.
+                    </small>
+
+                </span>
+
+                <span class="entry-button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <div class="entry-footer">
+
+                <span>
+                    ¿Ya tienes una cuenta?
+                </span>
+
+                <button
+                    id="entry-login-link"
+                    class="link-button"
+                    type="button"
+                >
+                    Iniciar sesión
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="entry-info">
+
+            <div>
+                <span>✓</span>
+                Práctica ISS
+            </div>
+
+            <div>
+                <span>✓</span>
+                Actividades académicas
+            </div>
+
+            <div>
+                <span>✓</span>
+                Liquidación ISS
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     APP
+========================================================= -->
+
+<div
+    id="app"
+    class="app hidden"
+>
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        id="sidebar"
+        class="sidebar"
+    >
+
+        <div class="sidebar-header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    +
+                </div>
+
+                <div class="brand-name">
+                    <span>Simu</span>IPS
+                </div>
+
+            </div>
+
+
+            <button
+                id="sidebar-close"
+                class="mobile-sidebar-close"
+                type="button"
+                aria-label="Cerrar menú"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             PROFILE
+        ================================================== -->
+
+        <div class="sidebar-profile">
+
+            <div
+                class="profile-avatar"
+                id="sidebar-avatar"
+            >
+                AP
+            </div>
+
+            <div class="profile-info">
+
+                <strong id="sidebar-user-name">
+                    Aprendiz
+                </strong>
+
+                <span id="sidebar-user-role">
+                    Estudiante
+                </span>
+
+            </div>
+
+            <div
+                id="sidebar-online-indicator"
+                class="online-indicator"
+            ></div>
+
+        </div>
+
+
+        <!-- =================================================
+             GUEST INDICATOR
+        ================================================== -->
+
+        <div
+            id="guest-session-indicator"
+            class="guest-session-indicator hidden"
+        >
+
+            <div class="guest-session-icon">
+                ◇
+            </div>
+
+            <div>
+
+                <strong>
+                    Modo invitado
+                </strong>
+
+                <span>
+                    Sesión temporal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ACTIVITY GUEST INDICATOR
+        ================================================== -->
+
+        <div
+            id="guest-activity-indicator"
+            class="guest-activity-indicator hidden"
+        >
+
+            <span>
+                ACTIVIDAD
+            </span>
+
+            <strong id="guest-activity-code-label">
+                -----
+            </strong>
+
+        </div>
+
+
+        <!-- =================================================
+             DYNAMIC NAVIGATION
+        ================================================== -->
+
+        <nav
+            id="sidebar-nav"
+            class="sidebar-nav"
+        ></nav>
+
+
+        <!-- =================================================
+             SIDEBAR BOTTOM
+        ================================================== -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="nav-item"
+                data-page="settings"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span>
+                    Configuración
+                </span>
+
+            </button>
+
+
+            <button
+                id="sidebar-login-button"
+                class="nav-item hidden"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Iniciar sesión
+                </span>
+
+            </button>
+
+
+            <button
+                id="logout-button"
+                class="nav-item logout-button"
+                type="button"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Cerrar sesión
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    id="sidebar-toggle"
+                    class="sidebar-toggle"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+                    ☰
+                </button>
+
+
+                <div class="breadcrumb">
+
+                    <span>
+                        SimuIPS
+                    </span>
+
+                    <span class="breadcrumb-separator">
+                        /
+                    </span>
+
+                    <strong id="current-page-name">
+                        Inicio
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <!-- GLOBAL SEARCH -->
+
+                <div class="global-search">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        id="global-search"
+                        type="text"
+                        placeholder="Buscar procedimiento..."
+                        autocomplete="off"
+                    >
+
+                    <span class="search-shortcut">
+                        Ctrl K
+                    </span>
+
+                </div>
+
+
+                <!-- NOTIFICATIONS -->
+
+                <button
+                    id="notification-button"
+                    class="topbar-button"
+                    type="button"
+                    aria-label="Notificaciones"
+                >
+
+                    <span>
+                        ♢
+                    </span>
+
+                    <span
+                        id="notification-dot"
+                        class="notification-dot hidden"
+                    ></span>
+
+                </button>
+
+
+                <!-- USER -->
+
+                <button
+                    id="user-menu-button"
+                    class="user-menu-button"
+                    type="button"
+                >
+
+                    <div
+                        class="topbar-avatar"
+                        id="topbar-avatar"
+                    >
+                        AP
+                    </div>
+
+                    <div class="topbar-user-info">
+
+                        <strong id="topbar-user-name">
+                            Aprendiz
+                        </strong>
+
+                        <span id="topbar-user-role">
+                            Estudiante
+                        </span>
+
+                    </div>
+
+                    <span class="user-menu-arrow">
+                        ▾
+                    </span>
+
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE CONTAINER
+        ================================================== -->
+
+        <div
+            id="page-container"
+            class="page-container"
+        >
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <section
+                id="page-dashboard"
+                class="page active-page"
+            >
+
+                <div class="welcome-section">
+
+                    <div>
+
+                        <div
+                            class="page-label"
+                            id="dashboard-eyebrow"
+                        >
+                            SIMULADOR DE FACTURACIÓN
+                        </div>
+
+                        <h1 id="dashboard-title">
+                            Aprende a liquidar
+                            servicios de salud.
+                        </h1>
+
+                        <p id="dashboard-description">
+                            Practica la aplicación del manual tarifario,
+                            liquidación de servicios y revisión de facturas.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="dashboard-primary-action"
+                        class="primary-button"
+                        type="button"
+                    >
+
+                        <span>
+                            +
+                        </span>
+
+                        Nuevo ejercicio
+
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                     STATS
+                ================================================== -->
+
+                <div
+                    class="stats-grid"
+                    id="dashboard-stats"
+                >
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon blue">
+                                ▤
+                            </div>
+
+                            <span class="stat-trend">
+                                PRÁCTICA
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="stat-cases"
+                        >
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            <span id="stat-cases-label">
+                                Ejercicios realizados
+                            </span>
+                        </div>
+
+                        <div class="stat-footer">
+                            <span>
+                                Desde tu inicio
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon green">
+                                ✓
+                            </div>
+
+                            <span class="stat-trend positive">
+                                PRECISIÓN
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="stat-accuracy"
+                        >
+                            0%
+                        </div>
+
+                        <div class="stat-label">
+                            Precisión promedio
+                        </div>
+
+                        <div class="stat-footer">
+                            <span>
+                                Según tus validaciones
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon purple">
+                                ★
+                            </div>
+
+                            <span class="stat-trend">
+                                EXPERIENCIA
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="stat-xp"
+                        >
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Puntos de experiencia
+                        </div>
+
+                        <div class="stat-footer">
+                            <span>
+                                Entrenamiento
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon orange">
+                                !
+                            </div>
+
+                            <span class="stat-trend warning">
+                                FORMACIÓN
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="stat-level"
+                        >
+                            1
+                        </div>
+
+                        <div class="stat-label">
+                            Nivel actual
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span id="stat-level-label">
+                                Aprendiz
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     STUDENT DASHBOARD
+                ================================================== -->
+
+                <div id="student-dashboard-content">
+
+                    <div class="dashboard-grid">
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        APRENDIZAJE
+                                    </span>
+
+                                    <h2>
+                                        Mis actividades
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    ▣
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Accede a las actividades asignadas por
+                                tus profesores y continúa los casos pendientes.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="student-activities"
+                                type="button"
+                            >
+                                Ver actividades →
+                            </button>
+
+                        </div>
+
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        ENTRENAMIENTO
+                                    </span>
+
+                                    <h2>
+                                        Práctica libre
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    ✎
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Practica liquidaciones con el Manual ISS y fortalece tu proceso de cálculo.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="manual-mode"
+                                type="button"
+                            >
+                                Practicar →
+                            </button>
+
+                        </div>
+
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        ACTIVIDAD
+                                    </span>
+
+                                    <h2>
+                                        Unirse a actividad
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    #
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Ingresa el código que te entregó tu profesor para participar en una actividad.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="join-activity"
+                                type="button"
+                            >
+                                Unirse con código →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="content-card simulator-principle">
+
+                        <div class="principle-icon">
+                            ✓
+                        </div>
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                ENFOQUE SIMUIPS
+                            </span>
+
+                            <h3>
+                                No se trata solo de calcular.
+                            </h3>
+
+                            <p>
+                                Aprende a interpretar el caso,
+                                identificar el procedimiento,
+                                aplicar la tarifa correspondiente,
+                                revisar los conceptos y detectar errores
+                                antes de validar una liquidación.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     GUEST DASHBOARD
+                ================================================== -->
+
+                <div
+                    id="guest-dashboard-content"
+                    class="hidden"
+                >
+
+                    <div class="dashboard-grid">
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+                                <div>
+                                    <span class="card-eyebrow">
+                                        SESIÓN TEMPORAL
+                                    </span>
+                                    <h2>
+                                        Práctica ISS
+                                    </h2>
+                                </div>
+                                <span class="mode-icon">I</span>
+                            </div>
+
+                            <p class="card-description">
+                                Estás practicando como invitado. Puedes realizar ejercicios
+                                y tu progreso se conservará temporalmente en esta pestaña.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="manual-mode"
+                                type="button"
+                            >
+                                Empezar práctica →
+                            </button>
+
+                        </div>
+
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        ACTIVIDAD
+                                    </span>
+
+                                    <h2>
+                                        Unirse a actividad
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    #
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Ingresa el código que te entregó tu profesor para participar en una actividad.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="join-activity"
+                                type="button"
+                            >
+                                Unirse con código →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="content-card simulator-principle">
+
+                        <div class="principle-icon">
+                            I
+                        </div>
+
+                        <div>
+                            <span class="card-eyebrow">
+                                INVITADO
+                            </span>
+                            <h3>
+                                Tu sesión es temporal.
+                            </h3>
+                            <p>
+                                Si quieres conservar tu progreso de forma permanente,
+                                crea una cuenta. También puedes consultar la información
+                                de esta sesión desde Configuración.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     TEACHER DASHBOARD
+                ================================================== -->
+
+                <div
+                    id="teacher-dashboard-content"
+                    class="hidden"
+                >
+
+                    <div class="dashboard-grid">
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        DOCENCIA
+                                    </span>
+
+                                    <h2>
+                                        Mis casos
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    ◈
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Crea y administra casos clínicos y administrativos
+                                que luego podrás reutilizar en diferentes actividades.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="teacher-cases"
+                                type="button"
+                            >
+                                Administrar casos →
+                            </button>
+
+                        </div>
+
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        ACTIVIDADES
+                                    </span>
+
+                                    <h2>
+                                        Crear actividad
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    ▣
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Selecciona uno o varios casos, asigna la actividad
+                                y genera un código para tus estudiantes.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="create-activity"
+                                type="button"
+                            >
+                                Crear actividad →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-grid">
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        GRUPOS
+                                    </span>
+
+                                    <h2>
+                                        Mis clases
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    ◉
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Crea diferentes grupos y comparte un código
+                                de clase con tus estudiantes.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="teacher-classes"
+                                type="button"
+                            >
+                                Ver clases →
+                            </button>
+
+                        </div>
+
+
+                        <div class="dashboard-card">
+
+                            <div class="card-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        SEGUIMIENTO
+                                    </span>
+
+                                    <h2>
+                                        Resultados
+                                    </h2>
+
+                                </div>
+
+                                <span class="mode-icon">
+                                    ↗
+                                </span>
+
+                            </div>
+
+                            <p class="card-description">
+                                Revisa el desempeño de tus estudiantes,
+                                errores frecuentes, precisión y XP.
+                            </p>
+
+                            <button
+                                class="secondary-button"
+                                data-page="teacher-results"
+                                type="button"
+                            >
+                                Ver resultados →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STUDENT ACTIVITIES
+            ================================================== -->
+
+            <section
+                id="page-student-activities"
+                class="page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            APRENDIZAJE
+                        </span>
+
+                        <h1>
+                            Mis actividades
+                        </h1>
+
+                        <p>
+                            Resuelve las actividades asignadas por tus profesores.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="open-join-activity"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Unirme con código
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="student-activities-list"
+                    class="activity-list"
+                ></div>
+
+
+                <div
+                    id="student-activities-empty"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        ▣
+                    </div>
+
+                    <h3>
+                        No tienes actividades todavía
+                    </h3>
+
+                    <p>
+                        Cuando un profesor te comparta un código,
+                        podrás ingresar a la actividad desde aquí.
+                    </p>
+
+                    <button
+                        class="secondary-button"
+                        id="empty-join-activity"
+                        type="button"
+                    >
+                        Ingresar código
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PRÁCTICA ISS
+            ================================================== -->
+
+            <section
+                id="page-manual-mode"
+                class="page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            ENTRENAMIENTO
+                        </span>
+
+                        <h1>
+                            Práctica ISS
+                        </h1>
+
+                        <p>
+                            Practica la identificación y liquidación de procedimientos
+                            con base en el Manual ISS.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="practice-mode-grid practice-iss-only-grid iss-level-grid">
+
+                    <article class="mode-selection-card iss-level-card iss-level-normal">
+                        <div class="iss-level-topline">
+                            <div class="mode-selection-icon">✎</div>
+                            <span class="iss-level-badge">PARA EMPEZAR</span>
+                        </div>
+                        <span class="card-eyebrow">NIVEL NORMAL</span>
+                        <h2>Práctica normal</h2>
+                        <p>
+                            Fortalece las bases de la liquidación ISS. Trabaja con casos
+                            de menor complejidad y concéntrate en identificar el procedimiento
+                            y los conceptos que corresponden.
+                        </p>
+                        <ul class="iss-level-features">
+                            <li>✓ Casos de dificultad inicial</li>
+                            <li>✓ Enfoque en identificación y cálculo</li>
+                            <li>✓ Ideal para aprender paso a paso</li>
+                        </ul>
+                        <button
+                            id="start-manual-practice-normal"
+                            class="primary-button"
+                            type="button"
+                            data-practice-level="normal"
+                        >
+                            Comenzar nivel normal <span aria-hidden="true">→</span>
+                        </button>
+                    </article>
+
+                    <article class="mode-selection-card iss-level-card iss-level-advanced">
+                        <div class="iss-level-topline">
+                            <div class="mode-selection-icon">⚡</div>
+                            <span class="iss-level-badge iss-level-badge-advanced">MAYOR RETO</span>
+                        </div>
+                        <span class="card-eyebrow">NIVEL AVANZADO</span>
+                        <h2>Reto avanzado</h2>
+                        <p>
+                            Pon a prueba tu criterio con casos más exigentes. Revisa
+                            cuidadosamente los conceptos aplicables, los cálculos y las
+                            condiciones particulares de cada procedimiento.
+                        </p>
+                        <ul class="iss-level-features">
+                            <li>✓ Casos de mayor complejidad</li>
+                            <li>✓ Más atención a reglas y excepciones</li>
+                            <li>✓ Ideal para comprobar lo aprendido</li>
+                        </ul>
+                        <button
+                            id="start-manual-practice-advanced"
+                            class="primary-button"
+                            type="button"
+                            data-practice-level="advanced"
+                        >
+                            Comenzar nivel avanzado <span aria-hidden="true">→</span>
+                        </button>
+                    </article>
+
+                </div>
+
+                <button id="start-manual-practice" class="hidden" type="button" aria-hidden="true" tabindex="-1">Iniciar práctica ISS</button>
+
+</section>
+
+
+            <!-- =================================================
+                 TEST DEL ISS
+            ================================================== -->
+
+            <section id="page-test-iss" class="page" aria-label="Test del ISS">
+                <div class="iss-test-page">
+                    <div class="iss-test-hero">
+                        <div class="iss-test-hero-copy">
+                            <span class="iss-test-eyebrow"><span class="iss-test-dot"></span> SIMUIPS · APRENDIZAJE</span>
+                            <h1>Test del ISS</h1>
+                            <p>Pon a prueba lo que sabes del Manual ISS, una pregunta a la vez.</p>
+                            <div class="iss-test-promise">Puedes hacer el test las veces que quieras. Las preguntas cambian en cada intento.</div>
+                        </div>
+                        <div class="iss-test-hero-art" aria-hidden="true">
+                            <div class="iss-test-orbit iss-test-orbit-one"></div>
+                            <div class="iss-test-orbit iss-test-orbit-two"></div>
+                            <div class="iss-test-book">ISS<span>✓</span></div>
+                            <span class="iss-test-float iss-test-float-a">A</span>
+                            <span class="iss-test-float iss-test-float-b">B</span>
+                            <span class="iss-test-float iss-test-float-c">C</span>
+                            <span class="iss-test-float iss-test-float-d">D</span>
+                        </div>
+                    </div>
+
+                    <div class="iss-test-stats">
+                        <div class="iss-test-stat"><span class="iss-test-stat-icon">▤</span><div><strong id="iss-test-bank-count">—</strong><small>Preguntas disponibles</small></div></div>
+                        <div class="iss-test-stat"><span class="iss-test-stat-icon">◎</span><div><strong>10</strong><small>Preguntas por intento</small></div></div>
+                        <div class="iss-test-stat"><span class="iss-test-stat-icon">↗</span><div><strong id="iss-test-best-score">—</strong><small>Mejor resultado</small></div></div>
+                    </div>
+
+                    <div id="iss-test-loading" class="iss-test-state" role="status">Cargando banco de preguntas…</div>
+                    <div id="iss-test-error" class="iss-test-state iss-test-state-error" role="alert" hidden></div>
+
+                    <div id="iss-test-start" class="iss-test-panel" hidden>
+                        <div class="iss-test-start-icon">✦</div>
+                        <span class="iss-test-kicker">¿LISTO PARA EL RETO?</span>
+                        <h2>Demuestra lo que sabes</h2>
+                        <p>Responde 10 preguntas de selección múltiple. Al terminar verás tu puntaje, las respuestas correctas y una explicación para repasar.</p>
+                        <div class="iss-test-start-details">
+                            <span>✓ Una sola respuesta por pregunta</span>
+                            <span>✓ Retroalimentación al finalizar</span>
+                            <span>✓ Nuevo orden en cada intento</span>
+                        </div>
+                        <button type="button" id="iss-test-begin" class="primary-button">Comenzar test <span aria-hidden="true">→</span></button>
+                    </div>
+
+                    <div id="iss-test-quiz" class="iss-test-panel" hidden>
+                        <div class="iss-test-quiz-top"><span id="iss-test-question-count">Pregunta 1 de 10</span><span id="iss-test-progress-label">10% completado</span></div>
+                        <div class="iss-test-progress"><span id="iss-test-progress-bar"></span></div>
+                        <div class="iss-test-topic" id="iss-test-topic">Manual ISS</div>
+                        <h2 id="iss-test-question" class="iss-test-question"></h2>
+                        <div id="iss-test-options" class="iss-test-options"></div>
+                        <div class="iss-test-quiz-footer"><span id="iss-test-answer-hint">Selecciona una respuesta para continuar.</span><button type="button" id="iss-test-next" class="primary-button" disabled>Siguiente <span aria-hidden="true">→</span></button></div>
+                    </div>
+
+                    <div id="iss-test-results" class="iss-test-panel iss-test-results" hidden>
+                       
+                        <span class="iss-test-kicker">TEST FINALIZADO</span>
+                        <h2 id="iss-test-result-title">¡Buen trabajo!</h2>
+                        <p id="iss-test-result-message"></p>
+                        <div class="iss-test-score"><strong id="iss-test-score-number">0/10</strong><span id="iss-test-score-percent">0%</span></div>
+                        <div class="iss-test-score-track"><span id="iss-test-score-bar"></span></div>
+                        <div id="iss-test-review" class="iss-test-review"></div>
+                        <div class="iss-test-result-actions"><button type="button" id="iss-test-retry" class="primary-button">Intentar de nuevo <span aria-hidden="true">↻</span></button><button type="button" id="iss-test-back" class="secondary-button">Volver al inicio</button></div>
+                    </div>
+                    <p class="iss-test-disclaimer">Herramienta educativa. Para decisiones de facturación reales, verifica siempre la edición del Manual ISS y las reglas aplicables al contrato.</p>
+                </div>
+            </section>
+
+
+            <!-- =================================================
+                 BILLING
+            ================================================== -->
+
+            <section
+                id="page-billing"
+                class="page"
+            >
+
+                <div class="page-header billing-page-header">
+
+                    <div>
+
+                        <span
+                            class="page-label"
+                            id="billing-page-label"
+                        >
+                            LIQUIDACIÓN
+                        </span>
+
+                        <h1 id="billing-page-title">
+                            Liquidación de servicios
+                        </h1>
+
+                        <p id="billing-page-description">
+                            Analiza el caso y completa la liquidación.
+                        </p>
+
+                    </div>
+                    </div>
+
+
+                <div id="billing-exercise" class="billing-exercise">
+
+                <!-- EXERCISE HEADER -->
+
+                <div
+                    id="billing-exercise-header"
+                    class="exercise-header-card"
+                >
+
+                    <div class="exercise-header-main">
+
+                        <div class="exercise-number">
+
+                            <span>
+                                CASO
+                            </span>
+
+                            <strong id="exercise-number">
+                                01
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span
+                                class="card-eyebrow"
+                                id="exercise-difficulty"
+                            >
+                                NIVEL BÁSICO
+                            </span>
+
+                            <h2 id="exercise-name">
+                                Caso de práctica
+                            </h2>
+
+                            <p id="exercise-description">
+                                Selecciona los conceptos que correspondan
+                                al servicio prestado.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="exercise-progress">
+
+                        <span>
+                            Progreso
+                        </span>
+
+                        <strong id="exercise-progress-text">
+                            1 de 1
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BILLING WORKSPACE -->
+
+                <div class="billing-workspace">
+
+
+                    <div class="billing-main-column">
+
+                        <!-- MANUAL ISS CONCEPTS -->
+
+
+
+                        <div
+                            id="manual-concepts-card"
+                            class="content-card"
+                        >
+
+                            <div class="section-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        LIQUIDACIÓN
+                                    </span>
+
+                                    <h2>
+                                        Procedimiento a liquidar
+                                    </h2>
+
+                                </div>
+
+                                <span class="section-status">
+                                    ISS
+                                </span>
+
+                            </div>
+
+                            <p class="section-description">
+                                Registra únicamente los conceptos que
+                                correspondan al procedimiento y al caso.
+                            </p>
+
+                            <!-- Tabla para procedimientos liquidados por UVR -->
+                            <div id="uvr-liquidation-panel">
+                                <div
+                                    id="manual-concepts"
+                                    class="concepts-list"
+                                ></div>
+
+                                <button
+                                    id="add-manual-concept"
+                                    class="add-concept-button"
+                                    type="button"
+                                >
+                                    + Agregar concepto
+                                </button>
+                            </div>
+
+                            <!-- Tabla para servicios con tarifa directa en pesos.
+                                 El JavaScript la muestra solo cuando el caso lo requiere. -->
+                            <div id="direct-tariff-panel" class="hidden">
+                                <div class="concepts-list">
+                                    <div class="data-table-wrapper">
+                                        <table aria-label="Tarifa directa del servicio">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Código</th>
+                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">Tarifa (COP)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="direct-tariff-row">
+                                                <tr>
+                                                    <td colspan="3">Cargando servicio…</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- TOTALS -->
+
+                        <div class="content-card totals-card">
+
+                            <div class="section-header">
+
+                                <div>
+
+                                    <span class="card-eyebrow">
+                                        RESUMEN
+                                    </span>
+
+                                    <h2>
+                                        Total de liquidación
+                                    </h2>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="totals-list">
+
+                                <div class="total-row">
+                                    <span>Subtotal</span>
+                                    <strong id="billing-subtotal">$0</strong>
+                                </div>
+
+                                <div class="total-row">
+                                    <span>Descuentos / ajustes</span>
+                                    <strong id="billing-adjustments">$0</strong>
+                                </div>
+
+                                <div class="total-row">
+                                    <span>Copago / cuota moderadora</span>
+                                    <strong id="billing-copay">$0</strong>
+                                </div>
+
+                                <div class="total-row grand-total">
+                                    <span>Total</span>
+                                    <strong id="billing-total">$0</strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- VALIDATION -->
+
+                        <div
+                            id="billing-validation-card"
+                            class="validation-card hidden"
+                        >
+
+                            <div
+                                id="billing-validation-icon"
+                                class="validation-icon"
+                            >
+                                ✓
+                            </div>
+
+                            <div class="validation-content">
+
+                                <span
+                                    id="billing-validation-label"
+                                    class="card-eyebrow"
+                                >
+                                    RESULTADO
+                                </span>
+
+                                <h3 id="billing-validation-title">
+                                    Liquidación validada
+                                </h3>
+
+                                <p id="billing-validation-message">
+                                    —
+                                </p>
+
+                                <div
+                                    id="billing-validation-details"
+                                    class="validation-details"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACTIONS -->
+
+                        <div class="billing-actions">
+
+                            <button
+                                id="billing-save-draft"
+                                class="secondary-button"
+                                type="button"
+                            >
+                                Guardar progreso
+                            </button>
+
+                            <button
+                                id="billing-validate-button"
+                                class="primary-button"
+                                type="button"
+                            >
+                                Validar liquidación
+                            </button>
+
+                            <button id="billing-validate" type="button" class="hidden" aria-hidden="true" tabindex="-1"></button>
+
+                            <button
+                                id="billing-next-button"
+                                class="primary-button hidden"
+                                type="button"
+                            >
+                                Siguiente caso →
+                            </button>
+
+                            <button id="billing-next" type="button" class="hidden" aria-hidden="true" tabindex="-1"></button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BILLING SIDE -->
+
+                    <aside class="billing-side-column">
+
+
+                        <div class="billing-side-card">
+
+                            <span class="card-eyebrow">
+                                GUÍA
+                            </span>
+
+                            <h3>
+                                ¿Qué debes revisar?
+                            </h3>
+
+                            <div class="guide-list">
+
+                                <div>
+                                    <span>01</span>
+                                    <p>
+                                        Identifica correctamente el servicio.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span>02</span>
+                                    <p>
+                                        Determina los conceptos aplicables.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span>03</span>
+                                    <p>
+                                        Verifica cantidades y valores.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span>04</span>
+                                    <p>
+                                        Comprueba el cálculo final.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="billing-side-card xp-card">
+
+                            <div class="xp-card-icon">
+                                ★
+                            </div>
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    EXPERIENCIA
+                                </span>
+
+                                <strong id="billing-xp-preview">
+                                    +0 XP
+                                </strong>
+
+                                <p>
+                                    Completa correctamente el ejercicio
+                                    para ganar experiencia.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="billing-side-card">
+
+                            <span class="card-eyebrow">
+                                REGLAS DEL CASO
+                            </span>
+
+                            <div
+                                id="billing-case-rules"
+                                class="case-rules"
+                            ></div>
+
+                        </div>
+
+                    </aside>
+
+                </div>
+
+
+                </div>
+
+
+                <!-- EMPTY BILLING -->
+
+                <div
+                    id="billing-empty"
+                    class="empty-state hidden"
+                >
+
+                    <div class="empty-state-icon">
+                        ▤
+                    </div>
+
+                    <h3>
+                        No hay un caso activo
+                    </h3>
+
+                    <p>
+                        Selecciona una actividad o inicia una práctica
+                        para comenzar.
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        id="billing-empty-action"
+                        type="button"
+                    >
+                        Ir a actividades
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 JOIN ACTIVITY
+            ================================================== -->
+
+            <section
+                id="page-join-activity"
+                class="page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            ACTIVIDAD
+                        </span>
+
+                        <h1>
+                            Unirme a una actividad
+                        </h1>
+
+                        <p>
+                            Puedes ingresar con o sin una cuenta.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="join-activity-wrapper">
+
+                    <div class="join-activity-card">
+
+                        <div class="join-code-icon">
+                            #
+                        </div>
+
+                        <span class="card-eyebrow">
+                            CÓDIGO DE ACTIVIDAD
+                        </span>
+
+                        <h2>
+                            ¿Tienes un código?
+                        </h2>
+
+                        <p>
+                            Escribe el código que te proporcionó tu profesor.
+                            No necesitas registrarte si la actividad permite
+                            participantes invitados.
+                        </p>
+
+
+                        <form id="join-activity-form">
+
+                            <div class="join-code-input-wrapper">
+
+                                <input
+                                    id="activity-code-input"
+                                    type="text"
+                                    maxlength="30"
+                                    placeholder="CKO23"
+                                    autocomplete="off"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <button
+                                id="join-activity-submit"
+                                type="submit"
+                                class="primary-button"
+                            >
+                                Buscar actividad
+                            </button>
+
+                        </form>
+
+
+                        <div
+                            id="join-activity-result"
+                            class="join-result hidden"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STUDENT RESULTS
+            ================================================== -->
+
+            <section
+                id="page-results"
+                class="page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            MI DESEMPEÑO
+                        </span>
+
+                        <h1>
+                            Resultados
+                        </h1>
+
+                        <p>
+                            Consulta tus intentos, precisión y errores.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="results-summary-grid">
+
+                    <div class="summary-stat">
+                        <span>Ejercicios</span>
+                        <strong id="results-total-cases">0</strong>
+                    </div>
+
+                    <div class="summary-stat">
+                        <span>Precisión</span>
+                        <strong id="results-accuracy">0%</strong>
+                    </div>
+
+                    <div class="summary-stat">
+                        <span>XP ganado</span>
+                        <strong id="results-xp">0</strong>
+                    </div>
+
+                    <div class="summary-stat">
+                        <span>Mejor racha</span>
+                        <strong id="results-streak">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                HISTORIAL
+                            </span>
+
+                            <h2>
+                                Mis intentos
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="student-results-table"
+                        class="data-table-wrapper"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STUDENT PROGRESS
+            ================================================== -->
+
+            <section
+                id="page-student-progress"
+                class="page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            PROGRESO
+                        </span>
+
+                        <h1>
+                            Mi progreso
+                        </h1>
+
+                        <p>
+                            Mira cómo avanzas en tu entrenamiento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="progress-overview">
+
+                    <div class="progress-level-card">
+
+                        <div class="level-badge">
+
+                            <span>
+                                NIVEL
+                            </span>
+
+                            <strong id="progress-level">
+                                1
+                            </strong>
+
+                        </div>
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                RANGO ACTUAL
+                            </span>
+
+                            <h2 id="progress-level-name">
+                                Aprendiz
+                            </h2>
+
+                            <p id="progress-xp-text">
+                                0 XP acumulados
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-bar-card">
+
+                        <div class="progress-bar-header">
+
+                            <span>
+                                Próximo nivel
+                            </span>
+
+                            <strong id="progress-next-level">
+                                100 XP
+                            </strong>
+
+                        </div>
+
+                        <div class="progress-bar">
+
+                            <div
+                                id="progress-bar-fill"
+                                class="progress-bar-fill"
+                                style="width:0%"
+                            ></div>
+
+                        </div>
+
+                        <small id="progress-bar-label">
+                            0 / 100 XP
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                LOGROS
+                            </span>
+
+                            <h2>
+                                Mis logros
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        id="student-achievements"
+                        class="achievements-grid"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 TEACHER CLASSES
+            ================================================== -->
+
+            <section
+                id="page-teacher-classes"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            DOCENCIA
+                        </span>
+
+                        <h1>
+                            Mis clases
+                        </h1>
+
+                        <p>
+                            Administra tus grupos y códigos de acceso.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="create-class-button"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Crear clase
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="teacher-classes-list"
+                    class="class-grid"
+                ></div>
+
+
+                <div
+                    id="teacher-classes-empty"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        ◉
+                    </div>
+
+                    <h3>
+                        Todavía no tienes clases
+                    </h3>
+
+                    <p>
+                        Crea tu primera clase para comenzar a vincular estudiantes.
+                    </p>
+
+                    <button
+                        id="empty-create-class"
+                        class="primary-button"
+                        type="button"
+                    >
+                        Crear primera clase
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 TEACHER STUDENTS
+            ================================================== -->
+
+            <section
+                id="page-teacher-students"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            DOCENCIA
+                        </span>
+
+                        <h1>
+                            Mis estudiantes
+                        </h1>
+
+                        <p>
+                            Consulta los estudiantes vinculados a tus clases.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="table-toolbar">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                ESTUDIANTES
+                            </span>
+
+                            <h2>
+                                Lista de estudiantes
+                            </h2>
+
+                        </div>
+
+
+                        <div class="table-filters">
+
+                            <input
+                                id="teacher-student-search"
+                                type="search"
+                                placeholder="Buscar estudiante..."
+                                aria-label="Buscar estudiante"
+                            >
+
+                            <select id="teacher-student-class-filter">
+
+                                <option value="all">
+                                    Todas las clases
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="teacher-students-table"
+                        class="data-table-wrapper"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 TEACHER CASES
+            ================================================== -->
+
+            <section
+                id="page-teacher-cases"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            CONTENIDO
+                        </span>
+
+                        <h1>
+                            Mis casos
+                        </h1>
+
+                        <p>
+                            Crea casos reutilizables para tus actividades.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="create-case-button"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Crear caso
+                    </button>
+
+                </div>
+
+
+                <div class="case-toolbar">
+
+                    <div class="catalog-search">
+
+                        <span>
+                            ⌕
+                        </span>
+
+                        <input
+                            id="teacher-case-search"
+                            type="search"
+                            placeholder="Buscar mis casos..."
+                        >
+
+                    </div>
+
+
+                    <select id="teacher-case-difficulty-filter">
+
+                        <option value="all">
+                            Todas las dificultades
+                        </option>
+
+                        <option value="basic">
+                            Básico
+                        </option>
+
+                        <option value="intermediate">
+                            Intermedio
+                        </option>
+
+                        <option value="advanced">
+                            Avanzado
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    id="teacher-cases-list"
+                    class="case-grid"
+                ></div>
+
+
+                <div
+                    id="teacher-cases-empty"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        ◈
+                    </div>
+
+                    <h3>
+                        No tienes casos creados
+                    </h3>
+
+                    <p>
+                        Crea un caso y podrás reutilizarlo
+                        en diferentes actividades.
+                    </p>
+
+                    <button
+                        id="empty-create-case"
+                        class="primary-button"
+                        type="button"
+                    >
+                        Crear caso
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CREATE CASE
+            ================================================== -->
+
+            <section
+                id="page-create-case"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span
+                            class="page-label"
+                            id="case-editor-label"
+                        >
+                            NUEVO CASO
+                        </span>
+
+                        <h1 id="case-editor-title">
+                            Crear caso
+                        </h1>
+
+                        <p>
+                            Configura la información que recibirá el estudiante.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="cancel-case-editor"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Cancelar
+                    </button>
+
+                </div>
+
+
+                <form
+                    id="case-form"
+                    class="case-editor"
+                >
+
+
+                    <!-- BASIC -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    IDENTIFICACIÓN
+                                </span>
+
+                                <h2>
+                                    Información del caso
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="case-name">
+                                    Nombre del caso
+                                </label>
+
+                                <input
+                                    id="case-name"
+                                    type="text"
+                                    placeholder="Ej. Reducción de tórax"
+                                    required
+                                >
+
+                                <small class="field-help">
+                                    Este nombre lo verá el estudiante.
+                                </small>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="case-difficulty">
+                                    Dificultad
+                                </label>
+
+                                <select
+                                    id="case-difficulty"
+                                    required
+                                >
+
+                                    <option value="basic">
+                                        Básico
+                                    </option>
+
+                                    <option value="intermediate">
+                                        Intermedio
+                                    </option>
+
+                                    <option value="advanced">
+                                        Avanzado
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="case-description">
+                                Descripción / contexto
+                            </label>
+
+                            <textarea
+                                id="case-description"
+                                rows="5"
+                                placeholder="Describe la situación que deberá analizar el estudiante..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PATIENT -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    PACIENTE
+                                </span>
+
+                                <h2>
+                                    Datos del paciente
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="case-patient-name">
+                                    Nombre completo
+                                </label>
+
+                                <input
+                                    id="case-patient-name"
+                                    type="text"
+                                    placeholder="Nombre del paciente"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="case-patient-document">
+                                    Documento
+                                </label>
+
+                                <input
+                                    id="case-patient-document"
+                                    type="text"
+                                    placeholder="Ej. 1000000000"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="case-patient-age">
+                                    Edad
+                                </label>
+
+                                <input
+                                    id="case-patient-age"
+                                    type="number"
+                                    min="0"
+                                    max="120"
+                                    placeholder="35"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="case-patient-sex">
+                                    Sexo
+                                </label>
+
+                                <select id="case-patient-sex">
+
+                                    <option value="">
+                                        Seleccionar
+                                    </option>
+
+                                    <option value="F">
+                                        Femenino
+                                    </option>
+
+                                    <option value="M">
+                                        Masculino
+                                    </option>
+
+                                    <option value="I">
+                                        Intersexual / Otro
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DIAGNOSIS -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    CIE-10
+                                </span>
+
+                                <h2>
+                                    Diagnóstico
+                                </h2>
+
+                            </div>
+
+                            <span class="data-integrity-badge">
+                                CATÁLOGO OFICIAL
+                            </span>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="case-diagnosis-search">
+                                Buscar diagnóstico
+                            </label>
+
+                            <div class="search-field-large">
+
+                                <span>
+                                    ⌕
+                                </span>
+
+                                <input
+                                    id="case-diagnosis-search"
+                                    type="search"
+                                    placeholder="Busca por código o descripción CIE-10..."
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="case-diagnosis-results"
+                            class="catalog-results"
+                        ></div>
+
+
+                        <div
+                            id="case-selected-diagnosis"
+                            class="selected-catalog-item hidden"
+                        >
+
+                            <div>
+
+                                <span>
+                                    DIAGNÓSTICO SELECCIONADO
+                                </span>
+
+                                <strong id="case-selected-diagnosis-name">
+                                    —
+                                </strong>
+
+                                <small id="case-selected-diagnosis-code">
+                                    —
+                                </small>
+
+                            </div>
+
+                            <button
+                                id="case-remove-diagnosis"
+                                class="text-button"
+                                type="button"
+                            >
+                                Cambiar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PROCEDURE -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    PROCEDIMIENTO
+                                </span>
+
+                                <h2>
+                                    Procedimiento oficial
+                                </h2>
+
+                            </div>
+
+                            <span class="data-integrity-badge">
+                                CATÁLOGO
+                            </span>
+
+                        </div>
+
+
+                        <p class="section-description">
+                            Busca el procedimiento en los catálogos disponibles.
+                            El docente selecciona el dato oficial; el estudiante
+                            deberá identificarlo durante el ejercicio.
+                        </p>
+
+
+                        <div class="form-group">
+
+                            <label for="case-procedure-system">
+                                Catálogo de procedimiento
+                            </label>
+
+                            <select id="case-procedure-system">
+                                <option value="cups">CUPS</option>
+                                <option value="iss">ISS</option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="case-procedure-search">
+                                Buscar procedimiento
+                            </label>
+
+                            <div class="search-field-large">
+
+                                <span>
+                                    ⌕
+                                </span>
+
+                                <input
+                                    id="case-procedure-search"
+                                    type="search"
+                                    placeholder="Nombre, CUPS o referencia ISS..."
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="case-procedure-results"
+                            class="catalog-results"
+                        ></div>
+
+
+                        <div
+                            id="case-selected-procedure"
+                            class="selected-catalog-item hidden"
+                        >
+
+                            <div>
+
+                                <span>
+                                    PROCEDIMIENTO SELECCIONADO
+                                </span>
+
+                                <strong id="case-selected-procedure-name">
+                                    —
+                                </strong>
+
+                                <small id="case-selected-procedure-code">
+                                    —
+                                </small>
+
+                                <small id="case-selected-procedure-tariff">
+                                    —
+                                </small>
+
+                            </div>
+
+                            <button
+                                id="case-remove-procedure"
+                                class="text-button"
+                                type="button"
+                            >
+                                Cambiar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CASE RULES -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    PEDAGOGÍA
+                                </span>
+
+                                <h2>
+                                    Configuración del ejercicio
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="case-training-mode">
+                                    Modalidad
+                                </label>
+
+                                <select id="case-training-mode">
+
+                                    <option value="manual">
+                                        Práctica ISS
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="case-attempts">
+                                    Intentos permitidos
+                                </label>
+
+                                <input
+                                    id="case-attempts"
+                                    type="number"
+                                    min="1"
+                                    value="1"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label class="switch-label">
+
+                                <input
+                                    id="case-feedback"
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="switch"></span>
+
+                                <span>
+                                    Mostrar retroalimentación al finalizar
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- FORM ACTIONS -->
+
+                    <div class="editor-actions">
+
+                        <button
+                            id="cancel-case-editor-bottom"
+                            type="button"
+                            class="secondary-button"
+                        >
+                            Cancelar
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Guardar caso
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================================
+                 TEACHER ACTIVITIES
+            ================================================== -->
+
+            <section
+                id="page-teacher-activities"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            DOCENCIA
+                        </span>
+
+                        <h1>
+                            Mis actividades
+                        </h1>
+
+                        <p>
+                            Organiza casos y asignaciones para tus estudiantes.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="create-activity-button"
+                        class="primary-button"
+                        type="button"
+                    >
+                        + Crear actividad
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="teacher-activities-list"
+                    class="activity-grid"
+                ></div>
+
+
+                <div
+                    id="teacher-activities-empty"
+                    class="empty-state"
+                >
+
+                    <div class="empty-state-icon">
+                        ▣
+                    </div>
+
+                    <h3>
+                        No has creado actividades
+                    </h3>
+
+                    <p>
+                        Selecciona tus casos y crea una actividad para compartirla.
+                    </p>
+
+                    <button
+                        id="empty-create-activity"
+                        class="primary-button"
+                        type="button"
+                    >
+                        Crear actividad
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 CREATE ACTIVITY
+            ================================================== -->
+
+            <section
+                id="page-create-activity"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            NUEVA ACTIVIDAD
+                        </span>
+
+                        <h1>
+                            Crear actividad
+                        </h1>
+
+                        <p>
+                            Agrupa uno o varios casos y asígnalos a una clase.
+                        </p>
+
+                    </div>
+
+                    <button
+                        id="cancel-activity-editor"
+                        class="secondary-button"
+                        type="button"
+                    >
+                        Cancelar
+                    </button>
+
+                </div>
+
+
+                <form
+                    id="activity-form"
+                    class="activity-editor"
+                >
+
+
+                    <!-- BASIC -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    ACTIVIDAD
+                                </span>
+
+                                <h2>
+                                    Información general
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="activity-name">
+                                    Nombre de la actividad
+                                </label>
+
+                                <input
+                                    id="activity-name"
+                                    type="text"
+                                    placeholder="Taller de liquidación #1"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="activity-class">
+                                    Clase
+                                </label>
+
+                                <select
+                                    id="activity-class"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Selecciona una clase
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="activity-description">
+                                Descripción
+                            </label>
+
+                            <textarea
+                                id="activity-description"
+                                rows="4"
+                                placeholder="Indicaciones para los estudiantes..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CASE SELECTOR -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    CASOS
+                                </span>
+
+                                <h2>
+                                    Seleccionar casos
+                                </h2>
+
+                            </div>
+
+                            <span
+                                id="selected-cases-count"
+                                class="selection-count"
+                            >
+                                0 seleccionados
+                            </span>
+
+                        </div>
+
+
+                        <p class="section-description">
+                            Puedes incluir uno o varios casos guardados.
+                        </p>
+
+
+                        <div
+                            id="activity-case-selector"
+                            class="case-selector-list"
+                        ></div>
+
+                    </div>
+
+
+                    <!-- SETTINGS -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    CONFIGURACIÓN
+                                </span>
+
+                                <h2>
+                                    Opciones de la actividad
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="activity-mode">
+                                    Tipo
+                                </label>
+
+                                <select id="activity-mode">
+
+                                    <option value="practice">
+                                        Práctica
+                                    </option>
+
+                                    <option value="evaluation">
+                                        Evaluación
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="activity-attempts">
+                                    Intentos permitidos
+                                </label>
+
+                                <input
+                                    id="activity-attempts"
+                                    type="number"
+                                    min="1"
+                                    value="1"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="activity-deadline">
+                                    Fecha límite
+                                </label>
+
+                                <input
+                                    id="activity-deadline"
+                                    type="datetime-local"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-settings-grid">
+
+                            <label class="switch-label">
+
+                                <input
+                                    id="activity-random-order"
+                                    type="checkbox"
+                                >
+
+                                <span class="switch"></span>
+
+                                <span>
+                                    Orden aleatorio
+                                </span>
+
+                            </label>
+
+
+                            <label class="switch-label">
+
+                                <input
+                                    id="activity-feedback"
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="switch"></span>
+
+                                <span>
+                                    Mostrar retroalimentación
+                                </span>
+
+                            </label>
+
+
+                            <label class="switch-label">
+
+                                <input
+                                    id="activity-guest-access"
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <span class="switch"></span>
+
+                                <span>
+                                    Permitir participantes sin registro
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- GUEST ACCESS INFO -->
+
+                        <div
+                            id="activity-guest-info"
+                            class="info-box"
+                        >
+
+                            <strong>
+                                Acceso de invitados activado
+                            </strong>
+
+                            <span>
+                                Los estudiantes podrán entrar con el código
+                                de actividad sin crear una cuenta.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="editor-actions">
+
+                        <button
+                            id="cancel-activity-editor-bottom"
+                            type="button"
+                            class="secondary-button"
+                        >
+                            Cancelar
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="primary-button"
+                        >
+                            Crear actividad
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </section>
+
+
+            <!-- =================================================
+                 TEACHER RESULTS
+            ================================================== -->
+
+            <section
+                id="page-teacher-results"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            SEGUIMIENTO
+                        </span>
+
+                        <h1>
+                            Resultados
+                        </h1>
+
+                        <p>
+                            Revisa el desempeño de tus estudiantes y participantes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="results-summary-grid">
+
+                    <div class="summary-stat">
+
+                        <span>
+                            Intentos
+                        </span>
+
+                        <strong id="teacher-results-total">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-stat">
+
+                        <span>
+                            Precisión promedio
+                        </span>
+
+                        <strong id="teacher-results-accuracy">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-stat">
+
+                        <span>
+                            Estudiantes
+                        </span>
+
+                        <strong id="teacher-results-students">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-stat">
+
+                        <span>
+                            Actividades
+                        </span>
+
+                        <strong id="teacher-results-activities">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-card">
+
+                    <div class="table-toolbar">
+
+                        <div>
+
+                            <span class="card-eyebrow">
+                                RESULTADOS
+                            </span>
+
+                            <h2>
+                                Intentos realizados
+                            </h2>
+
+                        </div>
+
+
+                        <div class="table-filters">
+
+                            <select id="teacher-results-activity-filter">
+
+                                <option value="all">
+                                    Todas las actividades
+                                </option>
+
+                            </select>
+
+                            <select id="teacher-results-class-filter">
+
+                                <option value="all">
+                                    Todas las clases
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="teacher-results-table"
+                        class="data-table-wrapper"
+                    ></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 TEACHER PERFORMANCE
+            ================================================== -->
+
+            <section
+                id="page-teacher-performance"
+                class="page teacher-page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            ANÁLISIS
+                        </span>
+
+                        <h1>
+                            Rendimiento
+                        </h1>
+
+                        <p>
+                            Analiza los resultados y errores más frecuentes.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="teacher-performance-content"
+                    class="performance-grid"
+                ></div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SETTINGS
+            ================================================== -->
+
+            <section
+                id="page-settings"
+                class="page"
+            >
+
+                <div class="page-header">
+
+                    <div>
+
+                        <span class="page-label">
+                            SISTEMA
+                        </span>
+
+                        <h1>
+                            Configuración
+                        </h1>
+
+                        <p>
+                            Configura tu experiencia en SimuIPS.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+
+                    <!-- ACCOUNT -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    CUENTA
+                                </span>
+
+                                <h2>
+                                    Información personal
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="settings-name">
+                                Nombre
+                            </label>
+
+                            <input
+                                id="settings-name"
+                                type="text"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="settings-lastname">
+                                Apellido
+                            </label>
+
+                            <input
+                                id="settings-lastname"
+                                type="text"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="settings-email">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                id="settings-email"
+                                type="email"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="settings-institution">
+                                Institución
+                            </label>
+
+                            <input
+                                id="settings-institution"
+                                type="text"
+                                placeholder="Institución educativa"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="settings-program">
+                                Programa / área
+                            </label>
+
+                            <input
+                                id="settings-program"
+                                type="text"
+                                placeholder="Programa o área"
+                            >
+
+                        </div><button
+                            id="save-profile-button"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Guardar cambios
+                        </button>
+
+                    </div>
+
+
+                    <!-- SESSION -->
+
+                    <div class="content-card">
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    SESIÓN
+                                </span>
+
+                                <h2>
+                                    Estado actual
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="settings-session-status"
+                            class="session-status-card"
+                        ></div>
+
+
+                        <button
+                            id="settings-login-button"
+                            class="secondary-button hidden"
+                            type="button"
+                        >
+                            Iniciar sesión
+                        </button>
+
+                    </div>
+
+
+                    <!-- GUEST -->
+
+                    <div
+                        id="guest-settings-card"
+                        class="content-card hidden"
+                    >
+
+                        <div class="section-header">
+
+                            <div>
+
+                                <span class="card-eyebrow">
+                                    INVITADO
+                                </span>
+
+                                <h2>
+                                    Sesión temporal
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <p class="section-description">
+                            Tu progreso actual se conserva temporalmente
+                            en este navegador. Si cierras la sesión temporal
+                            podrás perder estos datos.
+                        </p>
+
+
+                        <button
+                            id="guest-save-account-button"
+                            class="primary-button"
+                            type="button"
+                        >
+                            Crear cuenta para guardar progreso
+                        </button>
+
+
+                        <button
+                            id="clear-guest-session-button"
+                            class="danger-button"
+                            type="button"
+                        >
+                            Borrar sesión temporal
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     LOGIN MODAL
+========================================================= -->
+
+<div
+    id="login-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal">
+
+        <button
+            id="close-login-modal"
+            class="modal-close"
+            type="button"
+            aria-label="Cerrar"
+        >
+            ×
+        </button>
+
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                SIMUIPS
+            </span>
+
+            <h2>
+                Iniciar sesión
+            </h2>
+
+            <p>
+                Continúa con tu cuenta para guardar tu progreso.
+            </p>
+
+        </div>
+
+
+        <form
+            id="login-form"
+            class="auth-form"
+        >
+
+            <div class="form-group">
+
+                <label for="login-email">
+                    Correo electrónico
+                </label>
+
+                <input
+                    id="login-email"
+                    name="email"
+                    type="email"
+                    placeholder="correo@ejemplo.com"
+                    autocomplete="email"
+                    inputmode="email"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="login-password">
+                    Contraseña
+                </label>
+
+                <div class="password-input">
+
+                    <input
+                        id="login-password"
+                        type="password"
+                        placeholder="Tu contraseña"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-target="login-password"
+                    >
+                        ◉
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="login-error"
+                class="auth-error hidden"
+            ></div>
+
+
+            <button
+                type="submit"
+                class="auth-submit"
+            >
+                Iniciar sesión
+            </button>
+
+        </form>
+
+
+        <div class="auth-divider">
+            <span>
+                o
+            </span>
+        </div>
+
+
+        <button
+            id="login-continue-guest"
+            class="guest-auth-button"
+            type="button"
+        >
+            Continuar sin registrarse
+        </button>
+
+
+        <p class="auth-switch">
+
+            ¿No tienes una cuenta?
+
+            <button
+                id="show-register"
+                class="link-button"
+                type="button"
+            >
+                Crear cuenta
+            </button>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     REGISTER MODAL
+========================================================= -->
+
+<div
+    id="register-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal auth-modal-large">
+
+        <button
+            id="close-register-modal"
+            class="modal-close"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                NUEVA CUENTA
+            </span>
+
+            <h2>
+                Crear cuenta
+            </h2>
+
+            <p>
+                Guarda permanentemente tu progreso y resultados.
+            </p>
+
+        </div>
+
+
+        <!-- ROLE SELECTOR -->
+
+        <div class="role-selector" id="register-role-selector" role="group" aria-label="Tipo de cuenta">
+
+            <button
+                type="button"
+                id="register-role-student"
+                class="role-option active"
+                data-role="student"
+                data-register-role="student"
+                aria-pressed="true"
+            >
+
+                <span class="role-icon">
+                    ◇
+                </span>
+
+                <strong>
+                    Estudiante
+                </strong>
+
+                <small>
+                    Practicar y resolver actividades
+                </small>
+
+            </button>
+
+
+            <button
+                type="button"
+                id="register-role-teacher"
+                class="role-option"
+                data-role="teacher"
+                data-register-role="teacher"
+                aria-pressed="false"
+            >
+
+                <span class="role-icon">
+                    ◈
+                </span>
+
+                <strong>
+                    Profesor
+                </strong>
+
+                <small>
+                    Crear casos y actividades
+                </small>
+
+            </button>
+
+        </div>
+
+
+        <form
+            id="register-form"
+            class="auth-form"
+        >
+
+            <input
+                id="register-role"
+                name="role"
+                type="hidden"
+                value="student"
+            >
+
+
+            <!-- NAME -->
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="register-first-name">
+                        Nombre
+                    </label>
+
+                    <input
+                        id="register-first-name"
+                        type="text"
+                        placeholder="Juan"
+                        autocomplete="given-name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-last-name">
+                        Apellido
+                    </label>
+
+                    <input
+                        id="register-last-name"
+                        type="text"
+                        placeholder="Pérez"
+                        autocomplete="family-name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="register-email">
+                    Correo electrónico
+                </label>
+
+                <input
+                    id="register-email"
+                    name="email"
+                    type="email"
+                    placeholder="correo@ejemplo.com"
+                    autocomplete="email"
+                    inputmode="email"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    required
+                >
+
+            </div>
+
+
+            <!-- INSTITUTION -->
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="register-institution">
+                        Institución
+                    </label>
+
+                    <input
+                        id="register-institution"
+                        type="text"
+                        placeholder="SENA"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-program">
+                        Programa / área
+                    </label>
+
+                    <input
+                        id="register-program"
+                        type="text"
+                        placeholder="Administración en el Sector Salud"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- STUDENT FIELDS -->
+
+            <div
+                id="student-register-fields"
+                class="role-dependent-fields active"
+            >
+
+                <div class="form-group">
+
+                    <label for="register-class-code">
+                        Código de clase
+                    </label>
+
+                    <input
+                        id="register-class-code"
+                        type="text"
+                        placeholder="AULA-7K4P"
+                        maxlength="30"
+                        autocomplete="off"
+                    >
+
+                    <small class="field-help">
+                        Opcional. Puedes unirte a una clase después.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="register-class-status"
+                    class="inline-status hidden"
+                ></div>
+
+            </div>
+
+
+            <!-- TEACHER FIELDS -->
+
+            <div
+                id="teacher-register-fields"
+                class="role-dependent-fields hidden"
+            >
+
+                <div class="form-group">
+
+                    <label for="register-teacher-area">
+                        Área / especialidad
+                    </label>
+
+                    <input
+                        id="register-teacher-area"
+                        type="text"
+                        placeholder="Facturación y administración en salud"
+                    >
+
+                </div>
+
+
+                <div class="info-box">
+
+                    <strong>
+                        Podrás crear varias clases.
+                    </strong>
+
+                    <span>
+                        Cada clase tendrá su propio código de acceso.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label for="register-password">
+                        Contraseña
+                    </label>
+
+                    <div class="password-input">
+
+                        <input
+                            id="register-password"
+                            type="password"
+                            placeholder="Mínimo 6 caracteres"
+                            minlength="6"
+                            required
+                            autocomplete="new-password"
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="register-password"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="register-password-confirm">
+                        Confirmar contraseña
+                    </label>
+
+                    <div class="password-input">
+
+                        <input
+                            id="register-password-confirm"
+                            type="password"
+                            placeholder="Repite la contraseña"
+                            minlength="6"
+                            required
+                            autocomplete="new-password"
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="register-password-confirm"
+                        >
+                            ◉
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="register-error"
+                class="auth-error hidden"
+            ></div>
+
+
+            <label class="checkbox-label terms-checkbox">
+
+                <input
+                    type="checkbox"
+                    id="register-terms"
+                    required
+                >
+
+                <span>
+                    Acepto los términos y condiciones.
+                </span>
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="auth-submit"
+            >
+                Crear cuenta
+            </button>
+
+        </form>
+
+
+        <p class="auth-switch">
+
+            ¿Ya tienes una cuenta?
+
+            <button
+                id="show-login"
+                class="link-button"
+                type="button"
+            >
+                Iniciar sesión
+            </button>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     GUEST PRACTICE MODAL
+========================================================= -->
+
+<div
+    id="guest-practice-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal">
+
+        <button
+            id="close-guest-practice-modal"
+            class="modal-close"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                MODO INVITADO
+            </span>
+
+            <h2>
+                Practicar sin registrarte
+            </h2>
+
+            <p>
+                Puedes comenzar inmediatamente.
+                No se creará una cuenta.
+            </p>
+
+        </div>
+
+
+        <div class="guest-benefits">
+
+            <div>
+                <span>✓</span>
+                Práctica manual
+            </div>
+
+            <div>
+                <span>✓</span>
+                Práctica ISS
+            </div>
+
+            <div>
+                <span>✓</span>
+                Progreso temporal
+            </div>
+
+            <div>
+                <span>!</span>
+                El progreso no será permanente
+            </div>
+
+        </div>
+
+
+        <button
+            id="confirm-guest-practice"
+            class="auth-submit"
+            type="button"
+        >
+            Comenzar como invitado
+        </button>
+
+
+        <button
+            id="guest-practice-login"
+            class="text-button center-button"
+            type="button"
+        >
+            Prefiero iniciar sesión
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     GUEST ACTIVITY MODAL
+========================================================= -->
+
+<div
+    id="guest-activity-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal">
+
+        <button
+            id="close-guest-activity-modal"
+            class="modal-close"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                ACTIVIDAD
+            </span>
+
+            <h2>
+                Entrar con código
+            </h2>
+
+            <p>
+                Puedes participar como invitado si el profesor
+                habilitó el acceso sin registro.
+            </p>
+
+        </div>
+
+
+        <form
+            id="guest-activity-form"
+            class="auth-form"
+        >
+
+            <div class="form-group">
+
+                <label for="guest-activity-code">
+                    Código de actividad
+                </label>
+
+                <input
+                    id="guest-activity-code"
+                    name="activity-code"
+                    type="text"
+                    maxlength="30"
+                    placeholder="Código entregado por tu profesor"
+                    autocomplete="off"
+                    autocapitalize="characters"
+                    spellcheck="false"
+                    aria-describedby="guest-activity-help guest-activity-error"
+                    required
+                >
+
+            </div>
+
+
+            <p id="guest-activity-help" class="form-hint">
+                Puedes entrar sin crear una cuenta si el profesor habilitó el acceso de invitados.
+            </p>
+
+            <div
+                id="guest-activity-error"
+                class="auth-error hidden"
+                role="alert"
+                aria-live="polite"
+            ></div>
+
+
+            <button
+                type="submit"
+                class="auth-submit"
+            >
+                Buscar actividad
+            </button>
+
+        </form>
+
+
+        <div class="auth-divider">
+            <span>
+                o
+            </span>
+        </div>
+
+
+        <button
+            id="guest-activity-login"
+            class="guest-auth-button"
+            type="button"
+        >
+            Iniciar sesión primero
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CLASS MODAL
+========================================================= -->
+
+<div
+    id="class-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal">
+
+        <button
+            id="close-class-modal"
+            class="modal-close"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                NUEVA CLASE
+            </span>
+
+            <h2>
+                Crear clase
+            </h2>
+
+            <p>
+                Genera un código para que tus estudiantes puedan vincularse.
+            </p>
+
+        </div>
+
+
+        <form
+            id="class-form"
+            class="auth-form"
+        >
+
+            <div class="form-group">
+
+                <label for="class-name">
+                    Nombre de la clase
+                </label>
+
+                <input
+                    id="class-name"
+                    type="text"
+                    placeholder="Facturación en Salud - Grupo 1"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="class-description">
+                    Descripción
+                </label>
+
+                <textarea
+                    id="class-description"
+                    rows="4"
+                    placeholder="Descripción del grupo..."
+                ></textarea>
+
+            </div>
+
+
+            <label class="switch-label">
+
+                <input
+                    id="class-guest-access"
+                    type="checkbox"
+                    checked
+                >
+
+                <span class="switch"></span>
+
+                <span>
+                    Permitir estudiantes invitados
+                </span>
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="auth-submit"
+            >
+                Crear clase
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ACTIVITY CODE MODAL
+========================================================= -->
+
+<div
+    id="activity-code-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal">
+
+        <button
+            id="close-activity-code-modal"
+            class="modal-close"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                ACTIVIDAD CREADA
+            </span>
+
+            <h2 id="activity-code-modal-title">
+                Código de actividad
+            </h2>
+
+            <p>
+                Comparte este código con tus estudiantes.
+            </p>
+
+        </div>
+
+
+        <div class="generated-code-card">
+
+            <span>
+                CÓDIGO
+            </span>
+
+            <strong id="generated-activity-code">
+                CKO23
+            </strong>
+
+            <small id="generated-activity-summary">
+                0 casos
+            </small>
+
+        </div>
+
+
+        <div
+            id="generated-activity-guest-status"
+            class="info-box"
+        >
+
+            <strong>
+                Acceso para invitados
+            </strong>
+
+            <span>
+                Los participantes podrán ingresar sin crear una cuenta.
+            </span>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                id="copy-activity-code"
+                class="primary-button"
+                type="button"
+            >
+                Copiar código
+            </button>
+
+            <button
+                id="close-generated-code"
+                class="text-button"
+                type="button"
+            >
+                Cerrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ACTIVITY PREVIEW / JOIN CONFIRMATION
+========================================================= -->
+
+<div
+    id="activity-preview-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal">
+
+        <button
+            id="close-activity-preview"
+            class="modal-close"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                ACTIVIDAD ENCONTRADA
+            </span>
+
+            <h2 id="activity-preview-name">
+                Actividad
+            </h2>
+
+            <p id="activity-preview-description">
+                —
+            </p>
+
+        </div>
+
+
+        <div
+            id="activity-preview-details"
+            class="activity-preview-details"
+        ></div>
+
+
+        <div
+            id="activity-preview-guest-notice"
+            class="guest-notice"
+        >
+
+            <div class="guest-notice-icon">
+                ◇
+            </div>
+
+            <div>
+
+                <strong>
+                    Puedes entrar como invitado
+                </strong>
+
+                <span>
+                    Tu progreso se conservará temporalmente
+                    en este navegador.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                id="activity-preview-enter"
+                class="primary-button"
+                type="button"
+            >
+                Entrar a actividad
+            </button>
+
+            <button
+                id="activity-preview-login"
+                class="secondary-button"
+                type="button"
+            >
+                Iniciar sesión
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     USER MENU
+========================================================= -->
+
+<div
+    id="user-menu-dropdown"
+    class="user-menu-dropdown hidden"
+>
+
+    <button
+        data-page="settings"
+        type="button"
+    >
+        ⚙
+        Configuración
+    </button>
+
+    <button
+        id="user-menu-login"
+        type="button"
+        class="hidden"
+    >
+        ↪
+        Iniciar sesión
+    </button>
+
+    <button
+        id="user-menu-logout"
+        type="button"
+    >
+        ↪
+        Cerrar sesión
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION PANEL
+========================================================= -->
+
+<div
+    id="notification-panel"
+    class="notification-panel hidden"
+>
+
+    <div class="notification-panel-header">
+
+        <strong>
+            Notificaciones
+        </strong>
+
+        <button
+            id="close-notification-panel"
+            type="button"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        id="notification-list"
+        class="notification-list"
+    ></div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    id="toast-container"
+    class="toast-container"
+></div>
+
+
+<!-- =========================================================
+     GLOBAL CATALOG SEARCH RESULTS
+========================================================= -->
+
+<div
+    id="global-search-results"
+    class="global-search-results hidden"
+></div>
+
+
+<!-- =========================================================
+     SIDEBAR MOBILE OVERLAY
+========================================================= -->
+
+<div
+    id="sidebar-overlay"
+    class="sidebar-overlay"
+></div>
+
+
+<!-- =========================================================
+     UNSAVED GUEST SESSION WARNING
+========================================================= -->
+
+<div
+    id="guest-exit-warning-modal"
+    class="modal-overlay hidden"
+>
+
+    <div class="auth-modal">
+
+        <div class="auth-heading">
+
+            <span class="page-label">
+                SESIÓN TEMPORAL
+            </span>
+
+            <h2>
+                No pierdas tu progreso
+            </h2>
+
+            <p>
+                Estás trabajando como invitado.
+                Si abandonas esta sesión podrías perder
+                el progreso temporal.
+            </p>
+
+        </div>
+
+
+        <div class="guest-warning-actions">
+
+            <button
+                id="guest-warning-save-account"
+                class="primary-button"
+                type="button"
+            >
+                Crear cuenta
+            </button>
+
+            <button
+                id="guest-warning-continue"
+                class="secondary-button"
+                type="button"
+            >
+                Continuar como invitado
+            </button>
+
+            <button
+                id="guest-warning-exit"
+                class="danger-button"
+                type="button"
+            >
+                Salir de la práctica
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     El motor script.js administra Firebase Authentication y Firestore.
+     Este HTML conserva los identificadores que utiliza el motor, incluido
+     el acceso de invitados mediante código de actividad.
+     Publicar mediante Netlify o un servidor HTTP; no usar file://.
+========================================================= -->
+
+<script src="script.js?v=20261010-4"></script>
+
+<script>
+/* Test ISS integrado únicamente en #page-test-iss.
+   Lee data/text.json, muestra 10 preguntas aleatorias y evita repetir
+   preguntas hasta completar el banco. */
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const BEST_KEY = 'simuips_iss_test_best_v2';
+  const SEEN_KEY = 'simuips_iss_test_seen_v1';
+  const URLS = ['./data/text.json', './text.json'];
+  const LETTERS = ['a','b','c','d'];
+  const state = { bank: [], questions: [], answers: [], index: 0, loaded: false, loading: false };
+  const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const show = (id, yes) => { const el = $(id); if (el) el.hidden = !yes; };
+  const setText = (id, value) => { const el = $(id); if (el) el.textContent = String(value ?? ''); };
+  function shuffle(list) {
+    const a = [...list];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  function normalize(q, i) {
+    if (!q || typeof q.question !== 'string' || !q.options) return null;
+    const options = {};
+    LETTERS.forEach(k => {
+      const value = q.options[k] ?? q.options[k.toUpperCase()];
+      if (typeof value === 'string' && value.trim()) options[k] = value;
+    });
+    const correct = String(q.correctAnswer ?? q.correcta ?? '').toLowerCase();
+    if (LETTERS.some(k => !options[k]) || !LETTERS.includes(correct)) return null;
+    return {
+      id: String(q.id ?? `ISS-${i + 1}`),
+      question: q.question,
+      options,
+      correct,
+      explanation: q.explanation ?? q.explicacion ?? '',
+      source: q.source ?? q.fuente ?? {},
+      topic: q.category ?? q.tema ?? 'Manual ISS 2000'
+    };
+  }
+  function readSeen() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(SEEN_KEY) || '[]');
+      return new Set(Array.isArray(parsed) ? parsed.map(String) : []);
+    } catch (_) { return new Set(); }
+  }
+  function writeSeen(seen) {
+    try { localStorage.setItem(SEEN_KEY, JSON.stringify([...seen])); } catch (_) {}
+  }
+  function getBest() {
+    try { return JSON.parse(localStorage.getItem(BEST_KEY) || 'null'); } catch (_) { return null; }
+  }
+  function updateStats() {
+    setText('iss-test-bank-count', state.bank.length || '—');
+    const best = getBest();
+    setText('iss-test-best-score', best ? `${best.score}/10` : '—');
+  }
+  async function loadBank() {
+    if (state.loaded) return;
+    if (state.loading) {
+      while (state.loading) await new Promise(resolve => setTimeout(resolve, 60));
+      if (state.loaded) return;
+    }
+    state.loading = true;
+    show('iss-test-loading', true);
+    show('iss-test-error', false);
+    show('iss-test-start', false);
+    try {
+      let lastError;
+      for (const url of URLS) {
+        try {
+          const response = await fetch(url, { cache: 'no-store' });
+          if (!response.ok) throw new Error(`${url}: HTTP ${response.status}`);
+          const data = await response.json();
+          const rows = Array.isArray(data) ? data : (data.questions ?? data.preguntas);
+          if (!Array.isArray(rows)) throw new Error(`${url} no contiene el arreglo de preguntas.`);
+          const normalized = rows.map(normalize).filter(Boolean);
+          if (!normalized.length) throw new Error(`${url} no contiene preguntas con una estructura válida.`);
+          state.bank = normalized;
+          state.loaded = true;
+          updateStats();
+          show('iss-test-start', true);
+          return;
+        } catch (error) { lastError = error; }
+      }
+      throw lastError || new Error('No se pudo encontrar el banco de preguntas.');
+    } catch (error) {
+      setText('iss-test-error', `No se pudo cargar el banco de preguntas. ${error.message} Verifica que el archivo esté en data/text.json y abre SimuIPS desde un servidor local.`);
+      show('iss-test-error', true);
+    } finally {
+      state.loading = false;
+      show('iss-test-loading', false);
+    }
+  }
+  function begin() {
+    if (!state.loaded || !state.bank.length) {
+      loadBank().then(() => { if (state.loaded) begin(); });
+      return;
+    }
+    let seen = readSeen();
+    let available = state.bank.filter(q => !seen.has(q.id));
+    // Reiniciar el ciclo solo cuando ya se han usado todas las preguntas disponibles.
+    if (available.length < 10) {
+      if (available.length === 0) {
+        seen = new Set();
+        writeSeen(seen);
+        available = [...state.bank];
+      } else {
+        // El banco actual tiene menos de 10 preguntas sin usar: se completa este intento
+        // con preguntas ya vistas, sin duplicar ninguna dentro del mismo test.
+        const used = new Set(available.map(q => q.id));
+        available = [...available, ...shuffle(state.bank.filter(q => !used.has(q.id))).slice(0, 10 - available.length)];
+        seen = new Set();
+      }
+    }
+    state.questions = shuffle(available).slice(0, Math.min(10, state.bank.length));
+    state.answers = Array(state.questions.length).fill(null);
+    state.index = 0;
+    state.questions.forEach(q => seen.add(q.id));
+    writeSeen(seen);
+    show('iss-test-start', false);
+    show('iss-test-results', false);
+    show('iss-test-quiz', true);
+    renderQuestion();
+  }
+  function renderQuestion() {
+    const q = state.questions[state.index];
+    if (!q) return finish();
+    const current = state.index + 1, total = state.questions.length;
+    setText('iss-test-question-count', `Pregunta ${current} de ${total}`);
+    setText('iss-test-progress-label', `${Math.round(current / total * 100)}% completado`);
+    if ($('iss-test-progress-bar')) $('iss-test-progress-bar').style.width = `${current / total * 100}%`;
+    setText('iss-test-topic', 'MANUAL ISS 2000');
+    setText('iss-test-question', q.question);
+    setText('iss-test-answer-hint', 'Selecciona una respuesta para continuar.');
+    $('iss-test-options').innerHTML = LETTERS.map(k =>
+      `<button type="button" class="iss-test-option ${state.answers[state.index] === k ? 'is-selected' : ''}" data-iss-answer="${k}" aria-pressed="${state.answers[state.index] === k ? 'true' : 'false'}"><span class="iss-test-option-letter">${k.toUpperCase()}</span><span class="iss-test-option-text">${escapeHTML(q.options[k])}</span></button>`
+    ).join('');
+    const next = $('iss-test-next');
+    next.disabled = !state.answers[state.index];
+    next.innerHTML = current === total ? 'Ver resultados <span aria-hidden="true">✓</span>' : 'Siguiente <span aria-hidden="true">→</span>';
+  }
+  function choose(key) {
+    state.answers[state.index] = key;
+    $('iss-test-options').querySelectorAll('[data-iss-answer]').forEach(button => {
+      const selected = button.dataset.issAnswer === key;
+      button.classList.toggle('is-selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    $('iss-test-next').disabled = false;
+    setText('iss-test-answer-hint', 'Respuesta seleccionada. Puedes cambiarla antes de continuar.');
+  }
+  function next() {
+    if (!state.answers[state.index]) return;
+    if (state.index < state.questions.length - 1) {
+      state.index++;
+      renderQuestion();
+    } else finish();
+  }
+  function finish() {
+    show('iss-test-quiz', false);
+    show('iss-test-results', true);
+    const score = state.questions.reduce((sum, q, i) => sum + (state.answers[i] === q.correct ? 1 : 0), 0);
+    const total = state.questions.length || 10;
+    const percent = Math.round(score / total * 100);
+    setText('iss-test-score-number', `${score}/${total}`);
+    setText('iss-test-score-percent', `${percent}%`);
+    setText('iss-test-result-title', percent >= 90 ? '¡Excelente dominio!' : percent >= 70 ? '¡Vas por buen camino!' : percent >= 50 ? 'Buen intento, sigue repasando' : '¡Este es tu punto de partida!');
+    setText('iss-test-result-message', 'Revisa las respuestas y sus explicaciones para reforzar lo aprendido.');
+    $('iss-test-score-bar').style.width = `${percent}%`;
+    setText('iss-test-result-symbol', percent >= 70 ? '✓' : '↻');
+    const old = getBest();
+    if (!old || score > Number(old.score)) {
+      try { localStorage.setItem(BEST_KEY, JSON.stringify({ score, percent, date: new Date().toISOString() })); } catch (_) {}
+    }
+    updateStats();
+    $('iss-test-review').innerHTML = state.questions.map((q, i) => {
+      const chosen = state.answers[i], ok = chosen === q.correct;
+      const source = q.source;
+      const sourceText = typeof source === 'string' ? source :
+        [source.document, source.article, source.chapter].filter(Boolean).join(' · ');
+      return `<article class="iss-test-review-item ${ok ? 'is-correct' : 'is-wrong'}">
+        <div class="iss-test-review-head"><span class="iss-test-review-badge">${ok ? '✓ Correcta' : '✕ Para repasar'}</span><span>${i + 1}. ${escapeHTML(q.question)}</span></div>
+        <p class="iss-test-review-answer">Tu respuesta: <strong>${chosen.toUpperCase()}. ${escapeHTML(q.options[chosen])}</strong><br>Correcta: <strong>${q.correct.toUpperCase()}. ${escapeHTML(q.options[q.correct])}</strong></p>
+        ${q.explanation ? `<p class="iss-test-review-explanation">${escapeHTML(q.explanation)}</p>` : ''}
+        ${sourceText ? `<p class="iss-test-review-explanation">${escapeHTML(sourceText)}</p>` : ''}
+      </article>`;
+    }).join('');
+  }
+  function addNav() {
+    const nav = $('sidebar-nav');
+    if (!nav || nav.querySelector('[data-page="test-iss"]')) return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'nav-item';
+    button.dataset.page = 'test-iss';
+    button.innerHTML = '<span class="nav-icon">✓</span><span>Test del ISS</span>';
+    const labels = [...nav.querySelectorAll('.nav-section-title, .nav-group-title, .nav-label')];
+    const practice = labels.find(el => /pr[aá]ctica/i.test(el.textContent));
+    if (practice) {
+      let cursor = practice.nextElementSibling;
+      while (cursor && !cursor.classList.contains('nav-section-title') && !cursor.classList.contains('nav-group-title') && !cursor.classList.contains('nav-label')) cursor = cursor.nextElementSibling;
+      nav.insertBefore(button, cursor);
+    } else nav.appendChild(button);
+  }
+  function goTest() {
+    if (typeof window.navigate === 'function') window.navigate('test-iss');
+    addNav();
+    loadBank();
+  }
+  document.addEventListener('click', event => {
+    const navButton = event.target.closest('[data-page="test-iss"]');
+    if (navButton) { event.preventDefault(); goTest(); return; }
+    const answer = event.target.closest('[data-iss-answer]');
+    if (answer && $('page-test-iss')?.classList.contains('active-page')) choose(answer.dataset.issAnswer);
+  });
+  $('iss-test-begin')?.addEventListener('click', begin);
+  $('iss-test-next')?.addEventListener('click', next);
+  $('iss-test-retry')?.addEventListener('click', begin);
+  $('iss-test-result-symbol')?.addEventListener('click', begin);
+  $('iss-test-back')?.addEventListener('click', () => {
+    show('iss-test-results', false);
+    show('iss-test-start', true);
+  });
+  const nav = $('sidebar-nav');
+  if (nav) new MutationObserver(addNav).observe(nav, { childList: true, subtree: true });
+  document.addEventListener('DOMContentLoaded', addNav);
+  setTimeout(addNav, 0);
+})();
+</script>
+
+
+</body>
+
+</html>
