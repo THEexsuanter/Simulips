@@ -987,30 +987,17 @@ function startGuest(
     showApplication();
 
     toast(
-        'Modo invitado iniciado. Cargando un caso de práctica local...',
-        'info'
+        'Sesión de invitado iniciada. Elige cómo quieres practicar.',
+        'success'
     );
 
     /*
-     * Invitado no necesita base de datos. Usa exactamente los
-     * casos locales de data/cases.json y guarda el avance en
-     * sessionStorage mientras la pestaña permanezca abierta.
+     * IMPORTANTE:
+     * No cargar un caso ni navegar a Liquidación al entrar como invitado.
+     * Primero se muestra la pantalla con las opciones Normal y Avanzado.
+     * El caso se carga únicamente cuando el usuario pulsa uno de esos botones.
      */
-    startPracticeCase(mode).then(() => {
-
-        if (state.currentCase) {
-            navigate('billing');
-        } else {
-            navigate(
-                mode === 'automatic'
-                    ? 'automatic-mode'
-                    : 'manual-mode'
-            );
-        }
-
-        saveGuestSession();
-
-    });
+    saveGuestSession();
 
 }
 
@@ -1273,6 +1260,11 @@ function navigate(
         page;
 
     renderApplication();
+
+    // Persistir la pantalla actual para que F5 restaure el punto donde iba.
+    if (isGuest()) {
+        saveGuestSession();
+    }
 
     document
         .querySelector(
@@ -2239,13 +2231,16 @@ function setupGuestEntry() {
         );
 
     $('entry-guest-button')
-        ?.addEventListener(
-            'click',
-            () =>
-                openModal(
-                    'guest-practice-modal'
-                )
-        );
+        ?.addEventListener('click', () => {
+            // Una sesión nueva de invitado siempre empieza en nivel normal.
+            // El nivel avanzado se elige explícitamente desde la pantalla de práctica.
+            window.SIMUIPS_SELECTED_PRACTICE_LEVEL = 'normal';
+            try {
+                sessionStorage.setItem('simuips_practice_level', 'normal');
+            } catch (_) {}
+            startGuest('manual');
+            navigate('manual-mode');
+        });
 
     $('entry-activity-button')
         ?.addEventListener(
@@ -9112,10 +9107,7 @@ function hideLoadingScreen() {
             }
 
             if (data.factor !== undefined) {
-                // El campo visible `${row.key}-uvr` representa la tarifa por cada UVR,
-                // por lo tanto debe validarse contra el factor ISS (1270, 960, 360...),
-                // no contra las UVR totales del procedimiento.
-                mark(`${row.key}-uvr`, data.factor, numberNorm);
+                mark(`${row.key}-uvr`, solution.uvr, numberNorm);
                 mark(`${row.key}-factor`, data.factor, numberNorm);
             } else if (data.value !== undefined) {
                 mark(`${row.key}-value`, data.value, numberNorm);
@@ -11024,20 +11016,13 @@ if (
 }
 
 
-window.addEventListener(
-    'beforeunload',
-    () => {
+window.addEventListener('pagehide', () => {
+    if (isGuest()) saveGuestSession();
+});
 
-        if (
-            isGuest()
-        ) {
-
-            saveGuestSession();
-
-        }
-
-    }
-);
+window.addEventListener('beforeunload', () => {
+    if (isGuest()) saveGuestSession();
+});
 
 
 /* ============================================================
@@ -14995,10 +14980,7 @@ window.addEventListener(
         navigate('dashboard');
         syncRoleSearch();
 
-        toast(
-            'Modo invitado iniciado. Puedes comenzar una práctica o unirte a una actividad.',
-            'info'
-        );
+        // Se omite el toast genérico: el acceso lleva directamente a Práctica ISS.
     };
 
     /*
@@ -15933,8 +15915,6 @@ async function cloudPersistOwnedRecords() {
 
         const dashboard = document.getElementById('guest-dashboard-content');
         if (dashboard) {
-            // En modo invitado no se muestran avisos sobre crear cuentas ni Configuración.
-            dashboard.querySelectorAll('.simulator-principle').forEach(element => element.remove());
             const candidates = dashboard.querySelectorAll('h1,h2,h3,h4,p,span,button,a,[role="button"]');
             for (const node of candidates) {
                 const label = (node.textContent || '').replace(/\s+/g, ' ').trim().toLocaleLowerCase('es');
@@ -15989,78 +15969,126 @@ async function cloudPersistOwnedRecords() {
 })();
 
 
+
 /* ============================================================
-   SIMUIPS INVITADO — FIX DE INICIO DE NIVELES ISS
-   Conecta los botones visibles a la carga real de casos.
+   SIMUIPS — FLUJO DE INVITADO Y SELECTOR NORMAL / AVANZADO
+   - Entrar como invitado muestra el selector, no Liquidación.
+   - Los botones de nivel cargan el JSON correspondiente.
+   - Impide que un data-page accidental salte el selector.
    ============================================================ */
-(function installGuestPracticeLevelButtons() {
+(function fixGuestPracticeLevelFlow() {
     'use strict';
 
-    if (window.__simuipsGuestPracticeButtonsBound) return;
-    window.__simuipsGuestPracticeButtonsBound = true;
+    function saveSelectedLevel(level) {
+        const normalized = String(level || '').toLowerCase();
+        const selected = normalized === 'advanced' || normalized === 'avanzado'
+            ? 'advanced'
+            : 'normal';
 
-    document.addEventListener('click', async function startVisibleISSLevel(event) {
-        const button = event.target.closest(
-            '#start-manual-practice-normal, #start-manual-practice-advanced, [data-practice-level]'
+        window.SIMUIPS_SELECTED_PRACTICE_LEVEL = selected;
+        try {
+            sessionStorage.setItem('simuips_practice_level', selected);
+        } catch (_) {}
+
+        return selected;
+    }
+
+    /*
+     * La pantalla manual-mode es el selector de modalidad.
+     * No debe iniciar casos automáticamente al renderizarse.
+     */
+    renderPracticeMode = function renderPracticeLevelSelector() {
+        state.currentMode = 'manual';
+
+        // Al volver al selector, no reutilizar un caso anterior.
+        if (state.page === 'manual-mode' && !state.currentActivity) {
+            state.currentCase = null;
+            state.currentLiquidation = null;
+            state.currentValidation = null;
+            state.selectedProcedure = null;
+            state.selectedDiagnosis = null;
+        }
+    };
+
+    /*
+     * Captura el clic antes que la navegación global. Funciona tanto
+     * con data-practice-level como con botones que solo tienen texto.
+     */
+    document.addEventListener('click', async function handlePracticeLevelButton(event) {
+        const target = event.target instanceof Element ? event.target : null;
+        if (!target) return;
+
+        const button = target.closest(
+            'button, [role="button"], [data-practice-level], [data-level], .practice-level-card, .practice-option, .practice-card'
         );
         if (!button) return;
 
-        // Solo interceptar los botones visibles de selección de nivel.
-        if (!button.matches('#start-manual-practice-normal, #start-manual-practice-advanced')) {
-            return;
-        }
+        const label = (button.innerText || button.textContent || '')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .toLocaleLowerCase('es');
 
+        const rawLevel = button.dataset.practiceLevel || button.dataset.level || '';
+        const isAdvanced = /advanced|avanzad|reto/.test(String(rawLevel).toLowerCase()) ||
+            /avanzad|reto/.test(label);
+        const isNormal = /normal|básic|basico|inicial/.test(String(rawLevel).toLowerCase()) ||
+            /nivel normal|práctica normal|practica normal|comenzar nivel normal/.test(label);
+
+        if (!isAdvanced && !isNormal) return;
+
+        // Evita que data-page/data-nav-page envíe al usuario a otra pantalla.
         event.preventDefault();
         event.stopPropagation();
-        event.stopImmediatePropagation();
+        if (typeof event.stopImmediatePropagation === 'function') {
+            event.stopImmediatePropagation();
+        }
 
-        const level = button.id === 'start-manual-practice-advanced' ? 'advanced' : 'normal';
-        window.SIMUIPS_SELECTED_PRACTICE_LEVEL = level;
-
-        try {
-            sessionStorage.setItem('simuips_practice_level', level);
-        } catch (_) {}
-
-        const previousHTML = button.innerHTML;
-        button.disabled = true;
+        if (button.dataset.loading === 'true') return;
+        button.dataset.loading = 'true';
         button.setAttribute('aria-busy', 'true');
 
-        try {
-            if (typeof startPracticeCase !== 'function') {
-                throw new Error('No se encontró la función que carga los casos de práctica.');
-            }
+        const level = saveSelectedLevel(isAdvanced ? 'advanced' : 'normal');
 
+        state.currentMode = 'manual';
+        state.currentActivity = null;
+        state.currentActivityCases = [];
+        state.currentCaseIndex = 0;
+        state.currentCase = null;
+        state.currentLiquidation = null;
+        state.currentValidation = null;
+        state.selectedProcedure = null;
+        state.selectedDiagnosis = null;
+
+        try {
             const loadedCase = await startPracticeCase('manual');
 
             if (!loadedCase && !state.currentCase) {
-                throw new Error(
-                    level === 'advanced'
-                        ? 'No se pudo cargar un caso desde data/cases2.json.'
-                        : 'No se pudo cargar un caso desde data/cases.json.'
-                );
-            }
-
-            state.currentMode = 'manual';
-            state.page = 'billing';
-            if (typeof navigate === 'function') {
-                navigate('billing');
-            } else if (typeof renderApplication === 'function') {
+                // startPracticeCase muestra el aviso específico si falla cases2.json.
+                state.page = 'manual-mode';
                 renderApplication();
+                return;
             }
 
-            if (typeof showBillingEmpty === 'function') showBillingEmpty(false);
-            if (typeof renderBillingPage === 'function') renderBillingPage();
-        } catch (error) {
-            console.error('[SimuIPS] No se pudo iniciar la práctica:', error);
-            if (typeof toast === 'function') {
-                toast(error.message || 'No se pudo abrir el caso. Revisa los archivos JSON.', 'error');
-            } else {
-                alert(error.message || 'No se pudo abrir el caso. Revisa los archivos JSON.');
+            // La carga final de casos también navega a billing cuando procede.
+            if (state.page !== 'billing') {
+                navigate('billing');
             }
+
+            saveGuestSession();
+        } catch (error) {
+            console.error('[SimuIPS] No se pudo iniciar el nivel seleccionado:', error);
+            toast(
+                level === 'advanced'
+                    ? 'No se pudo iniciar el reto avanzado. Revisa data/cases2.json.'
+                    : 'No se pudo iniciar la práctica normal. Revisa data/cases.json.',
+                'error'
+            );
         } finally {
-            button.disabled = false;
+            button.dataset.loading = 'false';
             button.removeAttribute('aria-busy');
-            if (previousHTML) button.innerHTML = previousHTML;
         }
     }, true);
+
+    console.info('[SimuIPS] Flujo corregido: selector primero y carga de caso al elegir nivel.');
 })();
+

@@ -9327,3 +9327,1082 @@ textarea.iss-field-invalid:focus-visible {
 body.guest-session .teacher-only,
 body.guest-session [data-role="teacher"],
 body.guest-session .student-account-only { display:none !important; }
+
+/* SIMUIPS — bienvenida: bloque consolidado
+   Mantiene el diseño existente, elimina reglas duplicadas del final
+   y permite scroll solo cuando el contenido no cabe en la pantalla. */
+#entry-screen.entry-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: clamp(16px, 3vh, 28px) clamp(16px, 3vw, 40px);
+    display: grid;
+    place-items: center;
+    overflow-x: clip;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+}
+
+#entry-screen .entry-container {
+    box-sizing: border-box;
+    width: min(100%, 1180px);
+    min-width: 0;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    margin: 0 auto;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+    grid-template-areas:
+        "brand card";
+    grid-template-rows: auto;
+    column-gap: clamp(24px, 4vw, 56px);
+    row-gap: 0;
+    align-items: center;
+    align-content: center;
+}
+
+#entry-screen .entry-brand {
+    grid-area: brand;
+    align-self: center;
+    min-width: 0;
+    margin: 0;
+    gap: 12px;
+}
+
+#entry-screen .entry-card {
+    grid-area: card;
+    align-self: center;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: clamp(22px, 2.2vw, 30px);
+}
+
+#entry-screen .entry-card-header {
+    margin-bottom: 18px;
+}
+
+#entry-screen .entry-card-header h1 {
+    font-size: clamp(25px, 2.1vw, 31px);
+    line-height: 1.15;
+    letter-spacing: -.9px;
+}
+
+#entry-screen .entry-card-header p {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+/* El bloque informativo inferior era una tercera fila innecesaria. */
+#entry-screen .entry-info {
+    display: none;
+}
+
+#entry-screen .entry-guest-button {
+    min-height: 56px;
+    padding: 9px 13px;
+    gap: 11px;
+    background: linear-gradient(135deg, #35d6a7, #18ad82);
+    border: 1px solid transparent;
+    color: #06241b;
+    box-shadow: 0 9px 24px rgba(24, 173, 130, .13);
+}
+
+#entry-screen .entry-guest-button:hover {
+    filter: brightness(1.04);
+}
+
+#entry-screen .entry-guest-button .entry-button-icon {
+    background: rgba(4, 35, 27, .09);
+    color: #064d3a;
+}
+
+#entry-screen .entry-guest-button strong {
+    color: #052a20;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+#entry-screen .entry-guest-button small {
+    color: rgba(5, 42, 32, .82);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+#entry-screen .entry-guest-button .entry-button-arrow {
+    color: rgba(5, 42, 32, .8);
+}
+
+/* Solo ocultar los accesos que no forman parte del modo invitado. */
+#entry-login-button,
+#entry-register-button,
+#entry-activity-button,
+#entry-login-link,
+#entry-screen .entry-footer,
+#entry-screen .entry-divider {
+    display: none;
+}
+
+body.guest-session .teacher-only,
+body.guest-session [data-role="teacher"],
+body.guest-session .student-account-only {
+    display: none;
+}
+
+#guest-dashboard-content > .simulator-principle {
+    display: none;
+}
+
+html:has(#entry-screen:not(.hidden)),
+body:has(#entry-screen:not(.hidden)) {
+    min-height: 100%;
+    overscroll-behavior: none;
+}
+
+body:has(#entry-screen:not(.hidden)) {
+    margin: 0;
+    overflow: hidden;
+}
+
+@media (max-width: 850px) {
+    #entry-screen.entry-screen {
+        padding: max(20px, env(safe-area-inset-top))
+                 20px
+                 max(20px, env(safe-area-inset-bottom));
+    }
+
+    #entry-screen .entry-container {
+        width: min(100%, 620px);
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "brand"
+            "card";
+        grid-template-rows: auto auto;
+        row-gap: 22px;
+        column-gap: 0;
+        align-content: center;
+    }
+
+    #entry-screen .entry-brand {
+        align-self: start;
+        gap: 8px;
+    }
+
+    #entry-screen .entry-card {
+        padding: 22px;
+    }
+}
+
+@media (max-width: 560px) {
+    #entry-screen.entry-screen {
+        padding: max(14px, env(safe-area-inset-top))
+                 14px
+                 max(14px, env(safe-area-inset-bottom));
+        place-items: start center;
+    }
+
+    #entry-screen .entry-container {
+        width: 100%;
+        max-width: 440px;
+        margin-block: auto;
+        row-gap: 15px;
+        align-content: center;
+    }
+
+    #entry-screen .entry-logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        font-size: 23px;
+    }
+
+    #entry-screen .entry-brand-name {
+        font-size: clamp(30px, 8vw, 36px);
+        line-height: 1.05;
+        letter-spacing: -1.3px;
+    }
+
+    #entry-screen .entry-brand::after {
+        margin-top: -3px;
+        font-size: 8px;
+        letter-spacing: 1.45px;
+    }
+
+    #entry-screen .entry-card {
+        padding: 19px 16px;
+        border-radius: 17px;
+    }
+
+    #entry-screen .entry-card-header {
+        margin-bottom: 14px;
+    }
+
+    #entry-screen .entry-card-header h1 {
+        font-size: clamp(23px, 6.2vw, 28px);
+        line-height: 1.16;
+    }
+
+    #entry-screen .entry-card-header p {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    #entry-screen .entry-guest-button {
+        min-height: 54px;
+        padding: 8px 10px;
+        gap: 9px;
+    }
+
+    #entry-screen .entry-guest-button .entry-button-icon {
+        width: 30px;
+        height: 30px;
+        flex: 0 0 30px;
+    }
+
+    #entry-screen .entry-guest-button strong {
+        font-size: 11px;
+    }
+
+    #entry-screen .entry-guest-button small {
+        font-size: 9px;
+    }
+}
+
+/* Pantallas bajas: se permite desplazamiento natural si el contenido lo necesita. */
+@media (max-height: 620px) {
+    #entry-screen.entry-screen {
+        place-items: start center;
+    }
+
+    #entry-screen .entry-container {
+        margin-block: 0;
+        align-content: start;
+    }
+}
+
+
+/* ==========================================================
+   SIMUIPS — BIENVENIDA REFINADA
+   Sustituye los parches acumulados de la pantalla inicial.
+   Mantiene el layout, el botón de invitado y las tres ventajas.
+   ========================================================== */
+
+html:has(#entry-screen:not(.hidden)),
+body:has(#entry-screen:not(.hidden)) {
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+body:has(#entry-screen:not(.hidden)) {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+}
+
+#entry-screen.entry-screen:not(.hidden) {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    max-height: 100dvh;
+    margin: 0;
+    padding: clamp(24px, 4vh, 48px) clamp(24px, 4vw, 64px);
+    overflow: hidden;
+    overscroll-behavior: none;
+    background:
+        radial-gradient(ellipse at 72% 28%, rgba(56,217,169,.085), transparent 34%),
+        radial-gradient(ellipse at 12% 88%, rgba(77,171,247,.045), transparent 32%),
+        #06090e;
+    isolation: isolate;
+}
+
+#entry-screen .entry-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#entry-screen .entry-container {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(390px, 440px);
+    grid-template-areas:
+        "brand card"
+        "features card";
+    grid-template-rows: auto auto;
+    align-items: center;
+    align-content: center;
+    column-gap: clamp(56px, 6vw, 100px);
+    row-gap: 28px;
+    box-sizing: border-box;
+    width: min(100%, 1240px);
+    height: auto;
+    min-height: 0;
+    max-height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    overflow: visible;
+}
+
+#entry-screen .entry-brand {
+    grid-area: brand;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 17px;
+    min-width: 0;
+    margin: 0;
+}
+
+#entry-screen .entry-logo {
+    width: 54px;
+    height: 54px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #38d9a9, #18ad82);
+    color: #06271e;
+    font-size: 29px;
+    font-weight: 900;
+    box-shadow: 0 10px 32px rgba(56,217,169,.16);
+}
+
+#entry-screen .entry-brand-name {
+    margin: 0;
+    color: #f5f8fb;
+    font-family: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(40px, 3.2vw, 48px);
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: -2.1px;
+}
+
+#entry-screen .entry-brand-name span {
+    color: #38d9a9;
+}
+
+#entry-screen .entry-brand::after {
+    margin-top: -7px;
+    color: #8393a8;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+#entry-screen .entry-info {
+    grid-area: features;
+    align-self: start;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#entry-screen .entry-info > div {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 42px;
+    padding: 9px 11px;
+    border: 1px solid rgba(148,163,184,.15);
+    border-radius: 11px;
+    background: linear-gradient(145deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+    color: #c3cfdd;
+    font-size: 10px;
+    font-weight: 550;
+    line-height: 1.35;
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+#entry-screen .entry-info > div:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56,217,169,.28);
+    background: rgba(56,217,169,.045);
+}
+
+#entry-screen .entry-info > div > span {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    background: rgba(56,217,169,.11);
+    color: #38d9a9;
+    font-size: 13px;
+    font-weight: 850;
+}
+
+#entry-screen .entry-card {
+    grid-area: card;
+    align-self: center;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: clamp(28px, 3vw, 36px);
+    border: 1px solid rgba(148,163,184,.17);
+    border-radius: 23px;
+    background:
+        radial-gradient(ellipse at 100% 0%, rgba(56,217,169,.045), transparent 40%),
+        linear-gradient(145deg, rgba(17,26,37,.97), rgba(8,13,20,.98));
+    box-shadow: 0 28px 75px rgba(0,0,0,.36), 0 0 55px rgba(56,217,169,.025);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    overflow: hidden;
+}
+
+#entry-screen .entry-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(56,217,169,.38), transparent);
+    pointer-events: none;
+}
+
+#entry-screen .entry-card-header {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 22px;
+}
+
+#entry-screen .entry-card-header .page-label {
+    margin-bottom: 11px;
+    color: #38d9a9;
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.5px;
+}
+
+#entry-screen .entry-card-header h1,
+#entry-screen .entry-card-header h2 {
+    color: #f5f8fb;
+    font-family: Manrope, Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(27px, 2.1vw, 31px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1.05px;
+}
+
+#entry-screen .entry-card-header p {
+    margin-top: 11px;
+    color: #8795a8;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+#entry-screen .entry-guest-button {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 58px;
+    padding: 9px 13px;
+    border: 1px solid rgba(114,239,208,.28);
+    border-radius: 12px;
+    background: linear-gradient(110deg, #35d6a7, #18ad82);
+    color: #05271e;
+    text-align: left;
+    box-shadow: 0 10px 28px rgba(24,173,130,.13);
+    transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+}
+
+#entry-screen .entry-guest-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.045);
+    box-shadow: 0 14px 32px rgba(24,173,130,.2);
+}
+
+#entry-screen .entry-guest-button:active {
+    transform: translateY(0);
+}
+
+#entry-screen .entry-guest-button .entry-button-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(3,48,36,.10);
+    color: #064b39;
+    font-size: 16px;
+}
+
+#entry-screen .entry-guest-button > span:not(.entry-button-icon):not(.entry-button-arrow) {
+    flex: 1;
+    min-width: 0;
+    color: #05271e;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+#entry-screen .entry-guest-button strong {
+    display: block;
+    color: inherit;
+    font-size: 11px;
+    font-weight: 850;
+}
+
+#entry-screen .entry-guest-button small {
+    display: block;
+    margin-top: 3px;
+    color: rgba(5,39,30,.78);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+#entry-screen .entry-guest-button .entry-button-arrow {
+    margin-left: auto;
+    color: rgba(5,39,30,.8);
+    font-size: 16px;
+    transition: transform .2s ease;
+}
+
+#entry-screen .entry-guest-button:hover .entry-button-arrow {
+    transform: translateX(3px);
+}
+
+/* Accesos alternativos fuera del flujo principal, si siguen presentes en el HTML. */
+#entry-screen .entry-divider,
+#entry-screen .entry-footer,
+#entry-screen .entry-login-button,
+#entry-screen .entry-register-button,
+#entry-screen .entry-activity-button {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    #entry-screen.entry-screen:not(.hidden) {
+        padding: 28px 24px;
+        overflow-y: auto;
+    }
+
+    #entry-screen .entry-container {
+        width: min(100%, 620px);
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "brand"
+            "features"
+            "card";
+        grid-template-rows: auto auto auto;
+        row-gap: 22px;
+        column-gap: 0;
+        align-content: center;
+        max-height: none;
+    }
+
+    #entry-screen .entry-brand {
+        gap: 13px;
+    }
+
+    #entry-screen .entry-info {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #entry-screen .entry-card {
+        padding: 27px;
+    }
+}
+
+@media (max-width: 560px) {
+    #entry-screen.entry-screen:not(.hidden) {
+        align-items: flex-start;
+        padding: max(18px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom));
+    }
+
+    #entry-screen .entry-container {
+        width: 100%;
+        max-width: 440px;
+        margin: auto;
+        row-gap: 17px;
+    }
+
+    #entry-screen .entry-logo {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        font-size: 25px;
+    }
+
+    #entry-screen .entry-brand-name {
+        font-size: 39px;
+    }
+
+    #entry-screen .entry-brand::after {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    #entry-screen .entry-info {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 7px;
+    }
+
+    #entry-screen .entry-info > div {
+        min-height: 38px;
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+
+    #entry-screen .entry-card {
+        padding: 22px 18px;
+        border-radius: 19px;
+    }
+
+    #entry-screen .entry-card-header {
+        margin-bottom: 18px;
+    }
+
+    #entry-screen .entry-card-header h1,
+    #entry-screen .entry-card-header h2 {
+        font-size: 27px;
+    }
+
+    #entry-screen .entry-card-header p {
+        font-size: 11px;
+    }
+}
+
+@media (max-height: 650px) and (min-width: 901px) {
+    #entry-screen.entry-screen:not(.hidden) {
+        padding-top: 18px;
+        padding-bottom: 18px;
+    }
+
+    #entry-screen .entry-container {
+        row-gap: 18px;
+        column-gap: 56px;
+    }
+
+    #entry-screen .entry-logo {
+        width: 46px;
+        height: 46px;
+    }
+
+    #entry-screen .entry-card {
+        padding: 24px;
+    }
+
+    #entry-screen .entry-card-header {
+        margin-bottom: 16px;
+    }
+}
+
+
+/* ==========================================================
+   SIMUIPS — ORDEN CORRECTO PARA CELULARES
+   Logo y subtítulo → tarjeta de acceso → características.
+   Este bloque va al final para prevalecer sobre los estilos anteriores.
+   ========================================================== */
+
+@media (max-width: 560px) {
+    #entry-screen.entry-screen:not(.hidden) {
+        align-items: flex-start;
+        justify-content: center;
+        min-height: 100dvh;
+        height: auto;
+        max-height: none;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding:
+            max(22px, env(safe-area-inset-top))
+            16px
+            max(22px, env(safe-area-inset-bottom));
+    }
+
+    #entry-screen .entry-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "brand"
+            "card"
+            "features";
+        grid-template-rows: auto auto auto;
+        align-content: center;
+        align-items: stretch;
+        gap: 18px;
+        width: 100%;
+        max-width: 440px;
+        max-height: none;
+        margin: auto;
+        padding: 0;
+    }
+
+    /* Marca primero: símbolo, SimuIPS y subtítulo. */
+    #entry-screen .entry-brand {
+        grid-area: brand;
+        align-self: start;
+        gap: 10px;
+        margin: 0;
+    }
+
+    #entry-screen .entry-logo {
+        width: 46px;
+        height: 46px;
+        flex: 0 0 46px;
+        border-radius: 14px;
+        font-size: 25px;
+    }
+
+    #entry-screen .entry-brand-name {
+        margin: 0;
+        font-size: clamp(36px, 9vw, 42px);
+        line-height: 1;
+        letter-spacing: -1.8px;
+    }
+
+    #entry-screen .entry-brand::after {
+        margin-top: -3px;
+        font-size: 8px;
+        line-height: 1.4;
+        letter-spacing: 1.5px;
+    }
+
+    /* La tarjeta y el botón van inmediatamente debajo de la marca. */
+    #entry-screen .entry-card {
+        grid-area: card;
+        align-self: stretch;
+        width: 100%;
+        margin: 0;
+        padding: 23px 18px;
+        border-radius: 19px;
+    }
+
+    #entry-screen .entry-card-header {
+        margin-bottom: 18px;
+    }
+
+    #entry-screen .entry-card-header .page-label {
+        margin-bottom: 10px;
+        font-size: 9px;
+    }
+
+    #entry-screen .entry-card-header h1,
+    #entry-screen .entry-card-header h2 {
+        font-size: clamp(25px, 6.7vw, 29px);
+        line-height: 1.14;
+        letter-spacing: -.8px;
+    }
+
+    #entry-screen .entry-card-header p {
+        margin-top: 9px;
+        font-size: 11px;
+        line-height: 1.55;
+    }
+
+    #entry-screen .entry-guest-button {
+        width: 100%;
+        min-height: 56px;
+        gap: 10px;
+        padding: 9px 11px;
+        border-radius: 12px;
+    }
+
+    #entry-screen .entry-guest-button .entry-button-icon {
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+    }
+
+    #entry-screen .entry-guest-button strong {
+        font-size: 11px;
+    }
+
+    #entry-screen .entry-guest-button small {
+        font-size: 9px;
+    }
+
+    /* Las tres ventajas quedan debajo de la tarjeta, con sus chulos. */
+    #entry-screen .entry-info {
+        grid-area: features;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 7px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    #entry-screen .entry-info > div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 40px;
+        padding: 8px 11px;
+        border-radius: 11px;
+        font-size: 10px;
+        line-height: 1.35;
+    }
+
+    #entry-screen .entry-info > div > span {
+        display: inline-grid;
+        place-items: center;
+        width: 23px;
+        height: 23px;
+        flex: 0 0 23px;
+        border-radius: 7px;
+        font-size: 13px;
+    }
+}
+
+/* Móviles de poca altura: conservar el orden y permitir scroll si hace falta. */
+@media (max-width: 560px) and (max-height: 720px) {
+    #entry-screen.entry-screen:not(.hidden) {
+        justify-content: flex-start;
+    }
+
+    #entry-screen .entry-container {
+        align-content: start;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+
+/* ==========================================================
+   SIMUIPS — AJUSTE FINAL MÓVIL: MARCA CENTRADA + BOTÓN INVITADO
+   ========================================================== */
+@media (max-width: 560px) {
+    #entry-screen .entry-brand {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+    }
+
+    #entry-screen .entry-brand-name {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    #entry-screen .entry-brand::after {
+        width: 100%;
+        margin-top: -3px;
+        text-align: center;
+        letter-spacing: 1.35px;
+    }
+
+    /* Botón sólido y limpio, como la referencia inferior. */
+    #entry-screen .entry-guest-button {
+        min-height: 57px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 13px;
+        border: 1px solid rgba(56,217,169,.55);
+        border-radius: 9px;
+        background: #22c99b;
+        color: #06271f;
+        box-shadow: none;
+        text-align: left;
+    }
+
+    #entry-screen .entry-guest-button:hover {
+        background: #2bd3a5;
+        border-color: rgba(56,217,169,.75);
+        color: #06271f;
+        transform: none;
+        box-shadow: none;
+    }
+
+    #entry-screen .entry-guest-button .entry-button-icon {
+        position: relative;
+        width: 27px;
+        height: 27px;
+        flex: 0 0 27px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        color: transparent;
+        font-size: 0;
+    }
+
+    /* Sustituye el símbolo de diamante por un icono de usuario sin editar el HTML. */
+    #entry-screen .entry-guest-button .entry-button-icon::before {
+        content: "";
+        display: block;
+        width: 19px;
+        height: 19px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2306271f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+    }
+
+    #entry-screen .entry-guest-button > span:not(.entry-button-icon):not(.entry-button-arrow) {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: #06271f;
+        font-size: 11px;
+        font-weight: 750;
+        line-height: 1.3;
+    }
+
+    #entry-screen .entry-guest-button strong {
+        display: block;
+        color: #06271f;
+        font-size: 11px;
+        font-weight: 800;
+        line-height: 1.3;
+    }
+
+    #entry-screen .entry-guest-button small {
+        display: block;
+        margin-top: 2px;
+        color: rgba(6,39,31,.78);
+        font-size: 9px;
+        font-weight: 450;
+        line-height: 1.35;
+    }
+
+    #entry-screen .entry-guest-button .entry-button-arrow {
+        flex: 0 0 auto;
+        margin-left: auto;
+        color: #06271f;
+        font-size: 15px;
+        line-height: 1;
+    }
+}
+
+@media (max-width: 560px) and (max-height: 720px) {
+    #entry-screen .entry-brand {
+        align-items: center;
+    }
+}
+
+
+/* ==========================================================
+   SIMUIPS — MISMO BOTÓN DE INVITADO EN PC Y MÓVIL
+   En escritorio se replica el acabado móvil sin alterar el layout.
+   ========================================================== */
+@media (min-width: 561px) {
+    #entry-screen .entry-guest-button {
+        min-height: 57px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 13px;
+        border: 1px solid rgba(56,217,169,.55);
+        border-radius: 9px;
+        background: #22c99b;
+        color: #06271f;
+        box-shadow: none;
+        text-align: left;
+        filter: none;
+        transform: none;
+    }
+
+    #entry-screen .entry-guest-button:hover {
+        background: #2bd3a5;
+        border-color: rgba(56,217,169,.75);
+        color: #06271f;
+        transform: none;
+        box-shadow: none;
+        filter: none;
+    }
+
+    #entry-screen .entry-guest-button .entry-button-icon {
+        position: relative;
+        width: 27px;
+        height: 27px;
+        flex: 0 0 27px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        color: transparent;
+        font-size: 0;
+    }
+
+    #entry-screen .entry-guest-button .entry-button-icon::before {
+        content: "";
+        display: block;
+        width: 19px;
+        height: 19px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2306271f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+    }
+
+    #entry-screen .entry-guest-button > span:not(.entry-button-icon):not(.entry-button-arrow) {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: #06271f;
+        font-size: 11px;
+        font-weight: 750;
+        line-height: 1.3;
+    }
+
+    #entry-screen .entry-guest-button strong {
+        display: block;
+        color: #06271f;
+        font-size: 11px;
+        font-weight: 800;
+        line-height: 1.3;
+    }
+
+    #entry-screen .entry-guest-button small {
+        display: block;
+        margin-top: 2px;
+        color: rgba(6,39,31,.78);
+        font-size: 9px;
+        font-weight: 450;
+        line-height: 1.35;
+    }
+
+    #entry-screen .entry-guest-button .entry-button-arrow {
+        flex: 0 0 auto;
+        margin-left: auto;
+        color: #06271f;
+        font-size: 15px;
+        line-height: 1;
+    }
+}
