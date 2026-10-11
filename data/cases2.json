@@ -390,6 +390,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Valentina Torres",
+        "caseNarrative": "En la cuenta de Valentina Torres se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Reducción cerrada de fractura de cúbito y radio». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Reducción cerrada de fractura de cúbito y radio",
+          "summary": "Es una maniobra para alinear los extremos de los huesos del antebrazo fracturados sin abrir quirúrgicamente la zona de la fractura.",
+          "purpose": "Se realiza para alinear los fragmentos del cúbito y el radio y favorecer que la fractura consolide en una posición adecuada, ayudando a recuperar la función del antebrazo."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Reducción cerrada de fractura de cúbito y radio",
+        "summary": "Es una maniobra para alinear los extremos de los huesos del antebrazo fracturados sin abrir quirúrgicamente la zona de la fractura.",
+        "purpose": "Se realiza para alinear los fragmentos del cúbito y el radio y favorecer que la fractura consolide en una posición adecuada, ayudando a recuperar la función del antebrazo."
       }
     },
     {
@@ -727,6 +766,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Santiago Restrepo",
+        "caseNarrative": "En la cuenta de Santiago Restrepo se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Corrección escafocefalia» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Corrección de escafocefalia",
+          "summary": "Es una cirugía craneal destinada a corregir la forma alargada y estrecha del cráneo asociada a la fusión prematura de una sutura craneal.",
+          "purpose": "Se realiza para corregir la forma alargada del cráneo asociada a la escafocefalia y permitir una remodelación craneal acorde con la valoración especializada."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Corrección de escafocefalia",
+        "summary": "Es una cirugía craneal destinada a corregir la forma alargada y estrecha del cráneo asociada a la fusión prematura de una sutura craneal.",
+        "purpose": "Se realiza para corregir la forma alargada del cráneo asociada a la escafocefalia y permitir una remodelación craneal acorde con la valoración especializada."
       }
     },
     {
@@ -1064,6 +1142,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Camila Ospina",
+        "caseNarrative": "En la cuenta de Camila Ospina se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Drenaje de hematoma epidural o subdural agudo». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Drenaje de hematoma epidural o subdural agudo",
+          "summary": "Es una intervención para evacuar sangre acumulada entre las cubiertas del cerebro o entre una de ellas y el cráneo, según el tipo de hematoma.",
+          "purpose": "Se realiza para evacuar la sangre acumulada y disminuir la presión que el hematoma puede ejercer sobre el cerebro, buscando prevenir o limitar el daño neurológico."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Drenaje de hematoma epidural o subdural agudo",
+        "summary": "Es una intervención para evacuar sangre acumulada entre las cubiertas del cerebro o entre una de ellas y el cráneo, según el tipo de hematoma.",
+        "purpose": "Se realiza para evacuar la sangre acumulada y disminuir la presión que el hematoma puede ejercer sobre el cerebro, buscando prevenir o limitar el daño neurológico."
       }
     },
     {
@@ -1401,6 +1518,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Andrés Mejía",
+        "caseNarrative": "En la cuenta de Andrés Mejía se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Oclusión de aneurisma con gancho en circulación anterior» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Oclusión de aneurisma con gancho en circulación anterior",
+          "summary": "Es una cirugía vascular cerebral en la que se coloca un clip sobre la base de un aneurisma para excluirlo de la circulación.",
+          "purpose": "Se realiza para excluir el aneurisma de la circulación mediante un clip, con el objetivo de reducir el riesgo de que se rompa o vuelva a sangrar."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Oclusión de aneurisma con gancho en circulación anterior",
+        "summary": "Es una cirugía vascular cerebral en la que se coloca un clip sobre la base de un aneurisma para excluirlo de la circulación.",
+        "purpose": "Se realiza para excluir el aneurisma de la circulación mediante un clip, con el objetivo de reducir el riesgo de que se rompa o vuelva a sangrar."
       }
     },
     {
@@ -1738,6 +1894,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Laura Cárdenas",
+        "caseNarrative": "En la cuenta de Laura Cárdenas se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Resección de tumores corticales o subcorticales de fosa anterior o fosa media; incluye tumores de los ventrículos laterales.». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Resección de tumores corticales o subcorticales",
+          "summary": "Es una intervención neuroquirúrgica para retirar un tumor localizado en regiones corticales o subcorticales de la fosa anterior o media, según el procedimiento descrito.",
+          "purpose": "Se realiza para retirar el tumor cuando está indicada la cirugía y, según su ubicación y características, aliviar efectos sobre las estructuras cerebrales y obtener tejido para estudio."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Resección de tumores corticales o subcorticales",
+        "summary": "Es una intervención neuroquirúrgica para retirar un tumor localizado en regiones corticales o subcorticales de la fosa anterior o media, según el procedimiento descrito.",
+        "purpose": "Se realiza para retirar el tumor cuando está indicada la cirugía y, según su ubicación y características, aliviar efectos sobre las estructuras cerebrales y obtener tejido para estudio."
       }
     },
     {
@@ -2075,6 +2270,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Mateo Giraldo",
+        "caseNarrative": "En la cuenta de Mateo Giraldo se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Lobectomía temporal o extratemporal de foco convulsivógeno» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Lobectomía por foco convulsivógeno",
+          "summary": "Es una cirugía que retira una porción del lóbulo temporal o de otra región cerebral identificada como origen de crisis epilépticas.",
+          "purpose": "Se realiza en pacientes seleccionados para retirar la región cerebral identificada como origen de las crisis, con el objetivo de reducir su frecuencia o mejorar su control."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Lobectomía por foco convulsivógeno",
+        "summary": "Es una cirugía que retira una porción del lóbulo temporal o de otra región cerebral identificada como origen de crisis epilépticas.",
+        "purpose": "Se realiza en pacientes seleccionados para retirar la región cerebral identificada como origen de las crisis, con el objetivo de reducir su frecuencia o mejorar su control."
       }
     },
     {
@@ -2412,6 +2646,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Isabella Montoya",
+        "caseNarrative": "En la cuenta de Isabella Montoya se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Reducción y fijación de fractura dorsal, dorsolumbar (T10-L2), o lumbo-sacra, incluye: toma de injerto.». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Reducción y fijación de fractura vertebral",
+          "summary": "Es una cirugía para realinear y estabilizar una fractura de la columna dorsal, dorsolumbar o lumbosacra; la descripción del procedimiento incluye toma de injerto.",
+          "purpose": "Se realiza para realinear y estabilizar la columna lesionada, buscando proteger las estructuras nerviosas y favorecer una recuperación funcional según el tipo de fractura."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Reducción y fijación de fractura vertebral",
+        "summary": "Es una cirugía para realinear y estabilizar una fractura de la columna dorsal, dorsolumbar o lumbosacra; la descripción del procedimiento incluye toma de injerto.",
+        "purpose": "Se realiza para realinear y estabilizar la columna lesionada, buscando proteger las estructuras nerviosas y favorecer una recuperación funcional según el tipo de fractura."
       }
     },
     {
@@ -2749,6 +3022,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Samuel Arango",
+        "caseNarrative": "En la cuenta de Samuel Arango se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Discectomía cervical anterior e injerto» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Discectomía cervical anterior e injerto",
+          "summary": "Es una cirugía por la parte anterior del cuello para retirar material del disco intervertebral cervical y colocar un injerto según la técnica realizada.",
+          "purpose": "Se realiza para retirar material discal cervical que puede comprimir estructuras nerviosas y, con el injerto indicado, favorecer la estabilidad del segmento intervenido."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Discectomía cervical anterior e injerto",
+        "summary": "Es una cirugía por la parte anterior del cuello para retirar material del disco intervertebral cervical y colocar un injerto según la técnica realizada.",
+        "purpose": "Se realiza para retirar material discal cervical que puede comprimir estructuras nerviosas y, con el injerto indicado, favorecer la estabilidad del segmento intervenido."
       }
     },
     {
@@ -3086,6 +3398,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Juliana Vélez",
+        "caseNarrative": "En la cuenta de Juliana Vélez se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Punción lumbar». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Punción lumbar",
+          "summary": "Es la introducción de una aguja en la región lumbar para acceder al espacio donde circula el líquido cefalorraquídeo.",
+          "purpose": "Se realiza para obtener líquido cefalorraquídeo para análisis, medir su presión o administrar medicamentos cuando exista una indicación clínica específica."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Punción lumbar",
+        "summary": "Es la introducción de una aguja en la región lumbar para acceder al espacio donde circula el líquido cefalorraquídeo.",
+        "purpose": "Se realiza para obtener líquido cefalorraquídeo para análisis, medir su presión o administrar medicamentos cuando exista una indicación clínica específica."
       }
     },
     {
@@ -3423,6 +3774,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Nicolás Pardo",
+        "caseNarrative": "En la cuenta de Nicolás Pardo se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Reconstrucción del plejo con neurorrafias» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Reconstrucción de plexo con neurorrafias",
+          "summary": "Es una intervención para reparar nervios de un plexo mediante suturas nerviosas u otras técnicas reconstructivas indicadas.",
+          "purpose": "Se realiza para reparar los nervios lesionados del plexo y buscar recuperar, en la medida posible, la sensibilidad y el movimiento de las zonas afectadas."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Reconstrucción de plexo con neurorrafias",
+        "summary": "Es una intervención para reparar nervios de un plexo mediante suturas nerviosas u otras técnicas reconstructivas indicadas.",
+        "purpose": "Se realiza para reparar los nervios lesionados del plexo y buscar recuperar, en la medida posible, la sensibilidad y el movimiento de las zonas afectadas."
       }
     },
     {
@@ -3805,6 +4195,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Manuela Ríos",
+        "caseNarrative": "En la cuenta de Manuela Ríos se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Lavado, sondeo e intubación de vías lagrimales». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Lavado, sondeo e intubación de vías lagrimales",
+          "summary": "Es un procedimiento para explorar y tratar las vías por donde drenan las lágrimas, mediante lavado, sonda y colocación de un tubo cuando está indicado.",
+          "purpose": "Se realiza para evaluar y mejorar el paso de las lágrimas hacia la nariz cuando existe obstrucción o alteración del drenaje lagrimal."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Lavado, sondeo e intubación de vías lagrimales",
+        "summary": "Es un procedimiento para explorar y tratar las vías por donde drenan las lágrimas, mediante lavado, sonda y colocación de un tubo cuando está indicado.",
+        "purpose": "Se realiza para evaluar y mejorar el paso de las lágrimas hacia la nariz cuando existe obstrucción o alteración del drenaje lagrimal."
       }
     },
     {
@@ -4142,6 +4571,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Daniela Quintero",
+        "caseNarrative": "En la cuenta de Daniela Quintero se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Resección total por tumor benigno o maligno de párpado (incluye reconstrucción)» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Resección total de tumor de párpado con reconstrucción",
+          "summary": "Es la extirpación de una lesión tumoral del párpado con reconstrucción del tejido retirado, según las necesidades del defecto.",
+          "purpose": "Se realiza para retirar la lesión del párpado y reconstruir el defecto resultante, buscando tratar la lesión y conservar la función y cobertura del ojo."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Resección total de tumor de párpado con reconstrucción",
+        "summary": "Es la extirpación de una lesión tumoral del párpado con reconstrucción del tejido retirado, según las necesidades del defecto.",
+        "purpose": "Se realiza para retirar la lesión del párpado y reconstruir el defecto resultante, buscando tratar la lesión y conservar la función y cobertura del ojo."
       }
     },
     {
@@ -4533,6 +5001,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Sebastián López",
+        "caseNarrative": "En la cuenta de Sebastián López se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Resección de pterigios nasal y/o temporal, con plastia». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Resección de pterigio con plastia",
+          "summary": "Es la extirpación de un pterigio, crecimiento de tejido de la superficie ocular que puede avanzar sobre la córnea, acompañada de una técnica plástica.",
+          "purpose": "Se realiza para retirar el pterigio y tratar la superficie ocular afectada; la plastia busca favorecer la reparación del área intervenida y reducir la alteración local."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Resección de pterigio con plastia",
+        "summary": "Es la extirpación de un pterigio, crecimiento de tejido de la superficie ocular que puede avanzar sobre la córnea, acompañada de una técnica plástica.",
+        "purpose": "Se realiza para retirar el pterigio y tratar la superficie ocular afectada; la plastia busca favorecer la reparación del área intervenida y reducir la alteración local."
       }
     },
     {
@@ -4905,6 +5412,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Mariana Gil",
+        "caseNarrative": "En la cuenta de Mariana Gil se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Extracción de cuerpo extraño de órbita» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Extracción de cuerpo extraño de órbita",
+          "summary": "Es un procedimiento para retirar un objeto extraño alojado en la órbita, la cavidad ósea que rodea el ojo.",
+          "purpose": "Se realiza para retirar un objeto alojado en la órbita que puede lesionar los tejidos o comprometer las estructuras cercanas al ojo."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Extracción de cuerpo extraño de órbita",
+        "summary": "Es un procedimiento para retirar un objeto extraño alojado en la órbita, la cavidad ósea que rodea el ojo.",
+        "purpose": "Se realiza para retirar un objeto alojado en la órbita que puede lesionar los tejidos o comprometer las estructuras cercanas al ojo."
       }
     },
     {
@@ -5277,6 +5823,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Tomás Salazar",
+        "caseNarrative": "En la cuenta de Tomás Salazar se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Cirugía de estrabismo tres músculos». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Cirugía de estrabismo de tres músculos",
+          "summary": "Es una cirugía que modifica la posición o tensión de músculos extraoculares para corregir la desviación de los ojos; en este caso se describen tres músculos.",
+          "purpose": "Se realiza para corregir la alineación de los ojos mediante el ajuste de los músculos extraoculares, con el objetivo de mejorar la posición ocular y, cuando sea posible, la función visual binocular."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Cirugía de estrabismo de tres músculos",
+        "summary": "Es una cirugía que modifica la posición o tensión de músculos extraoculares para corregir la desviación de los ojos; en este caso se describen tres músculos.",
+        "purpose": "Se realiza para corregir la alineación de los ojos mediante el ajuste de los músculos extraoculares, con el objetivo de mejorar la posición ocular y, cuando sea posible, la función visual binocular."
       }
     },
     {
@@ -5659,6 +6244,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Sara Duque",
+        "caseNarrative": "En la cuenta de Sara Duque se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Queratectomía con excímer láser (fotorrefractiva o fototerapéutica )» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Queratectomía con láser excímer",
+          "summary": "Es un procedimiento que utiliza láser excímer para retirar o remodelar tejido superficial de la córnea con finalidad fotorrefractiva o fototerapéutica.",
+          "purpose": "Se realiza para remodelar o retirar tejido superficial de la córnea con láser, según la indicación refractiva o terapéutica, buscando corregir el defecto tratado."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Queratectomía con láser excímer",
+        "summary": "Es un procedimiento que utiliza láser excímer para retirar o remodelar tejido superficial de la córnea con finalidad fotorrefractiva o fototerapéutica.",
+        "purpose": "Se realiza para remodelar o retirar tejido superficial de la córnea con láser, según la indicación refractiva o terapéutica, buscando corregir el defecto tratado."
       }
     },
     {
@@ -6041,6 +6665,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Felipe Roldán",
+        "caseNarrative": "En la cuenta de Felipe Roldán se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Descompresión de nervio en mano». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Descompresión de nervio en mano",
+          "summary": "Es una cirugía que libera un nervio de una zona donde está comprimido en la mano o muñeca.",
+          "purpose": "Se realiza para liberar el nervio comprimido y buscar aliviar síntomas como dolor, hormigueo o pérdida de sensibilidad y mejorar su función."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Descompresión de nervio en mano",
+        "summary": "Es una cirugía que libera un nervio de una zona donde está comprimido en la mano o muñeca.",
+        "purpose": "Se realiza para liberar el nervio comprimido y buscar aliviar síntomas como dolor, hormigueo o pérdida de sensibilidad y mejorar su función."
       }
     },
     {
@@ -6413,6 +7076,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Gabriela Marín",
+        "caseNarrative": "En la cuenta de Gabriela Marín se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Neurorrafia de un nervio en mano, con injerto» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Neurorrafia de nervio en mano con injerto",
+          "summary": "Es la reparación quirúrgica de un nervio de la mano mediante sutura, utilizando un injerto cuando se requiere reconstruir un defecto.",
+          "purpose": "Se realiza para restablecer la continuidad de un nervio lesionado de la mano y favorecer la recuperación de la sensibilidad o del movimiento, según el nervio afectado y la lesión."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Neurorrafia de nervio en mano con injerto",
+        "summary": "Es la reparación quirúrgica de un nervio de la mano mediante sutura, utilizando un injerto cuando se requiere reconstruir un defecto.",
+        "purpose": "Se realiza para restablecer la continuidad de un nervio lesionado de la mano y favorecer la recuperación de la sensibilidad o del movimiento, según el nervio afectado y la lesión."
       }
     },
     {
@@ -6785,6 +7487,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Juan Pablo Ruiz",
+        "caseNarrative": "En la cuenta de Juan Pablo Ruiz se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Corrección de sindactilia simple (un espacio)». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Corrección de sindactilia simple",
+          "summary": "Es una cirugía para separar dedos que están unidos por tejido, en un espacio interdigital.",
+          "purpose": "Se realiza para separar los dedos unidos y mejorar su movilidad y función; también puede facilitar el desarrollo y la utilización de la mano o del pie afectados."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Corrección de sindactilia simple",
+        "summary": "Es una cirugía para separar dedos que están unidos por tejido, en un espacio interdigital.",
+        "purpose": "Se realiza para separar los dedos unidos y mejorar su movilidad y función; también puede facilitar el desarrollo y la utilización de la mano o del pie afectados."
       }
     },
     {
@@ -7160,6 +7901,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Antonia Bedoya",
+        "caseNarrative": "En la cuenta de Antonia Bedoya se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Operación cesárea, segmentaria transversal o corporal» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Operación cesárea",
+          "summary": "Es el nacimiento del bebé mediante una incisión quirúrgica en el abdomen y el útero; la descripción contempla técnica segmentaria transversal o corporal.",
+          "purpose": "Se realiza para permitir el nacimiento del bebé mediante una intervención abdominal y uterina cuando el parto por esa vía está indicado por las condiciones maternas u obstétricas."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Operación cesárea",
+        "summary": "Es el nacimiento del bebé mediante una incisión quirúrgica en el abdomen y el útero; la descripción contempla técnica segmentaria transversal o corporal.",
+        "purpose": "Se realiza para permitir el nacimiento del bebé mediante una intervención abdominal y uterina cuando el parto por esa vía está indicado por las condiciones maternas u obstétricas."
       }
     },
     {
@@ -7542,6 +8322,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "David Correa",
+        "caseNarrative": "En la cuenta de David Correa se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Plastia en z (una a dos) en cara, genitales, zonas de flexión de axila, cuello, codo, muñeca, dorso de pie, hueco poplíteo, región inguinal.». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Plastia en Z",
+          "summary": "Es una técnica de cirugía plástica que reorganiza colgajos de piel en forma de Z para cambiar la dirección de una cicatriz o liberar una retracción.",
+          "purpose": "Se realiza para cambiar la dirección de una cicatriz o liberar una retracción de la piel, buscando mejorar la movilidad y la función de la zona afectada."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Plastia en Z",
+        "summary": "Es una técnica de cirugía plástica que reorganiza colgajos de piel en forma de Z para cambiar la dirección de una cicatriz o liberar una retracción.",
+        "purpose": "Se realiza para cambiar la dirección de una cicatriz o liberar una retracción de la piel, buscando mejorar la movilidad y la función de la zona afectada."
       }
     },
     {
@@ -7879,6 +8698,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Emilia Vargas",
+        "caseNarrative": "En la cuenta de Emilia Vargas se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Corrección secuelas de parálisis facial (técnica microquirúrgica)» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Corrección microquirúrgica de secuelas de parálisis facial",
+          "summary": "Es una intervención reconstructiva que utiliza técnicas microquirúrgicas para tratar alteraciones funcionales o de movimiento que persisten tras una parálisis facial.",
+          "purpose": "Se realiza para tratar secuelas funcionales de la parálisis facial y buscar mejorar el movimiento, la simetría o el cierre de estructuras faciales, según la técnica indicada."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Corrección microquirúrgica de secuelas de parálisis facial",
+        "summary": "Es una intervención reconstructiva que utiliza técnicas microquirúrgicas para tratar alteraciones funcionales o de movimiento que persisten tras una parálisis facial.",
+        "purpose": "Se realiza para tratar secuelas funcionales de la parálisis facial y buscar mejorar el movimiento, la simetría o el cierre de estructuras faciales, según la técnica indicada."
       }
     },
     {
@@ -8216,6 +9074,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Martín Hoyos",
+        "caseNarrative": "En la cuenta de Martín Hoyos se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Cateterización y sialometría». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Cateterización y sialometría",
+          "summary": "Es la exploración de conductos de glándulas salivales mediante cateterización, junto con la medición o evaluación del flujo de saliva.",
+          "purpose": "Se realiza para explorar el conducto de una glándula salival y evaluar la producción o el flujo de saliva, según la indicación clínica."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Cateterización y sialometría",
+        "summary": "Es la exploración de conductos de glándulas salivales mediante cateterización, junto con la medición o evaluación del flujo de saliva.",
+        "purpose": "Se realiza para explorar el conducto de una glándula salival y evaluar la producción o el flujo de saliva, según la indicación clínica."
       }
     },
     {
@@ -8598,6 +9495,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Luciana Cano",
+        "caseNarrative": "En la cuenta de Luciana Cano se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Endomiocárdica» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Procedimiento endomiocárdico",
+          "summary": "La denominación del caso es general y se refiere a una intervención o exploración relacionada con el endocardio o el miocardio.",
+          "purpose": "La denominación disponible no permite precisar la maniobra realizada ni su finalidad clínica concreta. Esta debe establecerse a partir de la historia clínica y del informe del procedimiento, sin inferirla solo por el nombre."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Procedimiento endomiocárdico",
+        "summary": "La denominación del caso es general y se refiere a una intervención o exploración relacionada con el endocardio o el miocardio.",
+        "purpose": "La denominación disponible no permite precisar la maniobra realizada ni su finalidad clínica concreta. Esta debe establecerse a partir de la historia clínica y del informe del procedimiento, sin inferirla solo por el nombre."
       }
     },
     {
@@ -8970,6 +9906,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Alejandro Mejía",
+        "caseNarrative": "En la cuenta de Alejandro Mejía se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Colon por laparotomía, biopsias múltiples». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Colon por laparotomía con biopsias múltiples",
+          "summary": "Es una intervención mediante apertura quirúrgica del abdomen para acceder al colon y tomar varias muestras de tejido para estudio.",
+          "purpose": "Se realiza para obtener varias muestras del colon y estudiarlas, con el fin de ayudar a identificar la naturaleza de las alteraciones observadas y orientar el diagnóstico."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Colon por laparotomía con biopsias múltiples",
+        "summary": "Es una intervención mediante apertura quirúrgica del abdomen para acceder al colon y tomar varias muestras de tejido para estudio.",
+        "purpose": "Se realiza para obtener varias muestras del colon y estudiarlas, con el fin de ayudar a identificar la naturaleza de las alteraciones observadas y orientar el diagnóstico."
       }
     },
     {
@@ -9342,6 +10317,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Paula Restrepo",
+        "caseNarrative": "En la cuenta de Paula Restrepo se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Riñón por lumbotomía» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Procedimiento renal por lumbotomía",
+          "summary": "La lumbotomía es un abordaje quirúrgico a través de la región lumbar para acceder al riñón. El nombre del caso no especifica por sí solo la maniobra renal exacta.",
+          "purpose": "La finalidad depende de la intervención renal específica realizada por el abordaje lumbar. Debe confirmarse en el informe operatorio; el nombre del caso por sí solo no permite precisar qué problema se trató."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Procedimiento renal por lumbotomía",
+        "summary": "La lumbotomía es un abordaje quirúrgico a través de la región lumbar para acceder al riñón. El nombre del caso no especifica por sí solo la maniobra renal exacta.",
+        "purpose": "La finalidad depende de la intervención renal específica realizada por el abordaje lumbar. Debe confirmarse en el informe operatorio; el nombre del caso por sí solo no permite precisar qué problema se trató."
       }
     },
     {
@@ -9714,6 +10728,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Miguel Ángel Jaramillo",
+        "caseNarrative": "En la cuenta de Miguel Ángel Jaramillo se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Uretrolitotomía». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Uretrolitotomía",
+          "summary": "Es una intervención para extraer un cálculo alojado en el uréter, el conducto que lleva la orina desde el riñón hasta la vejiga.",
+          "purpose": "Se realiza para extraer un cálculo alojado en el uréter cuando está indicada la intervención, con el objetivo de restablecer el flujo de orina y tratar la obstrucción causada por el cálculo."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Uretrolitotomía",
+        "summary": "Es una intervención para extraer un cálculo alojado en el uréter, el conducto que lleva la orina desde el riñón hasta la vejiga.",
+        "purpose": "Se realiza para extraer un cálculo alojado en el uréter cuando está indicada la intervención, con el objetivo de restablecer el flujo de orina y tratar la obstrucción causada por el cálculo."
       }
     },
     {
@@ -10098,6 +11151,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Sofía Zapata",
+        "caseNarrative": "En la cuenta de Sofía Zapata se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Uretrotomía interna endoscópica» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Uretrotomía interna endoscópica",
+          "summary": "Es un procedimiento endoscópico que realiza una incisión interna en una estrechez de la uretra para ampliar el paso de la orina.",
+          "purpose": "Se realiza para abrir la estrechez de la uretra y facilitar el paso de la orina, buscando mejorar el vaciamiento vesical cuando la obstrucción lo dificulta."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Uretrotomía interna endoscópica",
+        "summary": "Es un procedimiento endoscópico que realiza una incisión interna en una estrechez de la uretra para ampliar el paso de la orina.",
+        "purpose": "Se realiza para abrir la estrechez de la uretra y facilitar el paso de la orina, buscando mejorar el vaciamiento vesical cuando la obstrucción lo dificulta."
       }
     },
     {
@@ -10482,6 +11574,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "María Fernanda Ríos",
+        "caseNarrative": "En la cuenta de María Fernanda Ríos se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Histeroscopia». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Histeroscopia",
+          "summary": "Es la exploración del interior del útero con un instrumento óptico introducido a través del cuello uterino.",
+          "purpose": "Se realiza para observar el interior del útero y, según la indicación, investigar síntomas o efectuar maniobras diagnósticas o terapéuticas."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Histeroscopia",
+        "summary": "Es la exploración del interior del útero con un instrumento óptico introducido a través del cuello uterino.",
+        "purpose": "Se realiza para observar el interior del útero y, según la indicación, investigar síntomas o efectuar maniobras diagnósticas o terapéuticas."
       }
     },
     {
@@ -10875,6 +12006,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Cristina Londoño",
+        "caseNarrative": "En la cuenta de Cristina Londoño se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro disponible del procedimiento",
+            "content": "Registro disponible: «Cirugía laparoscópica del embarazo ectópico (Salpingostomía)» figura como realizado. En el documento aportado no se especifican el tipo de anestesia, el lugar o técnica de realización, la participación efectiva de ayudantía, el consumo de materiales ni la duración de la recuperación. La ausencia de esos datos en este soporte no demuestra que los servicios no se hayan prestado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Cirugía laparoscópica de embarazo ectópico",
+          "summary": "Es una intervención por laparoscopia para tratar un embarazo implantado fuera de la cavidad uterina; la salpingostomía abre la trompa para retirar el tejido gestacional procurando conservarla cuando es posible.",
+          "purpose": "Se realiza para tratar un embarazo implantado fuera de la cavidad uterina. En la salpingostomía se busca retirar el tejido gestacional y conservar la trompa cuando la situación clínica lo permite."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Cirugía laparoscópica de embarazo ectópico",
+        "summary": "Es una intervención por laparoscopia para tratar un embarazo implantado fuera de la cavidad uterina; la salpingostomía abre la trompa para retirar el tejido gestacional procurando conservarla cuando es posible.",
+        "purpose": "Se realiza para tratar un embarazo implantado fuera de la cavidad uterina. En la salpingostomía se busca retirar el tejido gestacional y conservar la trompa cuando la situación clínica lo permite."
       }
     },
     {
@@ -11269,6 +12439,45 @@
           "invoiceTotalCOP": null,
           "invoiceTotalNote": "No se fija un único total facturable: el caso no incluye tipo de anestesia, lugar/técnica, profesional que prestó cada servicio, consumo de materiales, nivel de institución ni tiempo en recuperación. Los valores individuales son cálculos aritméticos de escenarios tarifarios, no una autorización automática de cobro."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Esteban Muñoz",
+        "caseNarrative": "En la cuenta de Esteban Muñoz se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "service-record",
+            "title": "Registro del procedimiento",
+            "content": "Registro del ejercicio: se consigna la realización de «Salpingectomía,ooforectomía o salpingo-ooforectomía ,unilateral o bilateral». Este documento confirma el procedimiento registrado; no contiene detalle específico sobre tipo de anestesia, lugar de realización, ayudantía, consumo de materiales ni tiempo de recuperación."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Salpingectomía, ooforectomía o salpingo-ooforectomía",
+          "summary": "Son procedimientos quirúrgicos para retirar una trompa de Falopio, un ovario o ambos órganos del mismo lado; pueden ser unilaterales o bilaterales.",
+          "purpose": "Se realiza para retirar la trompa de Falopio, el ovario o ambos cuando existe una indicación clínica o quirúrgica; el órgano y el lado tratados dependen del caso."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Salpingectomía, ooforectomía o salpingo-ooforectomía",
+        "summary": "Son procedimientos quirúrgicos para retirar una trompa de Falopio, un ovario o ambos órganos del mismo lado; pueden ser unilaterales o bilaterales.",
+        "purpose": "Se realiza para retirar la trompa de Falopio, el ovario o ambos cuando existe una indicación clínica o quirúrgica; el órgano y el lado tratados dependen del caso."
       }
     },
     {
@@ -11366,6 +12575,45 @@
           "invoiceTotalCOP": 3960,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Ana María Vélez",
+        "caseNarrative": "En la cuenta de Ana María Vélez se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Solicitud de laboratorio",
+            "content": "Solicitud registrada: «Ácido ascórbico (vitamina C)». Para este ejercicio se registra una unidad del servicio solicitado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Ácido ascórbico (vitamina C)",
+          "summary": "Es una prueba de laboratorio destinada a medir la concentración de vitamina C en la muestra analizada.",
+          "purpose": "Se solicita para conocer la concentración de vitamina C en la muestra y apoyar la evaluación de una posible deficiencia u otra necesidad clínica indicada."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Ácido ascórbico (vitamina C)",
+        "summary": "Es una prueba de laboratorio destinada a medir la concentración de vitamina C en la muestra analizada.",
+        "purpose": "Se solicita para conocer la concentración de vitamina C en la muestra y apoyar la evaluación de una posible deficiencia u otra necesidad clínica indicada."
       }
     },
     {
@@ -11463,6 +12711,45 @@
           "invoiceTotalCOP": 3045,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Kevin Ramírez",
+        "caseNarrative": "En la cuenta de Kevin Ramírez se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Soporte disponible de laboratorio",
+            "content": "En el soporte disponible aparece la solicitud de «Ácido úrico». Este documento identifica el examen solicitado, pero no aporta por sí solo un resultado ni una constancia independiente de procesamiento. No concluyas que el examen no se realizó; determina qué puede validarse con el soporte disponible."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Ácido úrico",
+          "summary": "Es una prueba de laboratorio que mide la concentración de ácido úrico en una muestra, habitualmente de sangre.",
+          "purpose": "Se realiza para medir el ácido úrico y ayudar a evaluar alteraciones de su metabolismo, como parte del estudio clínico que haya motivado la orden."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Ácido úrico",
+        "summary": "Es una prueba de laboratorio que mide la concentración de ácido úrico en una muestra, habitualmente de sangre.",
+        "purpose": "Se realiza para medir el ácido úrico y ayudar a evaluar alteraciones de su metabolismo, como parte del estudio clínico que haya motivado la orden."
       }
     },
     {
@@ -11560,6 +12847,45 @@
           "invoiceTotalCOP": 3075,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Diana Marcela Arias",
+        "caseNarrative": "En la cuenta de Diana Marcela Arias se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Solicitud de laboratorio",
+            "content": "Solicitud registrada: «Ácido úrico en orina de 24 horas». Para este ejercicio se registra una unidad del servicio solicitado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Ácido úrico en orina de 24 horas",
+          "summary": "Es una prueba que cuantifica el ácido úrico eliminado en la orina recolectada durante un periodo de 24 horas.",
+          "purpose": "Se realiza para cuantificar cuánto ácido úrico se elimina por la orina durante 24 horas y apoyar la evaluación de alteraciones del metabolismo del ácido úrico o de cálculos urinarios, según la indicación."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Ácido úrico en orina de 24 horas",
+        "summary": "Es una prueba que cuantifica el ácido úrico eliminado en la orina recolectada durante un periodo de 24 horas.",
+        "purpose": "Se realiza para cuantificar cuánto ácido úrico se elimina por la orina durante 24 horas y apoyar la evaluación de alteraciones del metabolismo del ácido úrico o de cálculos urinarios, según la indicación."
       }
     },
     {
@@ -11657,6 +12983,45 @@
           "invoiceTotalCOP": 2740,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Carlos Andrés Gil",
+        "caseNarrative": "En la cuenta de Carlos Andrés Gil se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Soporte disponible de laboratorio",
+            "content": "En el soporte disponible aparece la solicitud de «Albúmina». Este documento identifica el examen solicitado, pero no aporta por sí solo un resultado ni una constancia independiente de procesamiento. No concluyas que el examen no se realizó; determina qué puede validarse con el soporte disponible."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Albúmina",
+          "summary": "Es una prueba de laboratorio que mide la concentración de albúmina, una proteína presente principalmente en la sangre.",
+          "purpose": "Se realiza para medir la albúmina y apoyar la evaluación del estado proteico y de determinadas alteraciones hepáticas, renales o generales, según el contexto clínico."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Albúmina",
+        "summary": "Es una prueba de laboratorio que mide la concentración de albúmina, una proteína presente principalmente en la sangre.",
+        "purpose": "Se realiza para medir la albúmina y apoyar la evaluación del estado proteico y de determinadas alteraciones hepáticas, renales o generales, según el contexto clínico."
       }
     },
     {
@@ -11754,6 +13119,45 @@
           "invoiceTotalCOP": 5695,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Natalia Suárez",
+        "caseNarrative": "En la cuenta de Natalia Suárez se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Solicitud de laboratorio",
+            "content": "Solicitud registrada: «Amilasa». Para este ejercicio se registra una unidad del servicio solicitado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Amilasa",
+          "summary": "Es una prueba de laboratorio que mide la actividad o concentración de la enzima amilasa en una muestra.",
+          "purpose": "Se realiza para medir la amilasa y apoyar la evaluación de posibles alteraciones pancreáticas u otras condiciones relacionadas, de acuerdo con la indicación médica."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Amilasa",
+        "summary": "Es una prueba de laboratorio que mide la actividad o concentración de la enzima amilasa en una muestra.",
+        "purpose": "Se realiza para medir la amilasa y apoyar la evaluación de posibles alteraciones pancreáticas u otras condiciones relacionadas, de acuerdo con la indicación médica."
       }
     },
     {
@@ -11851,6 +13255,45 @@
           "invoiceTotalCOP": 4165,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Óscar Jiménez",
+        "caseNarrative": "En la cuenta de Óscar Jiménez se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Soporte disponible de laboratorio",
+            "content": "En el soporte disponible aparece la solicitud de «Alanino aminotransferasas ALT, TGP». Este documento identifica el examen solicitado, pero no aporta por sí solo un resultado ni una constancia independiente de procesamiento. No concluyas que el examen no se realizó; determina qué puede validarse con el soporte disponible."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Alanino aminotransferasas (ALT/TGP)",
+          "summary": "Es una prueba de laboratorio que mide la enzima ALT, también llamada TGP, utilizada como parte de la evaluación de la función y lesión hepática.",
+          "purpose": "Se realiza para medir la ALT/TGP y apoyar la evaluación de posible lesión de las células del hígado junto con los demás hallazgos clínicos y de laboratorio."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Alanino aminotransferasas (ALT/TGP)",
+        "summary": "Es una prueba de laboratorio que mide la enzima ALT, también llamada TGP, utilizada como parte de la evaluación de la función y lesión hepática.",
+        "purpose": "Se realiza para medir la ALT/TGP y apoyar la evaluación de posible lesión de las células del hígado junto con los demás hallazgos clínicos y de laboratorio."
       }
     },
     {
@@ -11948,6 +13391,45 @@
           "invoiceTotalCOP": 4620,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Lina Marcela Ortiz",
+        "caseNarrative": "En la cuenta de Lina Marcela Ortiz se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Solicitud de laboratorio",
+            "content": "Solicitud registrada: «Bilirrubina total y directa». Para este ejercicio se registra una unidad del servicio solicitado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Bilirrubina total y directa",
+          "summary": "Es un análisis que determina la bilirrubina total y la fracción directa en una muestra de laboratorio.",
+          "purpose": "Se realiza para evaluar la bilirrubina total y directa y ayudar a estudiar alteraciones del metabolismo de la bilirrubina, del hígado o de las vías biliares según el contexto clínico."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Bilirrubina total y directa",
+        "summary": "Es un análisis que determina la bilirrubina total y la fracción directa en una muestra de laboratorio.",
+        "purpose": "Se realiza para evaluar la bilirrubina total y directa y ayudar a estudiar alteraciones del metabolismo de la bilirrubina, del hígado o de las vías biliares según el contexto clínico."
       }
     },
     {
@@ -12045,6 +13527,45 @@
           "invoiceTotalCOP": 4060,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Jorge Iván Pérez",
+        "caseNarrative": "En la cuenta de Jorge Iván Pérez se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Soporte disponible de laboratorio",
+            "content": "En el soporte disponible aparece la solicitud de «Colesterol total». Este documento identifica el examen solicitado, pero no aporta por sí solo un resultado ni una constancia independiente de procesamiento. No concluyas que el examen no se realizó; determina qué puede validarse con el soporte disponible."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Colesterol total",
+          "summary": "Es una prueba de laboratorio que mide la cantidad total de colesterol en una muestra de sangre.",
+          "purpose": "Se realiza para conocer el colesterol total y apoyar la evaluación del perfil lipídico y del riesgo cardiovascular junto con otros factores clínicos."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Colesterol total",
+        "summary": "Es una prueba de laboratorio que mide la cantidad total de colesterol en una muestra de sangre.",
+        "purpose": "Se realiza para conocer el colesterol total y apoyar la evaluación del perfil lipídico y del riesgo cardiovascular junto con otros factores clínicos."
       }
     },
     {
@@ -12142,6 +13663,45 @@
           "invoiceTotalCOP": 2845,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Mónica Patricia Castro",
+        "caseNarrative": "En la cuenta de Mónica Patricia Castro se incluye el procedimiento registrado. La documentación disponible identifica la atención realizada.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Solicitud de laboratorio",
+            "content": "Solicitud registrada: «Creatinina». Para este ejercicio se registra una unidad del servicio solicitado."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Creatinina",
+          "summary": "Es una prueba de laboratorio que mide la concentración de creatinina, utilizada entre otros fines para evaluar la función renal.",
+          "purpose": "Se realiza para medir la creatinina y apoyar la evaluación de la función renal, interpretándola junto con otros datos clínicos y de laboratorio."
+        },
+        "difficulty": "facil"
+      },
+      "whatIsProcedure": {
+        "title": "Creatinina",
+        "summary": "Es una prueba de laboratorio que mide la concentración de creatinina, utilizada entre otros fines para evaluar la función renal.",
+        "purpose": "Se realiza para medir la creatinina y apoyar la evaluación de la función renal, interpretándola junto con otros datos clínicos y de laboratorio."
       }
     },
     {
@@ -12239,6 +13799,45 @@
           "invoiceTotalCOP": 2740,
           "invoiceTotalNote": "Valor del examen solamente; sujeto a confirmar que el examen fue efectivamente realizado y que no existe otro servicio documentado independiente."
         }
+      },
+      "studentMode": {
+        "enabled": true,
+        "patientName": "Manuel Esteban Rojas",
+        "caseNarrative": "En la cuenta de Manuel Esteban Rojas se incluyen conceptos relacionados con la atención. La documentación disponible registra el procedimiento realizado, pero no permite confirmar todos los servicios complementarios incluidos en la cuenta.",
+        "taskInstructions": "Realiza la facturación del caso y calcula los valores que correspondan según el Manual ISS de 2000.",
+        "documents": [
+          {
+            "id": "lab-request",
+            "title": "Soporte disponible de laboratorio",
+            "content": "En el soporte disponible aparece la solicitud de «Coprológico». Este documento identifica el examen solicitado, pero no aporta por sí solo un resultado ni una constancia independiente de procesamiento. No concluyas que el examen no se realizó; determina qué puede validarse con el soporte disponible."
+          }
+        ],
+        "displayRules": {
+          "keepExistingLiquidationTable": true,
+          "hideDefinitivelyNotApplicableComponents": true,
+          "showConditionalComponentsForStudentDecision": true,
+          "showMissingSupportAsNeedsVerification": true,
+          "neverAssumeServiceWasProvidedWithoutSupport": true,
+          "doNotRevealExpectedCodesOrValuesInNarrative": true,
+          "hideDocumentStatus": true,
+          "hideDocumentPurpose": true,
+          "showDocumentContentOnOpen": true,
+          "keepCaseNarrativeAndProcedureVisible": true,
+          "avoidHintsInDocumentText": true,
+          "showOnlyDocumentsWithActualContent": true,
+          "doNotGenerateMissingDocumentPlaceholders": true
+        },
+        "whatIsProcedure": {
+          "title": "Coprológico",
+          "summary": "Es un examen de materia fecal que evalúa características macroscópicas y microscópicas, según el alcance del laboratorio.",
+          "purpose": "Se realiza para evaluar las características de la materia fecal y buscar hallazgos que ayuden a estudiar alteraciones digestivas o parasitarias, de acuerdo con los componentes incluidos en el examen."
+        },
+        "difficulty": "dificil"
+      },
+      "whatIsProcedure": {
+        "title": "Coprológico",
+        "summary": "Es un examen de materia fecal que evalúa características macroscópicas y microscópicas, según el alcance del laboratorio.",
+        "purpose": "Se realiza para evaluar las características de la materia fecal y buscar hallazgos que ayuden a estudiar alteraciones digestivas o parasitarias, de acuerdo con los componentes incluidos en el examen."
       }
     }
   ],
@@ -12291,7 +13890,7 @@
   },
   "displayContract": {
     "version": 1,
-    "purpose": "Orden y semántica de columnas para la futura adaptación de script.js",
+    "purpose": "Guía de presentación para la interfaz de estudiante; no altera reglas tarifarias.",
     "professionalFees": {
       "uvrColumn": "Mostrar factor ISS del honorario (39101=1270, 39102=960, 39103=360), no las UVR del procedimiento.",
       "calculation": "El sistema usa procedure.uvr/answerKey.procedureUVR internamente y multiplica por el factor cuando el concepto es aplicable."
@@ -12300,6 +13899,56 @@
       "upTo450UVR": "Mostrar rango textual oficial y tarifa fija; nunca multiplicar el rango por la tarifa.",
       "over450UVR": "Aplicar UVR del procedimiento × 1225, conforme al parágrafo 1 del artículo 48."
     },
-    "applicability": "No sumar automáticamente componentes con applicability.status conditional o not_applicable. Los escenarios alternativos no son acumulables."
+    "applicability": "No sumar automáticamente componentes con applicability.status conditional o not_applicable. Los escenarios alternativos no son acumulables.",
+    "studentDocuments": {
+      "showStatusBadges": false,
+      "showPurposeText": false,
+      "showContentOnlyWhenOpened": true,
+      "preserveExistingBillingLogic": true
+    },
+    "showStatusBadges": false,
+    "showPurposeText": false,
+    "showOnlySubstantiveDocuments": true,
+    "generateMissingDocumentCards": false,
+    "preserveExistingBillingLogic": true
+  },
+  "studentExperience": {
+    "mode": "student",
+    "narrativePolicy": "Los escenarios son material didáctico ficticio. Los casos fáciles presentan una tarea directa; los difíciles exigen separar la liquidación base de los conceptos condicionados por soportes. La falta de un dato en un documento no prueba que el servicio no ocurrió.",
+    "evidencePolicy": "Cada documento distingue datos documentados de soportes ausentes; la falta de soporte no se presenta como prueba de que el servicio no ocurrió.",
+    "tariffPolicy": "Los códigos, UVR, factores y tarifas se conservan del archivo recibido y deben contrastarse con los documentos oficiales antes de declarar la base tarifaria definitivamente validada.",
+    "displayRules": {
+      "version": 3,
+      "case": "Conservar el nombre del procedimiento y la narración del caso.",
+      "documents": "Mostrar únicamente documentos que contienen información concreta del expediente. No crear tarjetas genéricas para soportes ausentes.",
+      "liquidation": "No modificar la liquidación, los códigos, las UVR, las tarifas, los factores ni las claves de respuesta.",
+      "feedback": "Mostrar explicaciones y reglas tarifarias después de que el estudiante responda.",
+      "documentPresentation": "Documentos desplegables con título y contenido factual; sin estados, propósitos ni instrucciones que den pistas."
+    }
+  },
+  "reviewReport": {
+    "jsonSyntax": "valid",
+    "caseCount": 41,
+    "tariffTypeCounts": {
+      "uvr": 31,
+      "direct": 10
+    },
+    "internalChecks": [
+      "Se comprobaron las multiplicaciones de UVR por factor en los componentes numéricos del answerKey.",
+      "Se detectó y conserva como excepción correcta el valor cero de ayudantía del caso de 45 UVR, porque el componente está marcado como no aplicable.",
+      "Se sustituyeron narraciones genéricas por escenarios didácticos y soportes descritos de forma explícita.",
+      "No se alteraron códigos, UVR, factores, tarifas ni valores esperados de la solución."
+    ],
+    "sourceVerificationStatus": "PARCIAL_NO_CERTIFICAR_TODO",
+    "sourceVerificationNote": "El archivo incluye afirmaciones de verificación previas, pero esta revisión no debe tomarse como certificación independiente de cada código, tarifa fija y artículo. Antes de usarlo como base tarifaria definitiva, se requiere cotejo individual de los 41 registros con las tablas y artículos del Acuerdo 209 de 1999 y el Manual ISS aportados."
+  },
+  "studentEducationUpdate": {
+    "purpose": "Se reorganizaron las narraciones para diferenciar casos fáciles y difíciles, manteniendo la presentación breve.",
+    "updatedCases": 41,
+    "difficultyDistribution": {
+      "facil": 21,
+      "dificil": 20
+    },
+    "preservation": "No se modificaron códigos, UVR, tarifas, factores, fórmulas, reglas de aplicabilidad ni claves de respuesta."
   }
 }

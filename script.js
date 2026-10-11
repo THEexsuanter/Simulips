@@ -982,8 +982,6 @@ function startGuest(
 
     };
 
-    saveGuestSession();
-
     showApplication();
 
     toast(
@@ -1526,6 +1524,31 @@ function renderSidebar() {
                 <span>Test del ISS</span>
             </button>
 
+
+
+            <button
+
+
+                class="nav-item"
+
+
+                type="button"
+
+
+                data-action="download-iss-manual"
+
+
+            >
+
+
+                <span class="nav-icon">⇩</span>
+
+
+                <span>Descargar documento ISS</span>
+
+
+            </button>
+
         `;
 
         text(
@@ -1741,6 +1764,31 @@ function renderSidebar() {
         >
             <span class="nav-icon">▤</span>
             <span>Test del ISS</span>
+        </button>
+
+
+
+        <button
+
+
+            class="nav-item"
+
+
+            type="button"
+
+
+            data-action="download-iss-manual"
+
+
+        >
+
+
+            <span class="nav-icon">⇩</span>
+
+
+            <span>Descargar documento ISS</span>
+
+
         </button>
 
         <div class="nav-section-title">
@@ -2774,24 +2822,9 @@ function setupNavigation() {
                     )
         );
 
-    $('notification-button')
-        ?.addEventListener(
-            'click',
-            () =>
-                $('notification-panel')
-                    ?.classList.toggle(
-                        'hidden'
-                    )
-        );
-
-    $('close-notification-panel')
-        ?.addEventListener(
-            'click',
-            () =>
-                hide(
-                    'notification-panel'
-                )
-        );
+    // Notificaciones desactivadas: se ocultan el botón y su panel.
+    hide('notification-button');
+    hide('notification-panel');
 
     $('user-menu-logout')
         ?.addEventListener(
@@ -8904,26 +8937,42 @@ function hideLoadingScreen() {
 
     function issType(caseData) {
         const solution = issSolution(caseData);
+        const declaredType = String(
+            solution.tariffType ??
+            caseData?.tariffType ??
+            caseData?.billingType ??
+            caseData?.liquidationType ??
+            ''
+        ).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 
-        if (
-            String(solution.tariffType || '').toLowerCase() === 'direct' ||
-            solution.tariff !== undefined
-        ) {
-            return 'direct';
-        }
+        // La clasificación declarada en el caso tiene prioridad sobre campos auxiliares.
+        if (/^(uvr|por uvr|liquidacion uvr)$/.test(declaredType)) return 'uvr';
+        if (/^(direct|fixed|fixed tariff|tarifa fija|tarifa directa|pesos|cop)$/.test(declaredType)) return 'direct';
 
-        if (
+        const liquidation = solution.liquidation || {};
+        const hasUVRData =
             solution.uvr !== undefined ||
-            solution.liquidation?.surgeon ||
-            solution.liquidation?.anesthesiologist ||
-            solution.liquidation?.assistant ||
-            solution.liquidation?.room ||
-            solution.liquidation?.materials
-        ) {
-            return 'uvr';
-        }
+            caseData?.procedure?.uvr !== undefined ||
+            Boolean(
+                liquidation.surgeon ||
+                liquidation.anesthesiologist ||
+                liquidation.assistant ||
+                liquidation.room ||
+                liquidation.materials
+            );
 
-        return 'direct';
+        const hasDirectTariff =
+            solution.tariff !== undefined ||
+            solution.tariffValue !== undefined ||
+            solution.value !== undefined ||
+            liquidation.procedure?.unitValue !== undefined ||
+            liquidation.service?.unitValue !== undefined;
+
+        if (hasUVRData) return 'uvr';
+        if (hasDirectTariff) return 'direct';
+
+        // No se debe clasificar silenciosamente un caso sin datos tarifarios.
+        return 'unknown';
     }
 
     function fieldValue(name) {
@@ -9426,7 +9475,7 @@ function hideLoadingScreen() {
                         <strong>${escapeHTML(procedureDescription)}</strong>
                     </div>
                     <div>
-                        <span>UVR del especialista</span>
+                        <span>UVR del procedimiento</span>
                         ${componentInput('procedure-uvr', 'procedure-uvr', '', 'number')}
                     </div>
                 </div>
@@ -14025,50 +14074,40 @@ window.addEventListener('beforeunload', () => {
     -------------------------------------------------------- */
 
     function normalizeISSNumber(raw) {
+        let value = String(raw ?? '')
+            .trim()
+            .replace(/[\s$]/g, '')
+            .replace(/[^0-9,.-]/g, '');
 
-        const value =
-            String(raw ?? '')
-                .trim()
-                .replace(/\s/g, '')
-                .replace(/\$/g, '');
+        if (!value) return NaN;
 
-        if (!value) {
-            return NaN;
+        const lastComma = value.lastIndexOf(',');
+        const lastDot = value.lastIndexOf('.');
+
+        // Si hay punto y coma, el último separador es el decimal:
+        // 2.750,50 -> 2750.50; 2,750.50 -> 2750.50.
+        if (lastComma !== -1 && lastDot !== -1) {
+            const decimalSeparator = lastComma > lastDot ? ',' : '.';
+            const thousandsSeparator = decimalSeparator === ',' ? '.' : ',';
+            value = value.split(thousandsSeparator).join('');
+            if (decimalSeparator === ',') value = value.replace(',', '.');
+        } else if (lastComma !== -1 || lastDot !== -1) {
+            const separator = lastComma !== -1 ? ',' : '.';
+            const index = value.lastIndexOf(separator);
+            const digitsAfter = value.length - index - 1;
+
+            // En formato colombiano, 2.750 y 2,750 representan 2750.
+            // Con 1 o 2 cifras después del separador se admite decimal.
+            if (digitsAfter === 3) {
+                value = value.split(separator).join('');
+            } else if (separator === ',') {
+                value = value.replace(',', '.');
+            }
         }
 
-        /*
-         * Admite:
-         * 325
-         * 325,0
-         * 325.0
-         * 1.250
-         * 1.250,50
-         */
-        let normalized = value;
-
-        if (
-            normalized.includes('.') &&
-            normalized.includes(',')
-        ) {
-            normalized =
-                normalized
-                    .replace(/\./g, '')
-                    .replace(',', '.');
-        } else if (
-            normalized.includes(',')
-        ) {
-            normalized =
-                normalized.replace(',', '.');
-        }
-
-        const number =
-            Number(normalized);
-
-        return Number.isFinite(number)
-            ? number
-            : NaN;
+        const number = Number(value);
+        return Number.isFinite(number) ? number : NaN;
     }
-
 
     function setFinalISSValueState(
         input,
@@ -14630,13 +14669,33 @@ window.addEventListener('beforeunload', () => {
     }
 
     function parseISSNumber(raw) {
-        let value = String(raw ?? '').trim().replace(/\s/g, '').replace(/\$/g, '');
+        let value = String(raw ?? '')
+            .trim()
+            .replace(/[\s$]/g, '')
+            .replace(/[^0-9,.-]/g, '');
         if (!value) return NaN;
-        if (value.includes('.') && value.includes(',')) {
-            value = value.replace(/\./g, '').replace(',', '.');
-        } else if (value.includes(',')) {
-            value = value.replace(',', '.');
+
+        const lastComma = value.lastIndexOf(',');
+        const lastDot = value.lastIndexOf('.');
+
+        if (lastComma !== -1 && lastDot !== -1) {
+            const decimalSeparator = lastComma > lastDot ? ',' : '.';
+            const thousandsSeparator = decimalSeparator === ',' ? '.' : ',';
+            value = value.split(thousandsSeparator).join('');
+            if (decimalSeparator === ',') value = value.replace(',', '.');
+        } else if (lastComma !== -1 || lastDot !== -1) {
+            const separator = lastComma !== -1 ? ',' : '.';
+            const index = value.lastIndexOf(separator);
+            const digitsAfter = value.length - index - 1;
+
+            // 2.750 / 2,750 = 2750 en formato de miles.
+            if (digitsAfter === 3) {
+                value = value.split(separator).join('');
+            } else if (separator === ',') {
+                value = value.replace(',', '.');
+            }
         }
+
         const parsed = Number(value);
         return Number.isFinite(parsed) ? parsed : NaN;
     }
@@ -15041,10 +15100,35 @@ window.addEventListener('beforeunload', () => {
 
     function isDirectCase(caseData) {
         const solution = caseData?.issSolution || {};
-        return String(solution.tariffType || '').toLowerCase() === 'direct' ||
-            solution.tariff !== undefined ||
+        const declaredType = String(
+            solution.tariffType ??
+            caseData?.tariffType ??
+            caseData?.billingType ??
+            caseData?.liquidationType ??
+            ''
+        ).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+        if (/^(uvr|por uvr|liquidacion uvr)$/.test(declaredType)) return false;
+        if (/^(direct|fixed|fixed tariff|tarifa fija|tarifa directa|pesos|cop)$/.test(declaredType)) return true;
+
+        const liquidation = solution.liquidation || {};
+        const hasUVRData =
+            solution.uvr !== undefined ||
+            caseData?.procedure?.uvr !== undefined ||
+            Boolean(
+                liquidation.surgeon ||
+                liquidation.anesthesiologist ||
+                liquidation.assistant ||
+                liquidation.room ||
+                liquidation.materials
+            );
+        if (hasUVRData) return false;
+
+        return solution.tariff !== undefined ||
             solution.tariffValue !== undefined ||
-            solution.value !== undefined;
+            solution.value !== undefined ||
+            liquidation.procedure?.unitValue !== undefined ||
+            liquidation.service?.unitValue !== undefined;
     }
 
     function simplifyDirectTable() {
@@ -16090,5 +16174,591 @@ async function cloudPersistOwnedRecords() {
     }, true);
 
     console.info('[SimuIPS] Flujo corregido: selector primero y carga de caso al elegir nivel.');
+})();
+
+
+
+/* ============================================================
+   SIMUIPS — MODO ESTUDIANTE ISS
+   Presentación de caso + soportes + liquidación existente.
+   CSS incluido aquí para no depender de un archivo adicional.
+   ============================================================ */
+(function installISSStudentModeUI() {
+    'use strict';
+
+    const STYLE_ID = 'simuips-iss-student-mode-styles';
+
+    if (!document.getElementById(STYLE_ID)) {
+        const style = document.createElement('style');
+        style.id = STYLE_ID;
+        style.textContent = `
+          .simuips-student-case { margin: 0 0 22px; color: var(--text-primary, #e5e7eb); }
+          .simuips-student-case * { box-sizing: border-box; }
+          .simuips-case-hero { border: 1px solid var(--border-color, rgba(148,163,184,.22)); border-radius: 16px; padding: 22px; background: var(--card-bg, rgba(15,23,42,.42)); margin-bottom: 14px; }
+          .simuips-case-kicker { display:flex; align-items:center; gap:8px; color:#4adeb0; font-size:11px; font-weight:800; letter-spacing:.09em; text-transform:uppercase; margin-bottom:10px; }
+          .simuips-case-procedure { margin: -8px 0 12px; color:var(--text-secondary,#94a3b8); font-size:14px; font-weight:650; line-height:1.5; }
+          .simuips-case-title { margin:0 0 10px; font-size:clamp(20px,2.5vw,27px); line-height:1.25; font-weight:750; }
+          .simuips-case-narrative { margin:0; line-height:1.75; color:var(--text-secondary,#cbd5e1); font-size:14px; white-space:pre-line; }
+          .simuips-task { margin-top:16px; padding:14px 16px; border-radius:12px; background:rgba(16,185,129,.08); border:1px solid rgba(45,212,170,.24); }
+          .simuips-task strong { display:block; margin-bottom:6px; font-size:13px; }
+          .simuips-task p { margin:0; font-size:13px; line-height:1.65; color:var(--text-secondary,#cbd5e1); }
+          .simuips-docs-card { border:1px solid var(--border-color,rgba(148,163,184,.22)); border-radius:16px; overflow:hidden; margin-bottom:22px; background:var(--card-bg,rgba(15,23,42,.32)); }
+          .simuips-docs-head { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:17px 20px; border-bottom:1px solid var(--border-color,rgba(148,163,184,.18)); }
+          .simuips-docs-head h3 { margin:0; font-size:16px; font-weight:750; }
+          .simuips-docs-head p { margin:4px 0 0; font-size:12px; color:var(--text-secondary,#94a3b8); }
+          .simuips-docs-list { padding:8px 14px; }
+          .simuips-doc { border-bottom:1px solid var(--border-color,rgba(148,163,184,.12)); }
+          .simuips-doc:last-child { border-bottom:0; }
+          .simuips-doc summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:12px; padding:14px 6px; }
+          .simuips-doc summary::-webkit-details-marker { display:none; }
+          .simuips-doc-icon { flex:0 0 38px; width:38px; height:38px; border-radius:10px; display:grid; place-items:center; background:rgba(148,163,184,.12); font-size:17px; }
+          .simuips-doc-title { flex:1; min-width:0; font-weight:650; font-size:13px; }
+          .simuips-doc-status { display:inline-flex; align-items:center; border-radius:999px; padding:4px 8px; font-size:10px; font-weight:750; background:rgba(34,197,94,.10); color:#4ade80; white-space:nowrap; }
+          .simuips-doc-status.review { background:rgba(245,158,11,.12); color:#fbbf24; }
+          .simuips-doc-status.missing { background:rgba(239,68,68,.10); color:#f87171; }
+          .simuips-doc-body { padding:0 8px 16px 56px; font-size:13px; line-height:1.7; color:var(--text-secondary,#cbd5e1); white-space:pre-line; }
+          .simuips-doc-body p { margin:0 0 8px; }
+          .simuips-doc-purpose { margin-top:8px; font-size:12px; color:var(--text-secondary,#94a3b8); }
+          .simuips-doc-chevron { color:var(--text-secondary,#94a3b8); transition:transform .18s ease; }
+          .simuips-doc[open] .simuips-doc-chevron { transform:rotate(90deg); }
+          @media(max-width:640px) {
+            .simuips-case-hero { padding:17px; }
+            .simuips-docs-head { padding:15px; }
+            .simuips-docs-list { padding:6px 10px; }
+            .simuips-doc-status { display:none; }
+            .simuips-doc-body { padding-left:8px; }
+          }
+        `;
+        document.head.appendChild(style);
+    }
+
+    const safe = value => (typeof escapeHTML === 'function'
+        ? escapeHTML(value == null ? '' : String(value))
+        : String(value == null ? '' : value).replace(/[&<>'"]/g, ch => ({
+            '&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'
+        }[ch])));
+
+    function getStudentData(caseData) {
+        return caseData?.studentMode ||
+            caseData?.studentExperience ||
+            caseData?.issStudentMode ||
+            null;
+    }
+
+    function findAnchor() {
+        return document.querySelector(
+            '#manual-concepts, #manual-iss-concepts, #billing-concepts, ' +
+            '#uvr-liquidation-panel, #direct-tariff-panel, .billing-liquidation-card, ' +
+            '#billing-procedure-search'
+        );
+    }
+
+    function renderStudentCase(caseData) {
+        const data = getStudentData(caseData);
+        const existing = document.getElementById('simuips-student-case-panel');
+        if (!data || data.enabled === false) {
+            existing?.remove();
+            return;
+        }
+
+        const anchor = findAnchor();
+        if (!anchor) return;
+
+        const narrative = data.caseNarrative || data.narrative ||
+            caseData.description || caseData.trainingNote || '';
+        const patientName = data.patientName || caseData.patient?.name ||
+            caseData.patient?.nombre || 'Caso asignado';
+        const procedureName = caseData.procedure?.description ||
+            caseData.issSolution?.description || caseData.name || 'Procedimiento del caso';
+        const instructions = data.taskInstructions || data.instructions ||
+            `Realiza la liquidación de ${procedureName} y registra los conceptos y valores que correspondan.`;
+        // El JSON actualizado guarda whatIsProcedure tanto en la raíz del caso
+        // como dentro de studentMode. Se admiten ambas ubicaciones para que el
+        // botón funcione incluso si se publica una versión del JSON con una sola.
+        const whatIs = caseData.whatIsProcedure ||
+            data.whatIsProcedure ||
+            caseData.studentExperience?.whatIsProcedure ||
+            caseData.issStudentMode?.whatIsProcedure ||
+            {};
+        const whatIsTitle = whatIs.title || procedureName;
+        const whatIsSummary = whatIs.summary ||
+            whatIs.description ||
+            'La explicación educativa de este procedimiento no está configurada en el JSON.';
+        const whatIsPurpose = whatIs.purpose ||
+            `Se realiza para ayudar a resolver la estrechez de la uretra y facilitar el paso de la orina, según la valoración médica.`;
+        // No mostrar la nota genérica del JSON: no aporta información específica
+        // y hace que la guía parezca una advertencia de auditoría.
+        const whatIsNote = typeof whatIs.note === 'string' &&
+            whatIs.note.trim() &&
+            !/descripci[oó]n educativa general del procedimiento/i.test(whatIs.note)
+            ? whatIs.note.trim()
+            : '';
+
+        // En esta pantalla no se inserta el bloque de documentos/soportes
+        // que estaba mostrando tarjetas fuera de contexto para el ejercicio.
+        const panel = document.createElement('section');
+        panel.id = 'simuips-student-case-panel';
+        panel.className = 'simuips-student-case';
+        panel.innerHTML = `
+          <div class="simuips-case-hero">
+            <div class="simuips-case-kicker"><span aria-hidden="true">▣</span> Caso práctico · Modo estudiante</div>
+            <h2 class="simuips-case-title">${safe(patientName)}</h2>
+            <div class="simuips-what-is-actions">
+              <button type="button" class="simuips-what-is-btn" data-simuips-what-is-open aria-haspopup="dialog">ⓘ ¿Qué es?</button>
+            </div>
+            <p class="simuips-case-narrative">${safe(narrative)}</p>
+          </div>`;
+
+        existing?.remove();
+        anchor.parentNode.insertBefore(panel, anchor);
+
+        // Sustituir el control antiguo de progreso por el botón «¿Qué es?».
+        // Primero ubicamos el botón nuevo y luego buscamos únicamente un control
+        // pequeño cuyo texto identifique claramente el progreso del caso.
+        const guideButton = panel.querySelector('[data-simuips-what-is-open]');
+        const actions = panel.querySelector('.simuips-what-is-actions');
+
+        const progressCandidates = Array.from(document.querySelectorAll(
+            'button, [role="button"], .progress-badge, .progress-indicator, ' +
+            '.simuips-progress, .case-progress, .progress-label, span, div'
+        )).filter(element => {
+            if (panel.contains(element)) return false;
+            const label = (element.textContent || '').replace(/\s+/g, ' ').trim();
+            if (!label || label.length > 90) return false;
+            return /progreso/i.test(label) &&
+                /\b\d+\s*(?:de|\/)\s*\d+\b/i.test(label);
+        });
+
+        // Elegir el elemento más específico, no un contenedor grande de la página.
+        const progressElement = progressCandidates
+            .filter(element => !progressCandidates.some(other =>
+                other !== element && element.contains(other)
+            ))
+            .sort((a, b) => {
+                const aControl = a.matches('button, [role="button"], .progress-badge, .progress-indicator, .simuips-progress, .case-progress, .progress-label') ? 0 : 1;
+                const bControl = b.matches('button, [role="button"], .progress-badge, .progress-indicator, .simuips-progress, .case-progress, .progress-label') ? 0 : 1;
+                return aControl - bControl || a.textContent.length - b.textContent.length;
+            })[0];
+
+        if (guideButton && progressElement) {
+            guideButton.classList.add('simuips-progress-guide-button');
+            // Marcar el contenedor del indicador para controlar la alineación del botón.
+            progressElement.parentElement?.classList.add('simuips-progress-with-guide');
+            progressElement.replaceWith(guideButton);
+            // El botón ya ocupa el lugar del progreso antiguo: quitar el espacio
+            // que lo reservaba debajo del nombre del procedimiento.
+            actions?.remove();
+        } else if (guideButton && actions) {
+            // No dejar una segunda copia debajo del nombre del procedimiento.
+            // Si no se encuentra el control de progreso, se retira el botón de
+            // esta ubicación para evitar que aparezca duplicado en el caso.
+            actions.remove();
+        }
+
+        if (guideButton) {
+            guideButton.style.setProperty('display', 'inline-flex', 'important');
+            guideButton.style.setProperty('visibility', 'visible', 'important');
+            guideButton.style.setProperty('opacity', '1', 'important');
+            guideButton.style.setProperty('pointer-events', 'auto', 'important');
+        }
+
+        // Modal accesible y adaptable a móvil/escritorio. No modifica la liquidación.
+        let modalStyle = document.getElementById('simuips-what-is-style');
+        if (!modalStyle) {
+            modalStyle = document.createElement('style');
+            modalStyle.id = 'simuips-what-is-style';
+            modalStyle.textContent = `
+              .simuips-procedure-row{display:block;width:100%;margin:0}
+              .simuips-procedure-row .simuips-case-procedure{display:block;width:100%;margin:0}
+              .simuips-what-is-actions{display:flex;align-items:center;justify-content:flex-start;margin-top:10px;margin-bottom:4px}
+              .simuips-what-is-btn{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid rgba(45,212,170,.55);border-radius:999px;padding:8px 13px;background:rgba(16,185,129,.12);color:#54e4b6;font-family:inherit;font-size:12px;font-weight:700;line-height:1.2;cursor:pointer;white-space:nowrap}
+              .simuips-what-is-btn:hover{background:rgba(16,185,129,.22)}
+              .simuips-progress-guide-button{display:flex!important;width:max-content!important;max-width:100%;margin-left:auto!important;margin-right:auto!important;align-self:auto!important;justify-self:auto!important}
+              @media(max-width:640px){.simuips-progress-guide-button{margin-left:0!important;margin-right:auto!important}.simuips-what-is-btn{padding:7px 10px;font-size:11px}}
+              .simuips-what-is-overlay[hidden]{display:none!important}.simuips-what-is-overlay{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;box-sizing:border-box;z-index:2147483000!important;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(2,6,12,.76);backdrop-filter:blur(5px);margin:0!important}
+              .simuips-what-is-dialog{width:min(560px,100%);max-height:min(82vh,720px);overflow:auto;background:#0d141e;color:#edf4ff;border:1px solid rgba(148,163,184,.22);border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.48);padding:22px}
+              .simuips-what-is-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+              .simuips-what-is-kicker{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#51ddb0;font-weight:800;margin:0 0 7px}
+              .simuips-what-is-dialog h2{font-size:21px;line-height:1.25;margin:0;color:#f8fbff}
+              .simuips-what-is-close{width:34px;height:34px;flex:0 0 34px;border:1px solid #344154;border-radius:10px;background:#151f2d;color:#eaf2ff;font-size:21px;cursor:pointer}
+              .simuips-what-is-section{margin-top:16px}
+              .simuips-what-is-section h3{font-size:13px;margin:0 0 7px;color:#54e4b6}
+              .simuips-what-is-section p{font-size:14px;line-height:1.65;margin:0;color:#d8e2f0}
+              .simuips-what-is-note{margin-top:18px;padding:12px 13px;border-radius:11px;background:#121f2b;border:1px solid #26384a;color:#aebfd2;font-size:12px;line-height:1.55}
+              @media(max-width:520px){.simuips-what-is-overlay{padding:12px;align-items:center}.simuips-what-is-dialog{padding:18px;border-radius:15px;max-height:86vh}.simuips-what-is-dialog h2{font-size:19px}.simuips-what-is-btn{padding:7px 11px}}
+            `;
+            document.head.appendChild(modalStyle);
+        }
+        document.getElementById('simuips-what-is-modal')?.remove();
+        const overlay = document.createElement('div');
+        overlay.id = 'simuips-what-is-modal';
+        overlay.className = 'simuips-what-is-overlay';
+        overlay.hidden = true;
+        overlay.setAttribute('role', 'presentation');
+        overlay.innerHTML = `
+          <section class="simuips-what-is-dialog" role="dialog" aria-modal="true" aria-labelledby="simuips-what-is-title" tabindex="-1">
+            <div class="simuips-what-is-top">
+              <div><p class="simuips-what-is-kicker">Guía del procedimiento</p><h2 id="simuips-what-is-title">${safe(whatIsTitle)}</h2></div>
+              <button type="button" class="simuips-what-is-close" data-simuips-what-is-close aria-label="Cerrar ventana">×</button>
+            </div>
+            <div class="simuips-what-is-section"><h3>¿Qué es?</h3><p>${safe(whatIsSummary)}</p></div>
+            <div class="simuips-what-is-section"><h3>¿Para qué se realiza?</h3><p>${safe(whatIsPurpose)}</p></div>
+            ${whatIsNote ? `<div class="simuips-what-is-note">${safe(whatIsNote)}</div>` : ''}
+          </section>`;
+        // El modal se monta directamente en body para que quede centrado en toda
+        // la ventana, no limitado por el panel de liquidación ni sus contenedores.
+        overlay.style.position = 'fixed';
+        overlay.style.inset = '0';
+        overlay.style.width = '100vw';
+        overlay.style.height = '100dvh';
+        overlay.style.zIndex = '2147483000';
+        document.body.appendChild(overlay);
+        const openBtn = document.querySelector('[data-simuips-what-is-open]');
+        const closeBtn = overlay.querySelector('[data-simuips-what-is-close]');
+        const dialog = overlay.querySelector('[role="dialog"]');
+        const closeModal = () => {
+            overlay.hidden = true;
+            openBtn?.focus();
+        };
+        openBtn?.addEventListener('click', () => {
+            overlay.hidden = false;
+            dialog?.focus();
+        });
+        closeBtn?.addEventListener('click', closeModal);
+        overlay.addEventListener('click', event => {
+            if (event.target === overlay) closeModal();
+        });
+        overlay.addEventListener('keydown', event => {
+            if (event.key === 'Escape') closeModal();
+        });
+    }
+
+    function hideDefinitivelyNotApplicableRows(caseData) {
+        const studentData = getStudentData(caseData);
+        if (!studentData?.displayRules?.hideDefinitivelyNotApplicableComponents) return;
+
+        // Solo ocultamos filas si el caso las identifica explícitamente como no aplicables.
+        const liquidation = caseData?.issSolution?.liquidation;
+        if (!liquidation || typeof liquidation !== 'object') return;
+
+        const keys = ['surgeon', 'anesthesiologist', 'assistant', 'room', 'materials'];
+        const labels = {
+            surgeon: /cirujano|cirugía|especialista|honorarios del profesional/i,
+            anesthesiologist: /anestesi[oó]logo|anestesia/i,
+            assistant: /ayudante|ayudantía|ayudantia/i,
+            room: /derechos? de sala|sala de cirugía|sala quirúrgica/i,
+            materials: /materiales? de sutura|materiales? de curación|materiales? quirúrgicos/i
+        };
+
+        keys.forEach(key => {
+            const item = liquidation[key];
+            const status = item?.applicability?.status || item?.status;
+            if (status !== 'not_applicable' && item?.applicable !== false) return;
+            const candidates = Array.from(document.querySelectorAll(
+                '#manual-concepts tr, #manual-concepts .concept-row, #manual-concepts [data-concept], ' +
+                '#uvr-liquidation-panel tr, #uvr-liquidation-panel .concept-row, #uvr-liquidation-panel [data-concept]'
+            ));
+            candidates.forEach(row => {
+                const haystack = `${row.textContent || ''} ${row.getAttribute('data-concept') || ''} ${row.getAttribute('data-field') || ''}`;
+                if (labels[key].test(haystack)) row.style.display = 'none';
+            });
+        });
+    }
+
+    const previousRenderBillingPageStudentMode = renderBillingPage;
+    renderBillingPage = function renderBillingPageStudentMode() {
+        const result = previousRenderBillingPageStudentMode.apply(this, arguments);
+        const caseData = state.currentCase;
+        if (!caseData) {
+            document.getElementById('simuips-student-case-panel')?.remove();
+            return result;
+        }
+        renderStudentCase(caseData);
+        hideDefinitivelyNotApplicableRows(caseData);
+        return result;
+    };
+
+    // CSS y panel se reaplican también al cambiar de caso si la página ya está visible.
+    if (state.currentCase && state.page === 'billing') {
+        requestAnimationFrame(() => renderBillingPage());
+    }
+
+    console.info('[SimuIPS] Modo estudiante integrado: relato, soportes y CSS incluidos en el JS.');
+})();
+
+/* --------------------------------------------------------
+   SIMUIPS — MODAL VISUAL PARA DESCARGAR EL MANUAL ISS
+   CSS incluido en este mismo JS: no requiere archivo CSS externo.
+   El PDF debe publicarse en la raíz como MANUAL-ISS.pdf.
+-------------------------------------------------------- */
+(function installISSManualDownload() {
+    if (window.__simuipsISSManualDownloadInstalled) return;
+    window.__simuipsISSManualDownloadInstalled = true;
+
+    const style = document.createElement('style');
+    style.id = 'simuips-iss-download-styles';
+    style.textContent = `
+      .simuips-iss-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 22px;
+        background: rgba(15, 23, 42, .58);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        animation: simuipsIssFadeIn .18s ease-out;
+      }
+      .simuips-iss-modal {
+        width: min(100%, 440px);
+        overflow: hidden;
+        color: #172033;
+        background: #fff;
+        border: 1px solid rgba(226, 232, 240, .9);
+        border-radius: 20px;
+        box-shadow: 0 24px 80px rgba(15, 23, 42, .28);
+        font-family: inherit;
+        animation: simuipsIssModalIn .22s cubic-bezier(.2,.8,.2,1);
+      }
+      .simuips-iss-modal-top {
+        position: relative;
+        padding: 27px 28px 22px;
+        text-align: center;
+        background: linear-gradient(145deg, #f4f8ff 0%, #fff 78%);
+      }
+      .simuips-iss-modal-close {
+        position: absolute;
+        top: 13px;
+        right: 13px;
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        padding: 0;
+        border: 0;
+        border-radius: 10px;
+        color: #64748b;
+        background: transparent;
+        font-size: 23px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .simuips-iss-modal-close:hover { background: #e9eef7; color: #172033; }
+      .simuips-iss-modal-icon {
+        display: grid;
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 16px;
+        place-items: center;
+        border: 1px solid #d8e5ff;
+        border-radius: 19px;
+        color: #2458a6;
+        background: #eaf1ff;
+      }
+      .simuips-iss-modal-icon svg { width: 31px; height: 31px; }
+      .simuips-iss-modal-eyebrow {
+        margin: 0 0 7px;
+        color: #3764a5;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      .simuips-iss-modal-title {
+        margin: 0;
+        color: #172033;
+        font-size: clamp(21px, 4vw, 25px);
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -.035em;
+      }
+      .simuips-iss-modal-description {
+        max-width: 330px;
+        margin: 10px auto 0;
+        color: #64748b;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .simuips-iss-file {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 24px;
+        padding: 14px;
+        border: 1px solid #e5eaf2;
+        border-radius: 13px;
+        background: #f8fafc;
+      }
+      .simuips-iss-file-icon {
+        display: grid;
+        flex: 0 0 42px;
+        width: 42px;
+        height: 46px;
+        place-items: center;
+        border-radius: 10px;
+        color: #b42318;
+        background: #feeceb;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .simuips-iss-file-name {
+        overflow-wrap: anywhere;
+        margin: 0;
+        color: #273449;
+        font-size: 13px;
+        font-weight: 750;
+      }
+      .simuips-iss-file-meta {
+        margin: 4px 0 0;
+        color: #8490a3;
+        font-size: 12px;
+      }
+      .simuips-iss-modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 22px 24px 24px;
+      }
+      .simuips-iss-btn {
+        display: inline-flex;
+        min-height: 43px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 0 17px;
+        border: 1px solid transparent;
+        border-radius: 11px;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 750;
+        cursor: pointer;
+        transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+      }
+      .simuips-iss-btn:active { transform: translateY(1px); }
+      .simuips-iss-btn:focus-visible,
+      .simuips-iss-modal-close:focus-visible {
+        outline: 3px solid #93b4f7;
+        outline-offset: 3px;
+      }
+      .simuips-iss-btn-cancel {
+        color: #475569;
+        border-color: #dbe2ec;
+        background: #fff;
+      }
+      .simuips-iss-btn-cancel:hover { background: #f1f5f9; }
+      .simuips-iss-btn-download {
+        color: #fff;
+        background: #2458a6;
+        box-shadow: 0 5px 12px rgba(36, 88, 166, .18);
+      }
+      .simuips-iss-btn-download:hover {
+        background: #1d4788;
+        box-shadow: 0 7px 17px rgba(36, 88, 166, .25);
+      }
+      @keyframes simuipsIssFadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes simuipsIssModalIn {
+        from { opacity: 0; transform: translateY(9px) scale(.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @media (max-width: 480px) {
+        .simuips-iss-modal-backdrop { padding: 14px; }
+        .simuips-iss-modal-top { padding: 25px 20px 20px; }
+        .simuips-iss-file { margin: 0 17px; }
+        .simuips-iss-modal-actions { padding: 18px 17px 20px; }
+        .simuips-iss-btn { flex: 1; padding: 0 10px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .simuips-iss-modal-backdrop, .simuips-iss-modal { animation: none; }
+        .simuips-iss-btn { transition: none; }
+      }
+    `;
+    document.head.appendChild(style);
+
+    let previousFocus = null;
+
+    function closeModal() {
+        const backdrop = document.getElementById('simuips-iss-download-backdrop');
+        if (backdrop) backdrop.remove();
+        document.removeEventListener('keydown', onKeyDown);
+        previousFocus?.focus?.();
+    }
+
+    function onKeyDown(event) {
+        if (event.key === 'Escape') closeModal();
+    }
+
+    function openModal() {
+        if (document.getElementById('simuips-iss-download-backdrop')) return;
+        previousFocus = document.activeElement;
+
+        const backdrop = document.createElement('div');
+        backdrop.id = 'simuips-iss-download-backdrop';
+        backdrop.className = 'simuips-iss-modal-backdrop';
+        backdrop.innerHTML = `
+          <section class="simuips-iss-modal" role="dialog" aria-modal="true"
+                   aria-labelledby="simuips-iss-modal-title"
+                   aria-describedby="simuips-iss-modal-description">
+            <div class="simuips-iss-modal-top">
+              <button class="simuips-iss-modal-close" type="button"
+                      data-iss-modal-close aria-label="Cerrar ventana">×</button>
+              <div class="simuips-iss-modal-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 3.8h7l4 4V20a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 6 20V5.3A1.5 1.5 0 0 1 7.5 3.8Z"/>
+                  <path d="M14 4v4h4M12 11v6m-2.5-2.5L12 17l2.5-2.5"/>
+                </svg>
+              </div>
+              <p class="simuips-iss-modal-eyebrow">Biblioteca de consulta</p>
+              <h2 class="simuips-iss-modal-title" id="simuips-iss-modal-title">Manual ISS 2000</h2>
+              <p class="simuips-iss-modal-description" id="simuips-iss-modal-description">
+                Descarga el documento en PDF para consultar códigos, tarifas y reglas del manual durante tu práctica.
+              </p>
+            </div>
+            <div class="simuips-iss-file">
+              <div class="simuips-iss-file-icon" aria-hidden="true">PDF</div>
+              <div>
+                <p class="simuips-iss-file-name">MANUAL-ISS.pdf</p>
+                <p class="simuips-iss-file-meta">Documento PDF · Manual de referencia</p>
+              </div>
+            </div>
+            <div class="simuips-iss-modal-actions">
+              <button class="simuips-iss-btn simuips-iss-btn-cancel"
+                      type="button" data-iss-modal-close>Cancelar</button>
+              <button class="simuips-iss-btn simuips-iss-btn-download"
+                      type="button" data-iss-modal-download>
+                <span aria-hidden="true">↓</span> Descargar PDF
+              </button>
+            </div>
+          </section>`;
+
+        backdrop.addEventListener('click', event => {
+            if (event.target === backdrop || event.target.closest('[data-iss-modal-close]')) {
+                closeModal();
+            }
+            if (event.target.closest('[data-iss-modal-download]')) {
+                const link = document.createElement('a');
+                link.href = './MANUAL-ISS.pdf';
+                link.download = 'MANUAL-ISS.pdf';
+                link.rel = 'noopener';
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                closeModal();
+            }
+        });
+
+        document.body.appendChild(backdrop);
+        document.addEventListener('keydown', onKeyDown);
+        backdrop.querySelector('[data-iss-modal-download]')?.focus();
+    }
+
+    document.addEventListener('click', function (event) {
+        const button = event.target.closest('[data-action="download-iss-manual"]');
+        if (!button) return;
+        event.preventDefault();
+        openModal();
+    });
 })();
 
