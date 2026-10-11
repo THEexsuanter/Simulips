@@ -16063,6 +16063,109 @@ async function cloudPersistOwnedRecords() {
 (function fixGuestPracticeLevelFlow() {
     'use strict';
 
+    // Capa de carga ligera: mejora la transición mientras se obtiene el JSON
+    // y se prepara la pantalla de liquidación. No bloquea el motor ni altera datos.
+    const PRACTICE_LOADING_STYLE_ID = 'simuips-practice-loading-styles';
+    if (!document.getElementById(PRACTICE_LOADING_STYLE_ID)) {
+        const style = document.createElement('style');
+        style.id = PRACTICE_LOADING_STYLE_ID;
+        style.textContent = `
+            #simuips-practice-loading {
+                position: fixed; inset: 0; z-index: 99999;
+                display: grid; place-items: center; padding: 24px;
+                background: rgba(5, 10, 15, .78);
+                -webkit-backdrop-filter: blur(9px); backdrop-filter: blur(9px);
+                opacity: 0; visibility: hidden;
+                transition: opacity .22s ease, visibility .22s ease;
+            }
+            #simuips-practice-loading.is-visible { opacity: 1; visibility: visible; }
+            #simuips-practice-loading .spl-card {
+                width: min(100%, 360px); padding: 30px 26px 25px;
+                text-align: center; border-radius: 22px;
+                border: 1px solid rgba(52, 211, 153, .25);
+                background: linear-gradient(145deg, rgba(17, 29, 37, .98), rgba(7, 13, 19, .98));
+                box-shadow: 0 24px 90px rgba(0,0,0,.42), 0 0 45px rgba(16,185,129,.08);
+                transform: translateY(10px) scale(.985);
+                transition: transform .28s cubic-bezier(.2,.8,.2,1);
+            }
+            #simuips-practice-loading.is-visible .spl-card { transform: translateY(0) scale(1); }
+            #simuips-practice-loading .spl-mark {
+                width: 58px; height: 58px; margin: 0 auto 19px; position: relative;
+                display: grid; place-items: center; border-radius: 18px;
+                background: rgba(16,185,129,.12); border: 1px solid rgba(52,211,153,.25);
+            }
+            #simuips-practice-loading .spl-ring {
+                position: absolute; inset: -5px; border: 2px solid transparent;
+                border-top-color: #34d399; border-right-color: rgba(52,211,153,.35);
+                border-radius: 22px; animation: spl-spin .9s linear infinite;
+            }
+            #simuips-practice-loading .spl-plus { color: #34d399; font-size: 28px; font-weight: 800; line-height: 1; }
+            #simuips-practice-loading .spl-title { margin: 0; color: #f8fafc; font-size: 19px; font-weight: 800; letter-spacing: -.025em; }
+            #simuips-practice-loading .spl-copy { margin: 9px 0 19px; color: #94a3b8; font-size: 13px; line-height: 1.55; }
+            #simuips-practice-loading .spl-track { height: 4px; overflow: hidden; border-radius: 99px; background: rgba(148,163,184,.14); }
+            #simuips-practice-loading .spl-progress {
+                width: 42%; height: 100%; border-radius: inherit;
+                background: linear-gradient(90deg, #10b981, #6ee7b7);
+                animation: spl-progress 1.35s ease-in-out infinite;
+            }
+            #simuips-practice-loading .spl-foot { margin-top: 12px; color: #64748b; font-size: 10px; letter-spacing: .13em; font-weight: 800; text-transform: uppercase; }
+            @keyframes spl-spin { to { transform: rotate(360deg); } }
+            @keyframes spl-progress { 0% { transform: translateX(-110%); } 100% { transform: translateX(260%); } }
+            @media (prefers-reduced-motion: reduce) {
+                #simuips-practice-loading, #simuips-practice-loading .spl-card { transition: none; }
+                #simuips-practice-loading .spl-ring, #simuips-practice-loading .spl-progress { animation-duration: 3s; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    let practiceLoadingTimer = null;
+    function showPracticeLoading(level) {
+        let overlay = document.getElementById('simuips-practice-loading');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'simuips-practice-loading';
+            overlay.setAttribute('role', 'status');
+            overlay.setAttribute('aria-live', 'polite');
+            overlay.innerHTML = `
+                <div class="spl-card">
+                    <div class="spl-mark" aria-hidden="true"><span class="spl-ring"></span><span class="spl-plus">+</span></div>
+                    <h2 class="spl-title">Preparando tu práctica</h2>
+                    <p class="spl-copy" data-loading-copy>Estamos cargando los casos y organizando el ejercicio.</p>
+                    <div class="spl-track" aria-hidden="true"><div class="spl-progress"></div></div>
+                    <div class="spl-foot">SimuIPS · Entrenamiento</div>
+                </div>`;
+            document.body.appendChild(overlay);
+        }
+
+        const copy = overlay.querySelector('[data-loading-copy]');
+        const messages = level === 'advanced'
+            ? ['Cargando los casos avanzados…', 'Preparando los datos UVR…', 'Organizando tu reto…']
+            : ['Cargando los casos de práctica…', 'Preparando el ejercicio…', 'Organizando tu sesión…'];
+        let messageIndex = 0;
+        if (copy) copy.textContent = messages[0];
+        clearInterval(practiceLoadingTimer);
+        practiceLoadingTimer = setInterval(() => {
+            messageIndex = (messageIndex + 1) % messages.length;
+            if (copy && overlay.isConnected) copy.textContent = messages[messageIndex];
+        }, 1500);
+
+        // Deja que el navegador pinte la animación antes de iniciar el fetch.
+        requestAnimationFrame(() => overlay.classList.add('is-visible'));
+        return new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    }
+
+    function hidePracticeLoading() {
+        clearInterval(practiceLoadingTimer);
+        practiceLoadingTimer = null;
+        const overlay = document.getElementById('simuips-practice-loading');
+        if (!overlay) return;
+        overlay.classList.remove('is-visible');
+        setTimeout(() => {
+            if (overlay.isConnected && !overlay.classList.contains('is-visible')) overlay.remove();
+        }, 260);
+    }
+
     function saveSelectedLevel(level) {
         const normalized = String(level || '').toLowerCase();
         const selected = normalized === 'advanced' || normalized === 'avanzado'
@@ -16132,6 +16235,7 @@ async function cloudPersistOwnedRecords() {
         button.setAttribute('aria-busy', 'true');
 
         const level = saveSelectedLevel(isAdvanced ? 'advanced' : 'normal');
+        await showPracticeLoading(level);
 
         state.currentMode = 'manual';
         state.currentActivity = null;
@@ -16168,6 +16272,7 @@ async function cloudPersistOwnedRecords() {
                 'error'
             );
         } finally {
+            hidePracticeLoading();
             button.dataset.loading = 'false';
             button.removeAttribute('aria-busy');
         }
